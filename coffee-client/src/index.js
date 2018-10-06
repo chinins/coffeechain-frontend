@@ -3,16 +3,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
 import { BrowserRouter as Router } from 'react-router-dom';
+import logger from 'redux-logger';
 
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './redux/reducers/reducer';
 import api from './redux/middlewares/api';
 
+const middlewares = [
+  api
+];
+
+if (process.env.NODE_ENV === 'development') {
+  middlewares.push(logger);
+}
+
 const store = createStore(
   reducer,
-  applyMiddleware(api)
+  applyMiddleware(...middlewares)
 );
 
 ReactDOM.render(
