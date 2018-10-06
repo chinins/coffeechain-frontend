@@ -4,8 +4,10 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div>coffee-blockchain-app</div>
-    )
+      <div className="App">
+        coffee-blockachain app
+      </div>
+    );
   }
 }
 
