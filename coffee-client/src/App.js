@@ -5,6 +5,8 @@ import styled from 'react-emotion';
 import { theme } from './shared/theme';
 import './shared/styles';
 import Header from './components/header';
+import ItemsList from './components/items-list';
+import { Route, Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import * as Actions from './redux/actions/actions';
@@ -23,6 +25,7 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <div className="App">
           <Header></Header>
+          <Route exact={true} path='/' render={() => <ItemsList/>} />
           {/* <Paragraph large textColor="firebrick">Hi! This is my styled paragraph using emotion-theming :-)</Paragraph> */}
           <CompVisual></CompVisual>
         </div>

@@ -1,6 +1,6 @@
 const primary = '#F6F6F6';
-const secondary = 'orange';
-const accessory = '#CBE4D6';
-const shadow = '#698198';
+const secondary = '#A61D55';
+const accessory = '#EBEBEB';
+// const shadow = '#698198';
 
-export { primary, secondary, accessory, shadow };
+export { primary, secondary, accessory };

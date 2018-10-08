@@ -10,7 +10,7 @@ const ToolBar = styled('div')`
   background: lightblue;
 `;
 
-const Name = styled('div')`
+const AppName = styled('div')`
   font-size: 200%;
   margin: 10px 0 0 10px;
   color: ${props => props.theme.colors.secondary}
@@ -29,7 +29,7 @@ class Header extends Component {
   render() {
     return (
       <ToolBar>
-        <Name>Coffee Chain</Name>
+        <AppName>Coffee Chain</AppName>
         {/* <nav> */}
         <Navigation>
           <NavItem><Link to='/'>Coffee Types</Link></NavItem>
