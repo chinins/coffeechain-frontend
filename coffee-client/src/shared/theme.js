@@ -1,7 +1,9 @@
 import * as colors from './colors';
-import * as fontFamily from './typography';
+import { borderRadius, boxShadow } from './box-style';
+
 
 export const theme = {
   colors,
-  fontFamily
+  borderRadius,
+  boxShadow
 }

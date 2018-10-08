@@ -3,24 +3,28 @@ import PropTypes from 'prop-types';
 import { ThemeProvider } from 'emotion-theming';
 import styled from 'react-emotion';
 import { theme } from './shared/theme';
-import './App.css';
+import './shared/styles';
+import Header from './components/header';
 
 import { connect } from 'react-redux';
 import * as Actions from './redux/actions/actions';
 
-const Paragraph = styled('p')`
-  color: ${props => props.textColor ? props.textColor : props.theme.colors.primary};
-  background: ${props => props.theme.colors.secondary};
-  font-size: ${props => props.large ? '28px' : '14px'};
-  font-family: ${props => props.theme.fontFamily};
-`;
+import CompVisual from './components/comp-visual';
+
+// const Paragraph = styled('p')`
+//   color: ${props => props.textColor ? props.textColor : props.theme.colors.primary};
+//   background: ${props => props.theme.colors.secondary};
+//   font-size: ${props => props.large ? '28px' : '14px'};
+// `;
 
 class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
         <div className="App">
-          <Paragraph large textColor="firebrick">Hi! This is my styled paragraph using emotion-theming :-)</Paragraph>
+          <Header></Header>
+          {/* <Paragraph large textColor="firebrick">Hi! This is my styled paragraph using emotion-theming :-)</Paragraph> */}
+          <CompVisual></CompVisual>
         </div>
       </ThemeProvider>
     );
