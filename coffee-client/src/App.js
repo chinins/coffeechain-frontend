@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './App.css';
 
 import { connect } from 'react-redux';
-import * as Actions from './redux/actions/actions';
+import * as Actions from './redux/actions/producers';
 
 class App extends Component {
   render() {
@@ -24,7 +24,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setProducers: (producers) => dispatch(Actions.setProducers(producers))
+  getProducer: (producers) => dispatch(Actions.getProducer())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,4 +1,4 @@
-import * as Actions from '../actions/actions';
+import * as Actions from '../actions/producers';
 
 const defaultState = {
   producers: []
@@ -6,10 +6,10 @@ const defaultState = {
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case Actions.SET_PRODUCERS: {
+    case Actions.getProducer: {
       return {
         ...state,
-        producers: action.producers
+        producers: action.producer
       }
     }
   }

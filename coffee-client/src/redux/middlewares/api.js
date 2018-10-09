@@ -1,17 +1,37 @@
-export const API = 'API';
+import { normalize, schema } from 'normalizr';
+
+export const API = 'api';
+
+const BASE_URL = 'http://polls.apiblueprint.org';
 
 export default store => next => action => {
-  const API = action[API];
-  if (!API) return next(action);
+  const api = action[API];
+  if (!api) return next(action);
 
 
-  fetch()
-  .then(() => {
-    //SUCCESS
+  fetch(BASE_URL + api.path, {
+    method: api.method,
   })
-  .catch(() => {
-    // FAILURE
-  })
+    .then(res => res.json())
+    .then(data => {
+      //SUCCESS
+      store.dispatch({
+        type: action.type + '_SUCCESS',
+        data
+      })
+      return Object.assign({},
+        normalize(data, schema))
+    })
+    .catch(data => {
+      // FAILURE
+      store.dispatch({
+        type: action.type + '_FAILURE',
+        data
+      })
+    })
 
   // REQUEST
+  next({
+    type: action.type + '_PENDING'
+  })
 };

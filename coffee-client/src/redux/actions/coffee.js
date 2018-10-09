@@ -1,25 +1,25 @@
-import namespace from '../../constants/namespace';
+import { namespace } from '../../constants/namespace';
 
-export const getCoffee = () => ({
+export const getCoffee = (coffeeId) => ({
   type: namespace.GET_COFFEE,
   api: {
-    endpoint: '/customer',
-    requestType: 'GET'
+    path: '/coffee/' + coffeeId,
+    method: 'GET'
   }
 });
 
 export const createCoffee = () => ({
   type: namespace.CREATE_COFFEE,
   api: {
-    endpoint: '/customer',
-    requestType: 'POST'
+    path: '/coffee',
+    method: 'POST'
   }
 });
 
 export const getAllCoffees = () => ({
   type: namespace.GET_ALLCOFFEES,
   api: {
-    endpoint: '/customer',
-    requestType: 'GET'
+    path: '/coffee',
+    method: 'GET'
   }
 });

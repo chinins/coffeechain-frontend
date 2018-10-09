@@ -1,25 +1,25 @@
-import namespace from '../../constants/namespace';
+import { namespace } from '../../constants/namespace';
 
 export const getProducer = () => ({
   type: namespace.GET_PRODUCER,
   api: {
-    endpoint: '/producer',
-    requestType: 'GET'
+    path: '/producer',
+    method: 'GET'
   }
 });
 
 export const createProducer = () => ({
   type: namespace.CREATE_PRODUCER,
   api: {
-    endpoint: '/producer',
-    requestType: 'POST'
+    path: '/producer',
+    method: 'POST'
   }
 });
 
 export const updateProducer = () => ({
   type: namespace.UPDATE_PRODUCER,
   api: {
-    endpoint: '/producer',
-    requestType: 'PUT'
+    path: '/producer',
+    method: 'PUT'
   }
 });
