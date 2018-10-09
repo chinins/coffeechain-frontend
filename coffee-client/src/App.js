@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'emotion-theming';
-import styled from 'react-emotion';
 import { theme } from './shared/theme';
 import './shared/styles';
 import Header from './components/header';
 import Dashboard from './containers/dashboard';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import * as Actions from './redux/actions/actions';
