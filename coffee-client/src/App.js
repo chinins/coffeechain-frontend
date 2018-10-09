@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './App.css';
 
 import { connect } from 'react-redux';
-import * as Actions from './redux/actions/producers';
+import * as CoffeeActions from './redux/actions/coffees';
 
 class App extends Component {
   render() {
@@ -15,16 +15,20 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  getProducers: PropTypes.array
-};
+// App.propTypes = {
+//   getProducers: PropTypes.array
+// };
 
 const mapStateToProps = (state) => ({
-  producers: state.producers
+  coffees: state.coffees,
+  producer: state.producer,
+  coffeeShop: state.coffeeShop,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getProducer: (producers) => dispatch(Actions.getProducer())
+  getAllCoffees: () => dispatch(CoffeeActions.getAllCoffees()),
+  getCoffee: (coffeeId) => dispatch(CoffeeActions.getCoffee(coffeeId)),
+  createCoffee: () => dispatch(CoffeeActions.createCoffee())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

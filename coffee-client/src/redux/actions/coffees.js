@@ -8,11 +8,12 @@ export const getCoffee = (coffeeId) => ({
   }
 });
 
-export const createCoffee = () => ({
+export const createCoffee = (coffee) => ({
   type: namespace.CREATE_COFFEE,
   api: {
     path: '/coffee',
-    method: 'POST'
+    method: 'POST',
+    body: JSON.stringify(coffee)
   }
 });
 

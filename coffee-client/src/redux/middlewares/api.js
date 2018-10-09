@@ -17,10 +17,9 @@ export default store => next => action => {
       //SUCCESS
       store.dispatch({
         type: action.type + '_SUCCESS',
-        data
+        data: Object.assign({},
+          normalize(data, schema))
       })
-      return Object.assign({},
-        normalize(data, schema))
     })
     .catch(data => {
       // FAILURE
