@@ -26,7 +26,8 @@ class App extends Component {
           <Header></Header>
           <Route exact={true} path='/' render={() => <Dashboard/>} />
           {/* <Paragraph large textColor="firebrick">Hi! This is my styled paragraph using emotion-theming :-)</Paragraph> */}
-          <CompVisual></CompVisual>
+          <Route exact={true} path='/offer-detail' component={OfferDetail} />
+         {/*  <CompVisual></CompVisual> */}
         </div>
       </ThemeProvider>
     );
