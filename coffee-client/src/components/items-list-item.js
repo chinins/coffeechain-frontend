@@ -10,13 +10,17 @@ const Name = styled('div')`
   color: ${props => props.theme.colors.secondary};
 `;
 
+const Image = styled('img')`
+  heigth: 20em;
+  width: 20em;
+`;
 
 function ItemsListItem (props) {
-  const imageUrl = 'https://www.google.es/imgres?imgurl=https%3A%2F%2Fpreviews.123rf.com%2Fimages%2Famenic181%2Famenic1811701%2Famenic181170100073%2F68788804-coffee-tree-with-coffee-beans-on-coffee-plantation.jpg&imgrefurl=https%3A%2F%2Fwww.123rf.com%2Fphoto_68788804_coffee-tree-with-coffee-beans-on-coffee-plantation.html&docid=hhv9qlcfJUEI7M&tbnid=V3eC41rzyrxE2M%3A&vet=10ahUKEwiv8pOqyvfdAhXBBSwKHakyBx0QMwhyKAIwAg..i&w=1300&h=867&bih=656&biw=1429&q=coffee%20plantation&ved=0ahUKEwiv8pOqyvfdAhXBBSwKHakyBx0QMwhyKAIwAg&iact=mrc&uact=8';
+  const imageUrl = 'https://images.unsplash.com/photo-1515694590185-73647ba02c10?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=481e2d607a5c95432531f461d318f728&auto=format&fit=crop&w=1500&q=80';
 
   return (
     <Item>
-      <img src={imageUrl}></img>
+      <Image src={imageUrl}/>
       <Name>Amaxing plantation Rica</Name>
       <div>Arabica</div>
       <div>Costa-Rica</div>
