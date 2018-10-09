@@ -1,4 +1,4 @@
-export default defaultState = {
+const defaultState = {
   entities: {
     coffees: {},
     producer: {},
@@ -13,4 +13,6 @@ export default defaultState = {
       loading: true,
     }
   }
-}
+};
+
+export default defaultState;

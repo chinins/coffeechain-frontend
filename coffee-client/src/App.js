@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 import * as CoffeeActions from './redux/actions/coffees';
 
 class App extends Component {
-  render() {
+  render()  {
+
     return (
       <div className="App">
         coffee-blockachain app

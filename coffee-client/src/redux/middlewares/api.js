@@ -2,24 +2,29 @@ import { normalize, schema } from 'normalizr';
 
 export const API = 'api';
 
-const BASE_URL = 'http://polls.apiblueprint.org';
+const BASE_URL = 'http://private-c1deb-coffeechain.apiary-mock.com';
 
 export default store => next => action => {
   const api = action[API];
   if (!api) return next(action);
 
-
-  fetch(BASE_URL + api.path, {
+  const fetchOptions = {
     method: api.method,
-  })
+  };
+  if (api.body) {
+    fetchOptions.body = api.body;
+  }
+  fetch(BASE_URL + api.path, fetchOptions)
     .then(res => res.json())
     .then(data => {
       //SUCCESS
-      store.dispatch({
+      const successAction = {
         type: action.type + '_SUCCESS',
-        data: Object.assign({},
-          normalize(data, schema))
-      })
+      }
+      if (api.schema) {
+        successAction.data = normalize(data, api.schema);
+      }
+      store.dispatch(successAction)
     })
     .catch(data => {
       // FAILURE

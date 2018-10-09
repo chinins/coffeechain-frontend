@@ -1,17 +1,33 @@
 import defaultState from './default-state';
+import { namespace } from '../../constants/namespace';
 
-export default pagesReducer = (state = defaultState.pages, action) => {
+export default (state = defaultState.pages, action) => {
   if (!action.entities) return state;
 
-  return {
-    ...state,
-    dashboard: {
-      ...state.dashboard,
-      ...action.pages.dashboard
-    },
-    coffeeDetail: {
-      ...state.coffeeDetail,
-      ...action.pages.coffeeDetail
-    }
+  switch (action.type) {
+    case namespace.GET_COFFEE + '_SACCESS':
+    return {
+      ...state,
+      coffeeDetail: {
+        ...state.coffeeDetail,
+        ...action.data.pages.coffeeDetail
+      }
+    };
+
+    default:
+    return state;
   }
+
+
+  // return {
+  //   ...state,
+  //   dashboard: {
+  //     ...state.dashboard,
+  //     ...action.data.pages.dashboard
+  //   },
+  //   coffeeDetail: {
+  //     ...state.coffeeDetail,
+  //     ...action.data.pages.coffeeDetail
+  //   }
+  // }
 };

@@ -1,4 +1,7 @@
 import { namespace } from '../../constants/namespace';
+import {  schema } from 'normalizr';
+
+const coffeeSchema = new schema.Entity('coffees');
 
 export const getCoffee = (coffeeId) => ({
   type: namespace.GET_COFFEE,
@@ -13,7 +16,7 @@ export const createCoffee = (coffee) => ({
   api: {
     path: '/coffee',
     method: 'POST',
-    body: JSON.stringify(coffee)
+    body: JSON.stringify(coffee),
   }
 });
 
@@ -21,6 +24,7 @@ export const getAllCoffees = () => ({
   type: namespace.GET_ALLCOFFEES,
   api: {
     path: '/coffee',
-    method: 'GET'
+    method: 'GET',
+    schema: [coffeeSchema]
   }
 });
