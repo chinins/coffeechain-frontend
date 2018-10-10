@@ -6,9 +6,11 @@ const DefaultButton = styled('button')`
   border-radius: ${props => props.theme.borderRadius};
   box-shadow: ${props => props.theme.boxShadow};
   color: ${props => props.theme.colors.primary};
-  heigth: 4em;
+  heigth: 2.5em;
   width: 8em;
-  margin: 5px;
+  margin: 7px;
+  padding: 5px;
+  text-align: center;
 `;
 
 const SmallButton = styled(DefaultButton)`
@@ -17,10 +19,17 @@ const SmallButton = styled(DefaultButton)`
   margin: 5px;
 `;
 
+const LightButtonSimple = styled(DefaultButton)`
+  background: ${props => props.theme.colors.primary};
+  border: ${props => `solid 1px ${props.theme.colors.accessory}`};
+  color: black;
+  width: 5em;
+`;
+
 const LightButton = styled(DefaultButton)`
   background: ${props => props.theme.colors.primary};
   color: ${props => props.theme.colors.secondary};
   border: ${props => `solid 1px ${props.theme.colors.secondary}`};
 `;
 
-export { DefaultButton, SmallButton, LightButton };
+export { DefaultButton, SmallButton, LightButton, LightButtonSimple };

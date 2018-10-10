@@ -8,7 +8,6 @@ const ToolBar = styled('div')`
   display: flex;
   justify-content: space-between;
   height: 70px;
-  margin-bottom: 20px;
   border-bottom: solid 2px ${accessory};
   align-items: center;
 `;
