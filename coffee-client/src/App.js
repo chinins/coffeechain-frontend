@@ -6,6 +6,7 @@ import './shared/styles';
 import Header from './components/header';
 import Dashboard from './containers/dashboard';
 import { Route } from 'react-router-dom';
+import OfferDetail from './components/offer-detail';
 
 import { connect } from 'react-redux';
 import * as CoffeeActions from './redux/actions/coffees';
