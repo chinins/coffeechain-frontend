@@ -9,7 +9,7 @@ import logger from 'redux-logger';
 
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './redux/reducers/reducer';
+import reducers from './redux/reducers';
 import api from './redux/middlewares/api';
 
 const middlewares = [
@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const store = createStore(
-  reducer,
+  reducers,
   applyMiddleware(...middlewares)
 );
 

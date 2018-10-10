@@ -8,7 +8,7 @@ import Dashboard from './containers/dashboard';
 import { Route } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import * as Actions from './redux/actions/actions';
+import * as CoffeeActions from './redux/actions/coffees';
 
 import CompVisual from './components/comp-visual';
 
@@ -19,7 +19,8 @@ import CompVisual from './components/comp-visual';
 // `;
 
 class App extends Component {
-  render() {
+  render()  {
+
     return (
       <ThemeProvider theme={theme}>
         <div className="App">
@@ -34,16 +35,20 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  getProducers: PropTypes.array
-};
+// App.propTypes = {
+//   getProducers: PropTypes.array
+// };
 
 const mapStateToProps = (state) => ({
-  producers: state.producers
+  coffees: state.coffees,
+  producer: state.producer,
+  coffeeShop: state.coffeeShop,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setProducers: (producers) => dispatch(Actions.setProducers(producers))
+  getAllCoffees: () => dispatch(CoffeeActions.getAllCoffees()),
+  getCoffee: (coffeeId) => dispatch(CoffeeActions.getCoffee(coffeeId)),
+  createCoffee: () => dispatch(CoffeeActions.createCoffee())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
