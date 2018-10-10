@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
-import entitiesReducer from './entities';
-import pagesReducer from './entities';
+import entities from './entities';
+import pages from './pages';
 
 const reducers = combineReducers({
-  entitiesReducer,
-  pagesReducer
+  entities,
+  pages
 });
 
 export default reducers;

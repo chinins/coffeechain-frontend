@@ -1,4 +1,4 @@
-import { normalize, schema } from 'normalizr';
+import { normalize } from 'normalizr';
 
 export const API = 'api';
 
@@ -9,10 +9,10 @@ export default store => next => action => {
   if (!api) return next(action);
 
   const fetchOptions = {
-    method: api.method,
+    method: api.method || 'GET',
   };
   if (api.body) {
-    fetchOptions.body = api.body;
+    fetchOptions.body = JSON.stringify(api.body);
   }
   fetch(BASE_URL + api.path, fetchOptions)
     .then(res => res.json())
@@ -24,7 +24,7 @@ export default store => next => action => {
       if (api.schema) {
         successAction.data = normalize(data, api.schema);
       }
-      store.dispatch(successAction)
+      store.dispatch(successAction);
     })
     .catch(data => {
       // FAILURE
@@ -36,6 +36,6 @@ export default store => next => action => {
 
   // REQUEST
   next({
-    type: action.type + '_PENDING'
+    type: action.type + '_REQUEST'
   })
 };

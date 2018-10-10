@@ -1,16 +1,19 @@
 const defaultState = {
   entities: {
     coffees: {},
-    producer: {},
-    coffeeShop: {},
+    producers: {},
+    coffeeShops: {},
   },
   pages: {
+    loading: false,
     dashboard: {
-      loading: true,
-      results: [],
+      result: [],
     },
     coffeeDetail: {
-      loading: true,
+      result: {}
+    },
+    addCoffee: {
+      result: {}    // should be like this?
     }
   }
 };
