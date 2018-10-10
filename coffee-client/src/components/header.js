@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'react-emotion';
-import { primary, secondary, accessory } from '../shared/colors';
+import { secondary, accessory } from '../shared/colors';
 
 import { Link } from 'react-router-dom';
 
@@ -40,10 +40,11 @@ class Header extends Component {
         <AppName>Coffee Chain</AppName>
         {/* <nav> */}
         <Navigation>
-          <NavItem><Link to='/'>Coffee Types</Link></NavItem>
+          <NavItem><Link to='/'>Coffees</Link></NavItem>
           <NavItem><Link to='/'>Add coffee</Link></NavItem>
           <NavItem><Link to='/'>Add plantation</Link></NavItem>
           <NavItem><Link to='/'>Coffee shops</Link></NavItem>
+          <NavItem><Link to='/'>Profile</Link></NavItem>
         </Navigation>
         {/* </nav> */}
       </ToolBar>

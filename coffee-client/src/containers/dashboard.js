@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styled from 'react-emotion';
 import Map from '../components/map';
 import ItemsList from '../components/items-list';
 import FiltersList from '../components/filters-list';

@@ -1,5 +1,5 @@
 import { namespace } from '../../constants/namespace';
-import { coffeeSchema, coffeeArraySchema } from './schemas';
+import { coffeeArraySchema } from './schemas';
 
 export const getCoffee = (coffeeId) => ({
   type: namespace.GET_COFFEE,

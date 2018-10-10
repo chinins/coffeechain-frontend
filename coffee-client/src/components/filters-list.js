@@ -1,6 +1,6 @@
 import styled from 'react-emotion';
 import React, { Component } from 'react';
-import { primary, secondary, accessory } from '../shared/colors';
+import { accessory } from '../shared/colors';
 import { LightButtonSimple } from './buttons';
 
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'react-emotion';
+import { Link } from 'react-router-dom';
+
 
 const Item = styled('div')`
   display: flex;
@@ -23,11 +25,12 @@ function ItemsListItem (props) {
 
   return (
     <Item>
-      <Image src={picture.url}/>
-      <Name>{name}</Name>
-      <div>{botanical_variety || 'Arabica'}</div>
-      <div>{Producer.business_name || 'Some producer'}, {Producer.country || 'Interesting Country'}</div>
-      {/* <div>{Producer.country || 'Interesting Country'}</div> */}
+      <Link to='/offer-detail'>
+        <Image src={picture.url}/>
+        <Name>{name}</Name>
+        <div>{botanical_variety || 'Arabica'}</div>
+        <div>{Producer.business_name || 'Some producer'}, {Producer.country || 'Interesting Country'}</div>
+      </Link>
     </Item>
   )
 }

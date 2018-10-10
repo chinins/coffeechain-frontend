@@ -11,14 +11,6 @@ import OfferDetail from './components/offer-detail';
 import { connect } from 'react-redux';
 import * as CoffeeActions from './redux/actions/coffees';
 
-import CompVisual from './components/comp-visual';
-
-// const Paragraph = styled('p')`
-//   color: ${props => props.textColor ? props.textColor : props.theme.colors.primary};
-//   background: ${props => props.theme.colors.secondary};
-//   font-size: ${props => props.large ? '28px' : '14px'};
-// `;
-
 class App extends Component {
   render()  {
 
