@@ -9,6 +9,7 @@ import OfferDetail from './components/offer-detail';
 
 import { connect } from 'react-redux';
 import * as CoffeeActions from './redux/actions/coffees';
+import CoffeeForm from './components/coffeeform';
 
 class App extends Component {
   render()  {
@@ -20,6 +21,7 @@ class App extends Component {
              <Switch>
                <Route exact path='/' component={Dashboard} />
                <Route exact path='/offer-detail' component={OfferDetail} />
+               <Route exact path='/coffeeForm' component={CoffeeForm} />
              </Switch>
          </div>
         </Router>
