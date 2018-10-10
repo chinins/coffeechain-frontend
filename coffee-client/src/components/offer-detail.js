@@ -4,8 +4,8 @@ import MapDetail from './map-detail';
 const plantationPic = require('../assets/images/plantations/costa_rica.jpg')
 
 const Div = styled('div')`
-  font-family: avenir next; 
-    color: black;
+  font-family: avenir next;
+  color: black;
 `;
 
   const Location = styled('div')`
@@ -18,7 +18,7 @@ const Div = styled('div')`
 `;
 
 const Company = styled('div')`
-  position: absolute; 
+  position: absolute;
   font-weight: 600;
   font-size: 1.7em;
   letter-spacing: -2px;
@@ -54,11 +54,11 @@ const Paragraph = styled('p')`
 `;
 
 const CoffeeBox = styled('div')`
-  display: flex;  
-  flex-direction: column; 
+  display: flex;
+  flex-direction: column;
   overflow-x: scroll;
   height: 30%;
-  width: 52%; 
+  width: 52%;
   position: absolute;
   letter-spacing: -0.5px;
   top: 17%;
@@ -67,11 +67,11 @@ const CoffeeBox = styled('div')`
 `;
 
 const ReviewBox = styled('div')`
-  display: flex; 
-  flex-direction: column; 
+  display: flex;
+  flex-direction: column;
   overflow-x: scroll;
   height: 30%;
-  width: 50%; 
+  width: 50%;
   position: absolute;
   letter-spacing: -0.5px;
   bottom: 11%;
@@ -83,7 +83,7 @@ const ImageFormat = styled('div')`
   position: absolute;
   top: 16%;
   left: 60%;
-  width: 38%; 
+  width: 38%;
 `;
 
 
@@ -94,25 +94,25 @@ class OfferDetail extends Component {
   render() {
     return (
       <Div>
-    
+
         <ImageFormat>   <img src={plantationPic} alt= "plantation" /></ImageFormat>
         <Company> JUAN VALDEZ </Company>
 
-        <CoffeeBox> 
+        <CoffeeBox>
 
-          <Subtitle> Coffea Canephora</Subtitle> 
+          <Subtitle> Coffea Canephora</Subtitle>
           <ThirdTitle> PRICE - $ 200 </ThirdTitle>
 
-          <Paragraph top = '7%'> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-          totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi 
-          architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit 
-          aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi 
-          nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
+          <Paragraph top = '7%'> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+          totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+          architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+          aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi
+          nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
           sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
-           Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex 
-           ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae 
+           Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
+           ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae
            consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
-           </Paragraph> 
+           </Paragraph>
 
         </CoffeeBox>
 
@@ -120,21 +120,21 @@ class OfferDetail extends Component {
 
         <MapDetail></MapDetail>
 
-        <ReviewBox> 
+        <ReviewBox>
           <Subtitle> Reviews </Subtitle>
-           <ThirdTitle> AVERAGE - * 4.7 </ThirdTitle> 
+           <ThirdTitle> AVERAGE - * 4.7 </ThirdTitle>
           <Paragraph top='7%'> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
 totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasiem ullam corporis suscipit laboriosam, nisi ut aliquid ex
 consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
-           </Paragraph> 
+           </Paragraph>
           <Paragraph top='2%'> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
 totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasiem ullam corporis suscipit laboriosam, nisi ut aliquid ex
 consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
-           </Paragraph> 
+           </Paragraph>
           <Paragraph top='2%'> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
 totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasiem ullam corporis suscipit laboriosam, nisi ut aliquid ex
 consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
-           </Paragraph> 
+           </Paragraph>
             </ReviewBox>
 
       </Div>

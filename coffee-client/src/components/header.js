@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'react-emotion';
+import { primary, secondary, accessory } from '../shared/colors';
 
 import { Link } from 'react-router-dom';
 
@@ -7,7 +8,9 @@ const ToolBar = styled('div')`
   display: flex;
   justify-content: space-between;
   height: 70px;
-  background: lightblue;
+  margin-bottom: 20px;
+  border-bottom: solid 2px ${accessory};
+  align-items: center;
 `;
 
 const AppName = styled('div')`
@@ -18,11 +21,17 @@ const AppName = styled('div')`
 
 const Navigation = styled('nav')`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 30%;
+  margin-right: 2em;
 `;
 
 const NavItem = styled('li')`
   list-style-type: none;
+  :hover {
+    border-bottom: solid 2px ${secondary};
+    color: ${secondary};
+  }
 `;
 
 class Header extends Component {

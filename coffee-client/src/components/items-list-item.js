@@ -4,6 +4,7 @@ import styled from 'react-emotion';
 const Item = styled('div')`
   display: flex;
   flex-direction: column;
+  margin: 1em;
 `;
 
 const Name = styled('div')`
@@ -11,8 +12,9 @@ const Name = styled('div')`
 `;
 
 const Image = styled('img')`
-  heigth: 20em;
-  width: 20em;
+  heigth: 22em;
+  width: 22em;
+  border-radius: ${props => props.theme.borderRadius}
 `;
 
 function ItemsListItem (props) {
