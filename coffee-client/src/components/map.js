@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import styled from 'react-emotion';
 import mapboxgl from 'mapbox-gl';
+import { mapAccessToken } from '../constants/connections';
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiY2hpbmlucyIsImEiOiJjam4xaHdleWI0a2U4M3FueDgwM2ptN2VtIn0.r0ypAbepxGXZvEwJBR3amg';
+mapboxgl.accessToken = mapAccessToken;
 
 const MapDiv = styled('div')`
-  height: 50%;
-  width: 50%;
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  height: 65%;
+  width: 40%;
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
 `;
 
 class Map extends Component {
@@ -33,7 +34,6 @@ class Map extends Component {
     return (
       <MapDiv>
         <div ref={el => this.mapContainer = el} className="absolute top right left bottom"></div>
-
       </MapDiv>
     )
   }

@@ -1,8 +1,7 @@
 import { normalize } from 'normalizr';
+import { BASE_URL } from '../../constants/connections';
 
 export const API = 'api';
-
-const BASE_URL = 'http://private-c1deb-coffeechain.apiary-mock.com';
 
 export default store => next => action => {
   const api = action[API];
@@ -13,6 +12,9 @@ export default store => next => action => {
   };
   if (api.body) {
     fetchOptions.body = JSON.stringify(api.body);
+  }
+  if (api.header) {
+    fetchOptions.header = api.header;
   }
   fetch(BASE_URL + api.path, fetchOptions)
     .then(res => res.json())

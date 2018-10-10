@@ -2,7 +2,7 @@ import defaultState from './default-state';
 import { namespace } from '../../constants/namespace';
 
 export default (state = defaultState.pages, action) => {
-  if (!action.entities) return state;
+  if (!action.data) return state;
 
   switch (action.type) {
     // page coffeeDetail
@@ -31,10 +31,10 @@ export default (state = defaultState.pages, action) => {
       return {
         ...state,
         loading: false,
-        dashboard: {
-          ...state.dashboard,
-          result: action.data.result
-        }
+          dashboard: {
+            ...state.dashboard,
+            result: action.data.result
+          }
       };
     case namespace.GET_ALLCOFFEES + '_REQUEST':
       return {
