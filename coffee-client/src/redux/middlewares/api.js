@@ -3,8 +3,6 @@ import { BASE_URL } from '../../constants/connections';
 
 export const API = 'api';
 
-// const BASE_URL = 'http://private-c1deb-coffeechain.apiary-mock.com';
-
 export default store => next => action => {
   const api = action[API];
   if (!api) return next(action);

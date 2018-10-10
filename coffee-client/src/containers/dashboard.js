@@ -4,26 +4,35 @@ import Map from '../components/map';
 import ItemsList from '../components/items-list';
 import FiltersList from '../components/filters-list';
 
-const DashboardDiv = styled('div')`
-
-`;
-
-
+import { connect } from 'react-redux';
+import * as CoffeeActions from '../redux/actions/coffees';
 
 class Dashboard extends Component {
-  arr = [1, 2, 3, 4, 5];
+  // arr = [1, 2, 3, 4, 5];
+
+  componentDidMount () {
+    this.props.getAllCoffees();
+  }
+
 
   render () {
     return (
       <div>
         <FiltersList/>
-        {/* <DashboardDiv> */}
-          <ItemsList arr={this.arr}></ItemsList>
+          <ItemsList result={this.props.result} coffees={this.props.coffees}></ItemsList>
           <Map></Map>
-      {/* </DashboardDiv> */}
       </div>
     );
   };
 }
 
-export default Dashboard;
+const mapStateToProps = (state) => ({
+  coffees: state.entities.coffees,
+  result: state.pages.dashboard.result,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getAllCoffees: () => dispatch(CoffeeActions.getAllCoffees())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
