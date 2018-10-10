@@ -6,6 +6,7 @@ import './shared/styles';
 import Header from './components/header';
 import Dashboard from './containers/dashboard';
 import { Route } from 'react-router-dom';
+import OfferDetail from './components/offer-detail';
 
 import { connect } from 'react-redux';
 import * as CoffeeActions from './redux/actions/coffees';
@@ -25,7 +26,7 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <div className="App">
           <Header></Header>
-          <Route exact={true} path='/' render={() => <Dashboard/>} />
+          <Route exact={true} path='/' component={Dashboard}/>
           {/* <Paragraph large textColor="firebrick">Hi! This is my styled paragraph using emotion-theming :-)</Paragraph> */}
           <Route exact={true} path='/offer-detail' component={OfferDetail} />
          {/*  <CompVisual></CompVisual> */}
