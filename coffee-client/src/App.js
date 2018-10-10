@@ -1,17 +1,36 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './App.css';
+import { ThemeProvider } from 'emotion-theming';
+import { theme } from './shared/theme';
+import './shared/styles';
+import Header from './components/header';
+import Dashboard from './containers/dashboard';
+import { Route } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import * as CoffeeActions from './redux/actions/coffees';
+
+import CompVisual from './components/comp-visual';
+
+// const Paragraph = styled('p')`
+//   color: ${props => props.textColor ? props.textColor : props.theme.colors.primary};
+//   background: ${props => props.theme.colors.secondary};
+//   font-size: ${props => props.large ? '28px' : '14px'};
+// `;
 
 class App extends Component {
   render()  {
 
     return (
-      <div className="App">
-        coffee-blockachain app
-      </div>
+      <ThemeProvider theme={theme}>
+        <div className="App">
+          <Header></Header>
+          <Route exact={true} path='/' render={() => <Dashboard/>} />
+          {/* <Paragraph large textColor="firebrick">Hi! This is my styled paragraph using emotion-theming :-)</Paragraph> */}
+          <Route exact={true} path='/offer-detail' component={OfferDetail} />
+         {/*  <CompVisual></CompVisual> */}
+        </div>
+      </ThemeProvider>
     );
   }
 }
