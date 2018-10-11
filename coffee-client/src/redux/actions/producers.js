@@ -5,7 +5,7 @@ import { producerSchema } from './schemas';
 export const getProducer = () => ({
   type: namespace.GET_PRODUCER,
   api: {
-    path: '/producer',
+    path: '/producers',
     method: 'GET',
     schema: [producerSchema]
   }
@@ -14,7 +14,7 @@ export const getProducer = () => ({
 export const createProducer = (producer) => ({
   type: namespace.CREATE_PRODUCER,
   api: {
-    path: '/producer',
+    path: '/producers',
     method: 'POST',
     body: producer
   }
@@ -23,7 +23,7 @@ export const createProducer = (producer) => ({
 export const updateProducer = (producer) => ({
   type: namespace.UPDATE_PRODUCER,
   api: {
-    path: '/producer',
+    path: '/producers',
     method: 'PUT',
     body: producer
   }
