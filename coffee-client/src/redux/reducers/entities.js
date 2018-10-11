@@ -5,16 +5,16 @@ export default (state = defaultState.entities, action) => {
 
   return {
     producers: {
-      ...state.producer,
-      ...action.data.entities.producer
+      ...state.producers,
+      ...action.data.entities.producers
     },
     coffees: {
       ...state.coffees,
       ...action.data.entities.coffees
     },
     coffeeShops: {
-      ...state.coffeeShop,
-      ...action.data.entities.coffeeShop
+      ...state.coffeeShops,
+      ...action.data.entities.coffeeShops
     }
   }
 };

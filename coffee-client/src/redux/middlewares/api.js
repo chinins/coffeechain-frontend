@@ -26,6 +26,7 @@ export default store => next => action => {
       if (api.schema) {
         successAction.data = normalize(data, api.schema);
       }
+      console.log(successAction);
       store.dispatch(successAction);
     })
     .catch(data => {

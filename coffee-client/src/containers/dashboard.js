@@ -5,11 +5,18 @@ import FiltersList from '../components/filters-list';
 
 import { connect } from 'react-redux';
 import * as CoffeeActions from '../redux/actions/coffees';
+import * as CoffeeShopActions from '../redux/actions/coffee-shop';
 
 class Dashboard extends Component {
 
   componentDidMount () {
-    this.props.getAllCoffees();
+    const dashboardType = this.props.location.pathname;
+    console.log(dashboardType)
+    if (dashboardType === '/coffees' || dashboardType === '/' ) {
+      this.props.getAllCoffees();
+    } else if (dashboardType === '/coffee-shops') {
+      this.props.getAllCoffeeShops();
+    }
   }
 
 
@@ -30,7 +37,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getAllCoffees: () => dispatch(CoffeeActions.getAllCoffees())
+  getAllCoffees: () => dispatch(CoffeeActions.getAllCoffees()),
+  getAllCoffeeShops: () => dispatch(CoffeeShopActions.getAllCoffeeShops())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
