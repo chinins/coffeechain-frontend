@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'react-emotion';
 import { Link } from 'react-router-dom';
-
+import { ListImage } from './images';
 
 const Item = styled('div')`
   display: flex;
@@ -13,12 +13,6 @@ const Name = styled('div')`
   color: ${props => props.theme.colors.secondary};
 `;
 
-const Image = styled('img')`
-  heigth: 22em;
-  width: 22em;
-  border-radius: ${props => props.theme.borderRadius}
-`;
-
 function ItemsListItem (props) {
 
   const { Producer, picture, name, botanical_variety } = props.coffees[props.id];
@@ -26,7 +20,7 @@ function ItemsListItem (props) {
   return (
     <Item>
       <Link to={`/coffee-detail/${props.id}`}>
-        <Image src={picture.url}/>
+        <ListImage src={picture.url}/>
         <Name>{name}</Name>
         <div>{botanical_variety || 'Arabica'}</div>
         <div>{Producer.business_name || 'Some producer'}, {Producer.country || 'Interesting Country'}</div>
