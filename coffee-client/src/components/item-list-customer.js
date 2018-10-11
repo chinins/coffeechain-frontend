@@ -28,10 +28,7 @@ function ItemsListCustomer(props) {
       <Link to={`/coffee-detail/${props.id}`}>
         <Image src={pictures.url} />
         <Name>{customer_name}</Name>
-        <div>'Arabica'</div>
-        <div>
-          {description || 'Some producer'}, {country || 'Interesting Country'}
-        </div>
+        <div>{country || 'Interesting Country'}</div>
       </Link>
     </Item>
   );
