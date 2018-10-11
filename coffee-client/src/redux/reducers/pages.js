@@ -110,6 +110,7 @@ export default (state = defaultState.pages, action) => {
     case namespace.UPDATE_USER + '_FAILURE':
     case namespace.CREATE_COFFEESHOP + '_FAILURE':
     case namespace.CREATE_PRODUCER + '_FAILURE':
+    case namespace.GET_USER + '_FAILURE':
     return {
         ...state,
         loading: false
