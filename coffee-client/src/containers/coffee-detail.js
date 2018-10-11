@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'react-emotion';
-import MapDetail from './map-detail';
-const plantationPic = require('../assets/images/plantations/costa_rica.jpg')
+import MapDetail from '../components/map-detail';
+import { connect } from 'react-redux';
+import * as CoffeeActions from '../redux/actions/coffees';
+const plantationPic = require('../assets/images/plantations/costa_rica.jpg');
 
 const Div = styled('div')`
   font-family: avenir next;
@@ -87,16 +89,26 @@ const ImageFormat = styled('div')`
 `;
 
 
-class OfferDetail extends Component {
+class CoffeeDetail extends Component {
+  coffeeId = ':coffee_id';   // to change to passed url params later
+  // coffeeId = this.props.match.params.coffeeId
 
+  componentDidMount () {
+    this.props.getCoffee(this.coffeeId);
+  }
 
+  // id = this.props.result[0];
+  id = 'ecedd2e7-c913-4250-a331-932c219c8000'    // to change later
 
   render() {
+    console.log(this.props.coffees[this.id]);
+
+    // const { Producer, pictures, name, botanical_variety, altitude } = this.props.coffees[this.id]
     return (
       <Div>
 
         <ImageFormat>   <img src={plantationPic} alt= "plantation" /></ImageFormat>
-        <Company> JUAN VALDEZ </Company>
+        <Company>JV</Company>
 
         <CoffeeBox>
 
@@ -142,4 +154,13 @@ consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
   }
 }
 
-export default OfferDetail;
+const mapStateToProps = state => ({
+  coffees: state.entities.coffees,
+  result: state.pages.coffeeDetail.result
+});
+
+const mapDispatchToProps = dispatch => ({
+  getCoffee: coffeeId => dispatch(CoffeeActions.getCoffee(coffeeId))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CoffeeDetail);

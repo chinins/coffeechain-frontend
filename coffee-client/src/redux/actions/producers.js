@@ -1,30 +1,21 @@
 import { namespace } from '../../constants/namespace';
-import { producerSchema } from './schemas';
+import { producerSchema, producerArraySchema } from './schemas';
 
 
-export const getProducer = () => ({
+export const getProducer = (producerId) => ({
   type: namespace.GET_PRODUCER,
+  api: {
+    path: '/producers' + producerId,
+    method: 'GET',
+    schema: producerSchema
+  }
+});
+
+export const getAllProducers = () => ({
+  type: namespace.GET_ALL_PRODUCER,
   api: {
     path: '/producers',
     method: 'GET',
-    schema: [producerSchema]
-  }
-});
-
-export const createProducer = (producer) => ({
-  type: namespace.CREATE_PRODUCER,
-  api: {
-    path: '/producers',
-    method: 'POST',
-    body: producer
-  }
-});
-
-export const updateProducer = (producer) => ({
-  type: namespace.UPDATE_PRODUCER,
-  api: {
-    path: '/producers',
-    method: 'PUT',
-    body: producer
+    schema: producerArraySchema
   }
 });

@@ -40,10 +40,12 @@ class Header extends Component {
         <AppName>Coffee Chain</AppName>
         {/* <nav> */}
         <Navigation>
-          <NavItem><Link to='/'>Coffees</Link></NavItem>
+          <NavItem><Link to='/coffees'>Coffees</Link></NavItem>
+          <NavItem><Link to='/'>Add coffee</Link></NavItem>
           <NavItem><Link to='/coffeeForm'>Add coffee</Link></NavItem>
           <NavItem><Link to='/'>Add plantation</Link></NavItem>
-          <NavItem><Link to='/'>Coffee shops</Link></NavItem>
+          <NavItem><Link to='/coffee-shops'>Coffee shops</Link></NavItem>
+          <NavItem><Link to='/'>Profile</Link></NavItem>
           <NavItem><Link to='/userForm'>Create Profile</Link></NavItem>
         </Navigation>
         {/* </nav> */}

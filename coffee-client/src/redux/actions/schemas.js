@@ -2,7 +2,14 @@ import {  schema } from 'normalizr';
 
 const coffeeSchema = new schema.Entity('coffees', {}, { idAttribute: 'id'});
 const coffeeArraySchema = new schema.Array(coffeeSchema);
-const producerSchema = new schema.Entity('producers');
-const coffeeShopSchema = new schema.Entity('coffeeShops');
 
-export { coffeeSchema, coffeeArraySchema, producerSchema, coffeeShopSchema };
+const producerSchema = new schema.Entity('producers', {}, { idAttribute: 'id'});
+const producerArraySchema = new schema.Array(producerSchema);
+
+const coffeeShopSchema = new schema.Entity('coffeeShops', {}, { idAttribute: 'id'});
+const coffeeShopArraySchema = new schema.Array(coffeeShopSchema);
+
+const userSchema = new schema.Entity('users', {}, { idAttribute: 'id'});
+const userArraySchema = new schema.Array(userSchema);
+
+export { coffeeSchema, coffeeArraySchema, producerSchema, producerArraySchema, coffeeShopSchema, coffeeShopArraySchema, userSchema, userArraySchema };

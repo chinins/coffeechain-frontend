@@ -20,14 +20,9 @@ export default (state = defaultState.pages, action) => {
         ...state,
         loading: true
       };
-      case namespace.GET_COFFEE + '_FAILURE':
-      return {
-        ...state,
-        loading: false
-      };
 
-    // page dashboard
-    case namespace.GET_ALLCOFFEES + '_SUCCESS':
+    // page dashboard coffees
+    case namespace.GET_ALL_COFFEES + '_SUCCESS':
       return {
         ...state,
         loading: false,
@@ -36,15 +31,26 @@ export default (state = defaultState.pages, action) => {
             result: action.data.result
           }
       };
-    case namespace.GET_ALLCOFFEES + '_REQUEST':
+    case namespace.GET_ALL_COFFEES + '_REQUEST':
       return {
         ...state,
         loading: true
       };
-    case namespace.GET_ALLCOFFEES + '_FAILURE':
+
+    // page dashboard coffee-shops
+    case namespace.GET_ALL_COFFEESHOPS + '_SUCCESS':
       return {
         ...state,
-        loading: false
+        loading: false,
+          dashboard: {
+            ...state.dashboard,
+            result: action.data.result
+          }
+      };
+    case namespace.GET_ALL_COFFEESHOPS + '_REQUEST':
+      return {
+        ...state,
+        loading: true
       };
 
     // page addCoffee
@@ -62,12 +68,70 @@ export default (state = defaultState.pages, action) => {
         ...state,
         loading: true
       };
-    case namespace.CREATE_COFFEE + '_FAILURE':
+
+    // page update user
+    case namespace.UPDATE_USER + '_SUCCESS':
       return {
+        ...state,
+        loading: false,
+        updateUSer: {
+          ...state.updateUser,
+          result: action.data.result
+        }
+      }
+    case namespace.UPDATE_USER + '_REQUEST':
+      return {
+        ...state,
+        loading: true
+      };
+
+    // page display user
+    case namespace.GET_USER + '_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        displayUser: {
+          ...state.displayUser,
+          result: action.data.result
+        }
+      }
+    case namespace.GET_USER + '_REQUEST':
+      return {
+        ...state,
+        loading: true
+      };
+
+    // page CREATE USER
+    case namespace.CREATE_COFFEESHOP + '_SUCCESS':
+    case namespace.CREATE_PRODUCER + '_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        createUSer: {
+          ...state.createUser,
+          result: action.data.result
+        }
+      }
+    case namespace.CREATE_COFFEESHOP + '_REQUEST':
+    case namespace.CREATE_PRODUCER + '_REQUEST':
+    return {
+        ...state,
+        loading: true
+      };
+
+    // FAILURES
+    case namespace.GET_COFFEE + '_FAILURE':
+    case namespace.GET_ALL_COFFEES + '_FAILURE':
+    case namespace.CREATE_COFFEE + '_FAILURE':
+    case namespace.UPDATE_USER + '_FAILURE':
+    case namespace.CREATE_COFFEESHOP + '_FAILURE':
+    case namespace.CREATE_PRODUCER + '_FAILURE':
+    case namespace.GET_USER + '_FAILURE':
+    case namespace.GET_ALL_COFFEESHOPS + '_FAILURE':
+    return {
         ...state,
         loading: false
       };
-
 
     default:
     return state;
