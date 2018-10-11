@@ -25,7 +25,7 @@ function ItemsListItem (props) {
 
   return (
     <Item>
-      <Link to='/offer-detail'>
+      <Link to='/coffee-detail'>
         <Image src={picture.url}/>
         <Name>{name}</Name>
         <div>{botanical_variety || 'Arabica'}</div>

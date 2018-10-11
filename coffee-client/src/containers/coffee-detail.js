@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'react-emotion';
-import MapDetail from './map-detail';
-const plantationPic = require('../assets/images/plantations/costa_rica.jpg')
+import MapDetail from '../components/map-detail';
+import { connect } from 'react-redux';
+import * as CoffeeActions from '../redux/actions/coffees';
+const plantationPic = require('../assets/images/plantations/costa_rica.jpg');
 
 const Div = styled('div')`
   font-family: avenir next;
@@ -87,9 +89,12 @@ const ImageFormat = styled('div')`
 `;
 
 
-class OfferDetail extends Component {
+class CoffeeDetail extends Component {
+  coffeeId= ':coffee_id';   // to change to passed url params later
 
-
+  componentDidMount () {
+    this.props.getCoffee(this.coffeeId);
+  }
 
   render() {
     return (
@@ -142,4 +147,13 @@ consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
   }
 }
 
-export default OfferDetail;
+const mapStateToProps = state => ({
+  coffees: state.entities.coffees,
+  result: state.pages.coffeeDetail.result
+});
+
+const mapDispatchToProps = dispatch => ({
+  getCoffee: coffeeId => dispatch(CoffeeActions.getCoffee(coffeeId))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CoffeeDetail);

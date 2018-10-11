@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import * as CoffeeActions from '../redux/actions/coffees';
 
 class Dashboard extends Component {
-  // arr = [1, 2, 3, 4, 5];
 
   componentDidMount () {
     this.props.getAllCoffees();

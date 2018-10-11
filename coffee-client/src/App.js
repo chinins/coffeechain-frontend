@@ -5,7 +5,7 @@ import './shared/styles';
 import Header from './components/header';
 import Dashboard from './containers/dashboard';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import OfferDetail from './components/offer-detail';
+import CoffeeDetail from './containers/coffee-detail';
 
 import { connect } from 'react-redux';
 import * as CoffeeActions from './redux/actions/coffees';
@@ -19,7 +19,7 @@ class App extends Component {
              <Header></Header>
              <Switch>
                <Route exact path='/' component={Dashboard} />
-               <Route exact path='/offer-detail' component={OfferDetail} />
+               <Route exact path='/coffee-detail' component={CoffeeDetail} />
              </Switch>
          </div>
         </Router>
