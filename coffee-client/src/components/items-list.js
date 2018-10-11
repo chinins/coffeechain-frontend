@@ -5,8 +5,10 @@ import styled from 'react-emotion';
 const List = styled('div')`
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
   width: 55%;
-  height: 500px;
+  max-height: 700px;
+  min-height: 500px;
   margin-left: 1em;
   overflow: hidden;
   overflow-y: scroll;
