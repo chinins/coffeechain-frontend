@@ -15,19 +15,21 @@ const List = styled('div')`
   padding-left: 50px;
 `;
 
-class FiltersList extends Component {
-  render () {
+const list = [
+  'Country',
+  'Variety',
+  'Region',
+  'Producer',
+  'Altitude',
+  'Density'
+];
+
+function FiltersList () {
     return (
      <List>
-      <LightButtonSimple>Country</LightButtonSimple>
-      <LightButtonSimple>Variety</LightButtonSimple>
-      <LightButtonSimple>Region</LightButtonSimple>
-      <LightButtonSimple>Producer</LightButtonSimple>
-      <LightButtonSimple>Altitude</LightButtonSimple>
-      <LightButtonSimple>Density</LightButtonSimple>
+       { list.map((item, key) => <LightButtonSimple key={key}>{item}</LightButtonSimple>)}
      </List>
     )
-  }
-}
+};
 
 export default FiltersList;
