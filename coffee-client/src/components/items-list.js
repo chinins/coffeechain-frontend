@@ -1,5 +1,6 @@
 import React from 'react';
 import ItemsListItem from './items-list-item';
+import ItemListCustomer from './item-list-customer';
 import styled from 'react-emotion';
 
 const List = styled('div')`
@@ -14,16 +15,26 @@ const List = styled('div')`
   overflow-y: scroll;
 `;
 
-function ItemsList (props) {
+function ItemsList(props) {
   const renderItems = () => {
     return props.result.map(itemId => {
-      return <ItemsListItem key={itemId} id={itemId} coffees={props.coffees}></ItemsListItem>
+      if (JSON.stringify(props.coffees) != '{}') {
+        return (
+          <ItemsListItem key={itemId} id={itemId} coffees={props.coffees} />
+        );
+      } else {
+        return (
+          <ItemListCustomer
+            key={itemId}
+            id={itemId}
+            coffeeShops={props.coffeeShops}
+          />
+        );
+      }
     });
-  }
+  };
 
-  return (
-      <List>{renderItems()}</List>
-  )
+  return <List>{renderItems()}</List>;
 }
 
 export default ItemsList;

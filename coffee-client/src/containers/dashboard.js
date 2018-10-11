@@ -8,37 +8,43 @@ import * as CoffeeActions from '../redux/actions/coffees';
 import * as CoffeeShopActions from '../redux/actions/coffee-shop';
 
 class Dashboard extends Component {
-
-  componentDidMount () {
+  componentDidMount() {
     const dashboardType = this.props.location.pathname;
-    console.log(dashboardType)
-    if (dashboardType === '/coffees' || dashboardType === '/' ) {
+    if (dashboardType === '/coffees' || dashboardType === '/') {
       this.props.getAllCoffees();
     } else if (dashboardType === '/coffee-shops') {
       this.props.getAllCoffeeShops();
     }
   }
 
-
-  render () {
+  render() {
+    console.log('**********************', this.props);
     return (
       <div>
-        <FiltersList/>
-          <ItemsList result={this.props.result} coffees={this.props.coffees}></ItemsList>
-          <Map></Map>
+        <FiltersList />
+        <ItemsList
+          result={this.props.result}
+          coffees={this.props.coffees}
+          coffeeShops={this.props.coffeeShops}
+        />
+        <Map />
       </div>
     );
-  };
+  }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
+  coffeeShops: state.entities.coffeeShops,
   coffees: state.entities.coffees,
-  result: state.pages.dashboard.result,
+  result: state.pages.dashboard.result
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   getAllCoffees: () => dispatch(CoffeeActions.getAllCoffees()),
   getAllCoffeeShops: () => dispatch(CoffeeShopActions.getAllCoffeeShops())
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Dashboard);

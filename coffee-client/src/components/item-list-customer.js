@@ -18,24 +18,23 @@ const Image = styled('img')`
   border-radius: ${props => props.theme.borderRadius};
 `;
 
-function ItemsListItem(props) {
-  const { Producer, picture, name, botanical_variety } = props.coffees[
+function ItemsListCustomer(props) {
+  const { customer_name, country, pictures, description } = props.coffeeShops[
     props.id
   ];
 
   return (
     <Item>
       <Link to={`/coffee-detail/${props.id}`}>
-        <Image src={picture.url} />
-        <Name>{name}</Name>
-        <div>{botanical_variety || 'Arabica'}</div>
+        <Image src={pictures.url} />
+        <Name>{customer_name}</Name>
+        <div>'Arabica'</div>
         <div>
-          {Producer.business_name || 'Some producer'},{' '}
-          {Producer.country || 'Interesting Country'}
+          {description || 'Some producer'}, {country || 'Interesting Country'}
         </div>
       </Link>
     </Item>
   );
 }
 
-export default ItemsListItem;
+export default ItemsListCustomer;
