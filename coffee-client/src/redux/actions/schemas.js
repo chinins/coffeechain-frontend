@@ -1,6 +1,6 @@
 import {  schema } from 'normalizr';
 
-const coffeeSchema = new schema.Entity('coffees', {}, { idAttribute: '_id'});
+const coffeeSchema = new schema.Entity('coffees', {}, { idAttribute: 'id'});
 const coffeeArraySchema = new schema.Array(coffeeSchema);
 const producerSchema = new schema.Entity('producers');
 const coffeeShopSchema = new schema.Entity('coffeeShops');
