@@ -1,30 +1,21 @@
 import { namespace } from '../../constants/namespace';
-import { coffeeShopSchema } from './schemas';
+import { coffeeShopSchema, coffeeShopArraySchema } from './schemas';
 
 
-export const getCoffeeShop = () => ({
+export const getCoffeeShop = (coffeeShopId) => ({
   type: namespace.GET_COFFEESHOP,
   api: {
-    path: '/customer',
+    path: '/customers/' + coffeeShopId,
     method: 'GET',
-    schema: [coffeeShopSchema]
+    schema: coffeeShopSchema
   }
 });
 
-export const createCoffeeShop = (coffeeShop) => ({
-  type: namespace.CREATE_COFFEESHOP,
+export const getAllCoffeeShops = () => ({
+  type: namespace.GET_ALL_COFFEESHOPS,
   api: {
-    path: '/customer',
-    method: 'POST',
-    body: coffeeShop
-  }
-});
-
-export const updateCoffeeShop = (coffeeShop) => ({
-  type: namespace.UPDATE_COFFEESHOP,
-  api: {
-    path: '/customer',
-    method: 'PUT',
-    body: coffeeShop
+    path: '/customers',
+    method: 'GET',
+    schema: coffeeShopArraySchema
   }
 });

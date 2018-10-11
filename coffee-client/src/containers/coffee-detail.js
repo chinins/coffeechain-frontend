@@ -90,18 +90,25 @@ const ImageFormat = styled('div')`
 
 
 class CoffeeDetail extends Component {
-  coffeeId= ':coffee_id';   // to change to passed url params later
+  coffeeId = ':coffee_id';   // to change to passed url params later
+  // coffeeId = this.props.match.params.coffeeId
 
   componentDidMount () {
     this.props.getCoffee(this.coffeeId);
   }
 
+  // id = this.props.result[0];
+  id = 'ecedd2e7-c913-4250-a331-932c219c8000'    // to change later
+
   render() {
+    console.log(this.props.coffees[this.id]);
+
+    // const { Producer, pictures, name, botanical_variety, altitude } = this.props.coffees[this.id]
     return (
       <Div>
 
         <ImageFormat>   <img src={plantationPic} alt= "plantation" /></ImageFormat>
-        <Company> JUAN VALDEZ </Company>
+        <Company>JV</Company>
 
         <CoffeeBox>
 

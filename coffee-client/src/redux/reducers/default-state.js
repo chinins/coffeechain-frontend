@@ -10,10 +10,19 @@ const defaultState = {
       result: [],
     },
     coffeeDetail: {
-      result: {}
+      result: undefined
     },
     addCoffee: {
-      result: {}    // should be like this?
+      result: undefined
+    },
+    createUser: {
+      result: undefined
+    },
+    updateUser: {
+      result: undefined
+    },
+    displayUser: {
+      result: undefined
     }
   }
 };

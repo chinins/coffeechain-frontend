@@ -27,7 +27,7 @@ export default (state = defaultState.pages, action) => {
       };
 
     // page dashboard
-    case namespace.GET_ALLCOFFEES + '_SUCCESS':
+    case namespace.GET_ALL_COFFEES + '_SUCCESS':
       return {
         ...state,
         loading: false,
@@ -36,12 +36,12 @@ export default (state = defaultState.pages, action) => {
             result: action.data.result
           }
       };
-    case namespace.GET_ALLCOFFEES + '_REQUEST':
+    case namespace.GET_ALL_COFFEES + '_REQUEST':
       return {
         ...state,
         loading: true
       };
-    case namespace.GET_ALLCOFFEES + '_FAILURE':
+    case namespace.GET_ALL_COFFEES + '_FAILURE':
       return {
         ...state,
         loading: false
