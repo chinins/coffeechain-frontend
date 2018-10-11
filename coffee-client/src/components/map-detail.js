@@ -26,6 +26,10 @@ class MapDetail extends Component {
       center: [66.736466, -1.406542],
       zoom: 2.5
     });
+    let marker;
+    marker = new mapboxgl.Marker()
+      .setLngLat([36.736466, -1.406542])
+      .addTo(this.map);
   }
 
 
