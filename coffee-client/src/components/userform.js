@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'react-emotion';
-import * as CoffeeShopActions from '../redux/actions/coffee-shop';
-import * as ProducersActions from '../redux/actions/producers';
+import * as UserActions from '../redux/actions/users';
 import { connect } from 'react-redux';
 
 const Form = styled('form')`
@@ -20,7 +19,8 @@ class UserForm extends Component {
       business_name: '',
       country: '',
       email: '',
-      description: ''
+      description: '',
+      details: ''
     }
   }
 
@@ -59,7 +59,7 @@ class UserForm extends Component {
         </label>
         <label>
           Description:
-          <input name="description" type="text" value={this.state.email} onChange={this.handleInput} />
+          <input name="description" type="text" value={this.state.description} onChange={this.handleInput} />
         </label>
 
         <label>
@@ -74,8 +74,8 @@ class UserForm extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  createCustomer: (customer) => dispatch(CoffeeShopActions.createCoffeeShop(customer)),
-  createProducer: (producer) => dispatch(ProducersActions.createProducer(producer))
+  createCustomer: (customer) => dispatch(UserActions.createCoffeeShop(customer)),
+  createProducer: (producer) => dispatch(UserActions.createProducer(producer))
 })
 
 export default connect(null, mapDispatchToProps)(UserForm);
