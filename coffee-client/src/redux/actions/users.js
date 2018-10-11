@@ -1,5 +1,5 @@
 import { namespace } from '../../constants/namespace';
-import { coffeeShopSchema, producerSchema } from './schemas';
+import { coffeeShopSchema, producerSchema, userSchema } from './schemas';
 
 
 export const createCoffeeShop = (coffeeShop) => ({
@@ -9,15 +9,6 @@ export const createCoffeeShop = (coffeeShop) => ({
     method: 'POST',
     body: coffeeShop,
     schema: coffeeShopSchema
-  }
-});
-
-export const updateCoffeeShop = (coffeeShop) => ({
-  type: namespace.UPDATE_COFFEESHOP,
-  api: {
-    path: '/me',
-    method: 'PUT',
-    body: coffeeShop
   }
 });
 
@@ -31,12 +22,21 @@ export const createProducer = (producer) => ({
   }
 });
 
-export const updateProducer = (producer) => ({
-  type: namespace.UPDATE_PRODUCER,
+export const getUser = (userId) => ({
+  type: namespace.GET_USER,
+  api: {
+    path: '/me',
+    method: 'GET',
+    schema: userSchema
+  }
+});
+
+export const updateUser = (user) => ({
+  type: namespace.UPDATE_COFFEESHOP,
   api: {
     path: '/me',
     method: 'PUT',
-    body: producer,
-    schema: producerSchema
+    body: user,
+    schema: userSchema
   }
 });

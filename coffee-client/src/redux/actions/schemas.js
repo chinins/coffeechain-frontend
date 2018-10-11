@@ -9,4 +9,7 @@ const producerArraySchema = new schema.Array(producerSchema);
 const coffeeShopSchema = new schema.Entity('coffeeShops', {}, { idAttribute: 'id'});
 const coffeeShopArraySchema = new schema.Array(coffeeShopSchema);
 
-export { coffeeSchema, coffeeArraySchema, producerSchema, producerArraySchema, coffeeShopSchema, coffeeShopArraySchema };
+const userSchema = new schema.Entity('users', {}, { idAttribute: 'id'});
+const userArraySchema = new schema.Array(userSchema);
+
+export { coffeeSchema, coffeeArraySchema, producerSchema, producerArraySchema, coffeeShopSchema, coffeeShopArraySchema, userSchema, userArraySchema };
