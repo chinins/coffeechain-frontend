@@ -44,7 +44,7 @@ class Header extends Component {
           <NavItem><Link to='/coffeeForm'>Add coffee</Link></NavItem>
           <NavItem><Link to='/'>Add plantation</Link></NavItem>
           <NavItem><Link to='/'>Coffee shops</Link></NavItem>
-          <NavItem><Link to='/'>Profile</Link></NavItem>
+          <NavItem><Link to='/userForm'>Create Profile</Link></NavItem>
         </Navigation>
         {/* </nav> */}
       </ToolBar>
