@@ -28,50 +28,14 @@ class CoffeeForm extends Component {
     }
   }
 
-  handleRegion = event => {
-    this.setState({region: event.target.value});
-  }
-
-  handleBotanicalVariety = event => {
-    this.setState({botanical_variety: event.target.value});
-  }
-
-  handleRoastAppearance = event => {
-    this.setState({roast_appearance: event.target.value});
-  }
-
-  handleName = event => {
-    this.setState({name: event.target.value});
-  }
-
-  handleDetails = event => {
-    this.setState({details: event.target.value});
-  }
-
-  handleAltitude = event => {
-    this.setState({altitude: event.target.value});
-  }
-
-  handleBeanDensity = event => {
-    this.setState({bean_density: event.target.value});
-  }
-
-  handleBeanScreen = event => {
-    this.setState({bean_screen: event.target.value});
-  }
-
-  handlePriceKg = event => {
-    this.setState({price_kg: event.target.value});
-  }
-
-  handlePreparation = event => {
-    this.setState({preparation: event.target.value});
+  handleInput = event => {
+    this.setState({[event.target.name]:event.target.value});
   }
 
   handleSubmit = event => {
     event.preventDefault();
     this.props.createCoffee(this.state);
-    this.props.history.push('/');
+    this.props.history.push('/offer-detail');
   }
 
   render() {
@@ -79,46 +43,46 @@ class CoffeeForm extends Component {
       <Form onSubmit={this.handleSubmit}>
         <label>
           Name:
-          <input type="text" value={this.state.name} onChange={this.handleName} />
+          <input name="name" type="text" value={this.state.name} onChange={this.handleInput} />
         </label>
         <label>
           Region:
-          <input type="text" value={this.state.region} onChange={this.handleRegion} />
+          <input name="region" type="text" value={this.state.region} onChange={this.handleInput} />
         </label>
         <label>
           Botanical Variety:
-          <input type="text" value={this.state.botanical_variety} onChange={this.handleBotanicalVariety} />
+          <input name="botanical_variety" type="text" value={this.state.botanical_variety} onChange={this.handleInput} />
         </label>
         <label>
           Preparation:
-          <select value={this.state.preparation} onChange={this.handlePreparation}>
+          <select name="preparation" value={this.state.preparation} onChange={this.handleInput}>
             <option value="dry">Dry</option>
             <option value="wet">Wet</option>
           </select>
         </label>
         <label>
           Altitude:
-          <input type="number" value={this.state.altitude} onChange={this.handleAltitude} />
+          <input name="altitude" type="number" value={this.state.altitude} onChange={this.handleInput} />
         </label>
         <label>
           Roast Appearence:
-          <input type="text" value={this.state.roast_appearance} onChange={this.handleRoastAppearance} />
+          <input name="roast_appearance" type="text" value={this.state.roast_appearance} onChange={this.handleInput} />
         </label>
         <label>
           Bean Screen:
-          <input type="text" value={this.state.bean_screen} onChange={this.handleBeanScreen} />
+          <input name="bean_screen" type="text" value={this.state.bean_screen} onChange={this.handleInput} />
         </label>
         <label>
           Bean density:
-          <input type="number" value={this.state.bean_density} onChange={this.handleBeanDensity} />
+          <input name="bean_density" type="number" value={this.state.bean_density} onChange={this.handleInput} />
         </label>
         <label>
           Price kg:
-          <input type="number" value={this.state.price_kg} onChange={this.handlePriceKg} />
+          <input name="price_kg" type="number" value={this.state.price_kg} onChange={this.handleInput} />
         </label>
         <label>
           Details:
-          <input type="text" value={this.state.details} onChange={this.handleDetails} />
+          <input name="details" type="text" value={this.state.details} onChange={this.handleInput} />
         </label>
         <input type="submit" value="Submit" />
       </Form>
