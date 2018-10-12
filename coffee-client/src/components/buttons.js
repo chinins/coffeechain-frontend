@@ -13,6 +13,19 @@ const DefaultButton = styled('button')`
   text-align: center;
 `;
 
+const InputButton = styled('input')`
+  background: ${props => props.theme.colors.secondary};
+  border: ${props => `solid 1px ${props.theme.colors.accessory}`};
+  border-radius: ${props => props.theme.borderRadius};
+  box-shadow: ${props => props.theme.boxShadow};
+  color: ${props => props.theme.colors.primary};
+  heigth: 2.5em;
+  width: 8em;
+  margin: 7px;
+  padding: 5px;
+  text-align: center;
+`;
+
 const SmallButton = styled(DefaultButton)`
   box-shadow: ${props => props.theme.boxShadow};
   width: 4em;
@@ -32,4 +45,4 @@ const LightButton = styled(DefaultButton)`
   border: ${props => `solid 1px ${props.theme.colors.secondary}`};
 `;
 
-export { DefaultButton, SmallButton, LightButton, LightButtonSimple };
+export { DefaultButton, SmallButton, LightButton, LightButtonSimple, InputButton };
