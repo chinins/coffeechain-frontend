@@ -13,6 +13,8 @@ import CoffeeForm from './components/coffeeform';
 import InputForm from './components/input-form';
 
 class App extends Component {
+
+ 
   render()  {
     return (
       <ThemeProvider theme={theme}>
@@ -23,7 +25,9 @@ class App extends Component {
                <Route exact path='/' component={Dashboard} />
                <Route exact path='/coffees' component={Dashboard} />
                <Route exact path='/coffee-shops' component={Dashboard} />
-               <Route exact path='/coffee-detail/:coffeeId' component={CoffeeDetail} />
+              <Route exact path='/coffee-detail/:coffeeId' 
+                render={(props) =>
+                  (<CoffeeDetail getCoffee={this.props.getCoffee} /> )} /> 
                <Route exact path='/coffeeForm' component={InputForm} />
                <Route exact path='/userForm' component={InputForm} />
              </Switch>
