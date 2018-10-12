@@ -17,19 +17,17 @@ const coffeeFormImg = 'https://images.unsplash.com/photo-1532529202439-0312ecbf3
 class InputForm extends Component {
   render () {
     let pathName = this.props.location.pathname;
-    console.log(pathName)
-
     if (pathName === '/userForm') {
       return (
         <DisplayForm>
-          <UserForm></UserForm>
+          <UserForm history={this.props.history}></UserForm>
           <ProfileImage src={profileImg}/>
         </DisplayForm>
       )
     } else if (pathName === '/coffeeForm') {
       return (
         <DisplayForm>
-          <CoffeeForm></CoffeeForm>
+          <CoffeeForm history={this.props.history}></CoffeeForm>
           <ProfileImage src={coffeeFormImg}/>
         </DisplayForm>
       )

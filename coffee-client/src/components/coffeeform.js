@@ -38,7 +38,7 @@ class CoffeeForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
     this.props.createCoffee(this.state);
-    this.props.history.push('/offer-detail');
+    this.props.history.push('coffee-detail/ecedd2e7-c913-4250-a331-932c219c80b3');
   }
 
   render() {
