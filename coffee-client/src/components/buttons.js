@@ -1,7 +1,6 @@
 import styled from 'react-emotion';
 
 const DefaultButton = styled('button')`
-  border: ${props => `solid 1px #a72f55`};  
   border-radius: ${props => props.theme.borderRadius}; 
   box-shadow: ${props => props.theme.boxShadow};
   color: #a72f55;

@@ -12,7 +12,6 @@ const Form = styled('form')`
   align-items: center;
 `;
 
-
 class CoffeeForm extends Component {
 
   constructor(props) {
@@ -29,6 +28,10 @@ class CoffeeForm extends Component {
       price_kg: '',
       details: '',
     }
+  }
+
+  componentDidMount() {
+    this.props.getCoffee(this.coffeeId);
   }
 
   handleInput = event => {

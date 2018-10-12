@@ -3,8 +3,8 @@ import styled from 'react-emotion';
 import MapDetail from '../components/map-detail';
 import { connect } from 'react-redux';
 import * as CoffeeActions from '../redux/actions/coffees';
-import { DefaultButton } from '../components/buttons'
-
+import { LightButtonSimple } from '../components/buttons'
+import { Link } from 'react-router-dom';
 
 const Div = styled('div')`
   font-family: avenir next;
@@ -35,7 +35,7 @@ const ThirdTitle = styled('div')`
   font-size: 1.1em;
   letter-spacing: -1px;
   right: ${props => props.right};
-  top: 7%;
+  top: 9%;
   color: #a72f55
 `;
 
@@ -97,6 +97,8 @@ const Buy = styled('div')`
   z-index: 2;
 `;
 
+
+
 class CoffeeDetail extends Component {
  coffeeId = ':coffee_id';   // to change to passed url params later
  // coffeeId = this.props.match.params.coffeeId
@@ -107,6 +109,11 @@ class CoffeeDetail extends Component {
 
   id = 'ecedd2e7-c913-4250-a331-932c219c8000'    // to change later
 
+  renderReviews = (array) => {
+   return array.map(review => {
+     return <Paragraph top='2%'> " {review} "" </Paragraph>;
+    })
+  }
 
   render() {
 
@@ -132,7 +139,11 @@ class CoffeeDetail extends Component {
 
     let rating = coffees[this.id] && coffees[this.id].rating;
     let reviews = coffees[this.id] && coffees[this.id].reviews;
+
     // typeof Reviews = a string, we need it as an array to map over it 
+
+    let reviewsarray = [reviews, "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasiem ullam corporis suscipit laboriosam, nisi ut aliquid ex consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?", "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasiem ullam corporis suscipit laboriosam, nisi ut aliquid ex consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur ?"];
+
 
 
     return (
@@ -143,11 +154,11 @@ class CoffeeDetail extends Component {
 
         <Company> {business_name || `loading`} </Company>
 
-        <Buy><DefaultButton> ORDER </DefaultButton></Buy>
+        <Link to={{ pathname: `/order` }} > <Buy><LightButtonSimple> ORDER </LightButtonSimple></Buy> </Link>
 
         <CoffeeBox>
           <Subtitle> {name || `loading` } </Subtitle>
-          <ThirdTitle right='25%'> PRICE - $ 200 </ThirdTitle>
+          <ThirdTitle right='20%'> PRICE - $ 200 </ThirdTitle>
           <Paragraph top='7%'> 
             <br /> 
             <b>  Producer :</b> {BusinessDescription || "loading" } 
@@ -173,19 +184,9 @@ class CoffeeDetail extends Component {
         <ReviewBox>
           <Subtitle> Reviews </Subtitle>
           <ThirdTitle right='7%'> AVERAGE - * {rating} </ThirdTitle>
-          <Paragraph top='7%'>
-            <br />
-            "{ reviews || "loading... reviews"}"
-           </Paragraph>
-        {/*    once reviews are an array we will run the map function here instead  */}
-          <Paragraph top='2%'> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasiem ullam corporis suscipit laboriosam, nisi ut aliquid ex
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
-           </Paragraph>
-          <Paragraph top='2%'> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasiem ullam corporis suscipit laboriosam, nisi ut aliquid ex
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
-           </Paragraph>
+
+          <Paragraph top='7%'>  {this.renderReviews(reviewsarray)} </Paragraph>
+
             </ReviewBox>
 
       </Div>
