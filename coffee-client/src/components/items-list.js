@@ -1,5 +1,5 @@
 import React from 'react';
-import ItemsListItem from './items-list-item';
+import ItemsListCoffee from './items-list-coffee';
 import ItemListCustomer from './item-list-customer';
 import styled from 'react-emotion';
 
@@ -16,21 +16,18 @@ const List = styled('div')`
 `;
 
 function ItemsList(props) {
+
   const renderItems = () => {
     return props.result.map(itemId => {
-      if (JSON.stringify(props.coffees) != '{}') {
+      if (Object.getOwnPropertyNames(props.coffees)[0] && props.isCoffees) {
         return (
-          <ItemsListItem key={itemId} id={itemId} coffees={props.coffees} />
+          <ItemsListCoffee key={itemId} id={itemId} coffee={props.coffees[itemId]} />
         );
-      } else {
+      } else if (Object.getOwnPropertyNames(props.coffeeShops)[0] && !props.isCoffees) {
         return (
-          <ItemListCustomer
-            key={itemId}
-            id={itemId}
-            coffeeShops={props.coffeeShops}
-          />
+          <ItemListCustomer key={itemId} id={itemId} coffeeShop={props.coffeeShops[itemId]}/>
         );
-      }
+      } else return;
     });
   };
 
