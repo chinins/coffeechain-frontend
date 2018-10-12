@@ -4,7 +4,7 @@ import MapDetail from '../components/map-detail';
 import { connect } from 'react-redux';
 import * as CoffeeActions from '../redux/actions/coffees';
 import { DefaultButton } from '../components/buttons'
-const plantationPic = require('../assets/images/plantations/costa_rica.jpg');
+
 
 const Div = styled('div')`
   font-family: avenir next;
@@ -31,11 +31,12 @@ const Company = styled('div')`
 
 const ThirdTitle = styled('div')`
   position: absolute;
-  font-weight: 220;
+  font-weight: 300;
   font-size: 1.1em;
   letter-spacing: -1px;
-  right: 7%;
+  right: ${props => props.right};
   top: 7%;
+  color: #a72f55
 `;
 
 const Subtitle = styled('div')`
@@ -89,44 +90,80 @@ const ImageFormat = styled('div')`
   width: 38%;
 `;
 
+const Buy = styled('div')`
+  position: absolute;
+  top: 18%;
+  right: 45%;
+  z-index: 2;
+`;
 
 class CoffeeDetail extends Component {
-  coffeeId = ':coffee_id';   // to change to passed url params later
-  // coffeeId = this.props.match.params.coffeeId
+ coffeeId = ':coffee_id';   // to change to passed url params later
+ // coffeeId = this.props.match.params.coffeeId
 
-  componentDidMount () {
+  componentDidMount() {
     this.props.getCoffee(this.coffeeId);
   }
 
-  // id = this.props.result[0];
   id = 'ecedd2e7-c913-4250-a331-932c219c8000'    // to change later
 
-  render() {
-    console.log(this.props.coffees[this.id]);
 
-    // const { Producer, pictures, name, botanical_variety, altitude } = this.props.coffees[this.id]
+  render() {
+
+    const { coffees } = this.props;
+
+    // coffeeBox
+
+    let altitude = coffees[this.id] && coffees[this.id].altitude;
+    let bean_density = coffees[this.id] && coffees[this.id].bean_density;
+    let business_name = coffees[this.id] && coffees[this.id].Producer.business_name;
+    let botanical_variety = coffees[this.id] && coffees[this.id].botanical_variety;
+    let BusinessDescription = coffees[this.id] && coffees[this.id].Producer.description;
+    let CoffeeDetails = coffees[this.id] && coffees[this.id].details;
+    let name = coffees[this.id] && coffees[this.id].name;
+    let roast_appearance = coffees[this.id] && coffees[this.id].roast_appearance;
+    let preparation = coffees[this.id] && coffees[this.id].preparation;
+
+    // picture
+
+    let picture = coffees[this.id] && coffees[this.id].pictures[0].url;
+
+     // reviewsBox
+
+    let rating = coffees[this.id] && coffees[this.id].rating;
+    let reviews = coffees[this.id] && coffees[this.id].reviews;
+    // typeof Reviews = a string, we need it as an array to map over it 
+
+
     return (
+
       <Div>
 
-        <ImageFormat>   <img src={plantationPic} alt= "plantation" /></ImageFormat>
-        <Company>Juan Valdez</Company>
+        <ImageFormat>   <img src={picture} alt= "plantation" /></ImageFormat>
+
+        <Company> {business_name || `loading`} </Company>
+
+        <Buy><DefaultButton> ORDER </DefaultButton></Buy>
 
         <CoffeeBox>
-
-          <Subtitle> Coffea Canephora</Subtitle>
-          <ThirdTitle> PRICE - $ 200 </ThirdTitle>
-
-          <Paragraph top = '7%'> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-          totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-          architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-          aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi
-          nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
-          sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
-           Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
-           ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-           consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+          <Subtitle> {name || `loading` } </Subtitle>
+          <ThirdTitle right='25%'> PRICE - $ 200 </ThirdTitle>
+          <Paragraph top='7%'> 
+            <br /> 
+            <b>  Producer :</b> {BusinessDescription || "loading" } 
+            <br />
+            <b>  Variety : </b> {botanical_variety || "loading"}
+            <br />
+            <b>  Detail:</b> {CoffeeDetails || "loading"} 
+            <br />
+            <b>  Altitude:</b> {altitude || "loading"} 
+            <br /> 
+            <b>  Bean Density : </b> {bean_density || "loading"}
+            <br /> 
+            <b>  Roast Appearance : </b> {roast_appearance || "loading"}
+            <br />
+            <b>  Preparation : </b> {preparation || "loading"}
            </Paragraph>
-
         </CoffeeBox>
 
         <Location> COLOMBIA, BOGOTA </Location>
@@ -135,11 +172,12 @@ class CoffeeDetail extends Component {
 
         <ReviewBox>
           <Subtitle> Reviews </Subtitle>
-           <ThirdTitle> AVERAGE - * 4.7 </ThirdTitle>
-          <Paragraph top='7%'> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasiem ullam corporis suscipit laboriosam, nisi ut aliquid ex
-consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+          <ThirdTitle right='7%'> AVERAGE - * {rating} </ThirdTitle>
+          <Paragraph top='7%'>
+            <br />
+            "{ reviews || "loading... reviews"}"
            </Paragraph>
+        {/*    once reviews are an array we will run the map function here instead  */}
           <Paragraph top='2%'> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
 totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasiem ullam corporis suscipit laboriosam, nisi ut aliquid ex
 consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
