@@ -3,6 +3,7 @@ import styled from 'react-emotion';
 import MapDetail from '../components/map-detail';
 import { connect } from 'react-redux';
 import * as CoffeeActions from '../redux/actions/coffees';
+import { DefaultButton } from '../components/buttons'
 const plantationPic = require('../assets/images/plantations/costa_rica.jpg');
 
 const Div = styled('div')`
@@ -108,7 +109,7 @@ class CoffeeDetail extends Component {
       <Div>
 
         <ImageFormat>   <img src={plantationPic} alt= "plantation" /></ImageFormat>
-        <Company>JV</Company>
+        <Company>Juan Valdez</Company>
 
         <CoffeeBox>
 

@@ -21,7 +21,7 @@ const AppName = styled('div')`
 const Navigation = styled('nav')`
   display: flex;
   justify-content: space-between;
-  width: 30%;
+  width: 35%;
   margin-right: 2em;
 `;
 
@@ -38,31 +38,13 @@ class Header extends Component {
     return (
       <ToolBar>
         <AppName>Coffee Chain</AppName>
-        {/* <nav> */}
         <Navigation>
-          <NavItem>
-            <Link to="/coffees">Coffees</Link>
-          </NavItem>
-          <NavItem>
-            <Link to="/">Add coffee</Link>
-          </NavItem>
-          <NavItem>
-            <Link to="/coffeeForm">Add coffee</Link>
-          </NavItem>
-          <NavItem>
-            <Link to="/">Add plantation</Link>
-          </NavItem>
-          <NavItem>
-            <Link to="/coffee-shops">Coffee shops</Link>
-          </NavItem>
-          <NavItem>
-            <Link to="/">Profile</Link>
-          </NavItem>
-          <NavItem>
-            <Link to="/userForm">Create Profile</Link>
-          </NavItem>
+          <NavItem><Link to='/coffees'>Coffees</Link></NavItem>
+          <NavItem><Link to='/coffeeForm'>Add coffee</Link></NavItem>
+          <NavItem><Link to='/coffee-shops'>Coffee shops</Link></NavItem>
+          <NavItem><Link to='/producers'>Producers</Link></NavItem>
+          <NavItem><Link to='/userForm'>Profile</Link></NavItem>
         </Navigation>
-        {/* </nav> */}
       </ToolBar>
     );
   }

@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import styled from 'react-emotion';
+import styled, { css } from 'react-emotion';
 import * as CoffeeActions from '../redux/actions/coffees';
 import { connect } from 'react-redux';
+import { InputButton } from './buttons';
+import { Label, InputField, SelectInput, LabelSelect } from './input-fields';
 
 const Form = styled('form')`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 `;
 
 
@@ -19,11 +22,11 @@ class CoffeeForm extends Component {
       region: '',
       botanical_variety: '',
       bean_screen: '',
-      altitude: 0,
+      altitude: '',
       preparation: 'dry',
       roast_appearance: '',
-      bean_density: 0,
-      price_kg: 0,
+      bean_density: '',
+      price_kg: '',
       details: '',
     }
   }
@@ -35,56 +38,59 @@ class CoffeeForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
     this.props.createCoffee(this.state);
-    this.props.history.push('/offer-detail');
+    this.props.history.push('coffee-detail/ecedd2e7-c913-4250-a331-932c219c80b3');
   }
 
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
-        <label>
+        <Label>
           Name:
-          <input name="name" type="text" value={this.state.name} onChange={this.handleInput} />
-        </label>
-        <label>
+          <InputField name="name" type="text" value={this.state.name} onChange={this.handleInput} />
+        </Label>
+        <Label>
           Region:
-          <input name="region" type="text" value={this.state.region} onChange={this.handleInput} />
-        </label>
-        <label>
+          <InputField name="region" type="text" value={this.state.region} onChange={this.handleInput} />
+        </Label>
+        <Label>
           Botanical Variety:
-          <input name="botanical_variety" type="text" value={this.state.botanical_variety} onChange={this.handleInput} />
-        </label>
-        <label>
+          <InputField name="botanical_variety" type="text" value={this.state.botanical_variety} onChange={this.handleInput} />
+        </Label>
+        <LabelSelect className={css`
+          padding-left: 0px;
+          padding-right: 20px;
+        `}>
           Preparation:
-          <select name="preparation" value={this.state.preparation} onChange={this.handleInput}>
+          <SelectInput name="preparation" value={this.state.preparation} onChange={this.handleInput}>
             <option value="dry">Dry</option>
             <option value="wet">Wet</option>
-          </select>
-        </label>
-        <label>
+          </SelectInput>
+        </LabelSelect>
+        <Label>
           Altitude:
-          <input name="altitude" type="number" value={this.state.altitude} onChange={this.handleInput} />
-        </label>
-        <label>
+          <InputField name="altitude" type="number" value={this.state.altitude} onChange={this.handleInput} />
+        </Label>
+        <Label>
           Roast Appearence:
-          <input name="roast_appearance" type="text" value={this.state.roast_appearance} onChange={this.handleInput} />
-        </label>
-        <label>
+          <InputField name="roast_appearance" type="text" value={this.state.roast_appearance} onChange={this.handleInput} />
+        </Label>
+        <Label>
           Bean Screen:
-          <input name="bean_screen" type="text" value={this.state.bean_screen} onChange={this.handleInput} />
-        </label>
-        <label>
+          <InputField name="bean_screen" type="text" value={this.state.bean_screen} onChange={this.handleInput} />
+        </Label>
+        <Label>
           Bean density:
-          <input name="bean_density" type="number" value={this.state.bean_density} onChange={this.handleInput} />
-        </label>
-        <label>
+          <InputField name="bean_density" type="number" value={this.state.bean_density} onChange={this.handleInput} />
+        </Label>
+        <Label>
           Price kg:
-          <input name="price_kg" type="number" value={this.state.price_kg} onChange={this.handleInput} />
-        </label>
-        <label>
+          <InputField name="price_kg" type="number" value={this.state.price_kg} onChange={this.handleInput} />
+        </Label>
+        <Label>
           Details:
-          <input name="details" type="text" value={this.state.details} onChange={this.handleInput} />
-        </label>
-        <input type="submit" value="Submit" />
+          <InputField name="details" type="text" value={this.state.details} onChange={this.handleInput} />
+        </Label>
+        <InputButton type="submit" value="Submit" />
       </Form>
     )
   }

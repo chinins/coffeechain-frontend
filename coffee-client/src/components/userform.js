@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import styled from 'react-emotion';
 import * as UserActions from '../redux/actions/users';
 import { connect } from 'react-redux';
+import { InputButton } from './buttons';
+import { Label, InputField, SelectInput, LabelSelect } from './input-fields';
 
 const Form = styled('form')`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 `;
 
 
@@ -38,35 +41,35 @@ class UserForm extends Component {
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
-      <label>
+        <LabelSelect>
           Business type:
-          <select name="business_type" value={this.state.business_type} onChange={this.handleInput}>
+          <SelectInput name="business_type" value={this.state.business_type} onChange={this.handleInput}>
             <option value="customer">Coffee Shop</option>
             <option value="producer">Coffee Producer</option>
-          </select>
-        </label>
-        <label>
+          </SelectInput>
+        </LabelSelect>
+        <Label>
           Business name:
-          <input name="business_name" type="text" value={this.state.business_name} onChange={this.handleInput} />
-        </label>
-        <label>
+          <InputField name="business_name" type="text" value={this.state.business_name} onChange={this.handleInput} />
+        </Label>
+        <Label>
           Country:
-          <input name="country" type="text" value={this.state.country} onChange={this.handleInput} />
-        </label>
-        <label>
+          <InputField name="country" type="text" value={this.state.country} onChange={this.handleInput} />
+        </Label>
+        <Label>
           Email:
-          <input name="email" type="text" value={this.state.email} onChange={this.handleInput} />
-        </label>
-        <label>
+          <InputField name="email" type="text" value={this.state.email} onChange={this.handleInput} />
+        </Label>
+        <Label>
           Description:
-          <input name="description" type="text" value={this.state.description} onChange={this.handleInput} />
-        </label>
+          <InputField name="description" type="text" value={this.state.description} onChange={this.handleInput} />
+        </Label>
 
-        <label>
+        <Label>
           Details:
-          <input name="details" type="text" value={this.state.details} onChange={this.handleInput} />
-        </label>
-        <input type="submit" value="Submit" />
+          <InputField name="details" type="text" value={this.state.details} onChange={this.handleInput} />
+        </Label>
+        <InputButton type="submit" value="Submit" />
       </Form>
     )
   }
