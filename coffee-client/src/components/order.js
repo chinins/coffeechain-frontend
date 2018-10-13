@@ -26,7 +26,7 @@ const Orderid = styled('div')`
   font-size: 1em;
 `;
 
-const Price = styled('div')`
+const Total = styled('div')`
   margin-top: -1.8%;
   margin-left: 51%;
   font-weight: 400;
@@ -65,7 +65,7 @@ class Order extends Component {
     super(props);
     this.state = {
       kg: '',
-      price: '',
+      total: '',
       notes: ''
     }
   }
@@ -110,7 +110,7 @@ class Order extends Component {
     <div> 
         <Title> ORDER </Title> 
         <Orderid> #ghjklmkl56789 </Orderid>
-        <Price> PRICE: $ 200 </Price>
+        <Total> TOTAL: $ 200 </Total>
         <Hr/>
         <br/>
       <Form onSubmit={this.handleSubmit}>
@@ -134,7 +134,9 @@ class Order extends Component {
             <n />
             Name: {name}
             <n />
-            Altitude: {altitude}
+            Altitude: {altitude}            
+            <n />
+            Price: $ 200
             
             </CoffeeBox>
       </Form>
