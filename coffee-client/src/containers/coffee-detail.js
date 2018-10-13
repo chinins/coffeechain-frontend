@@ -111,7 +111,7 @@ class CoffeeDetail extends Component {
 
   renderReviews = (array) => {
    return array.map(review => {
-     return <Paragraph top='2%'> " {review} "" </Paragraph>;
+     return <Paragraph top='2%'> " {review} " </Paragraph>;
     })
   }
 
@@ -185,7 +185,7 @@ class CoffeeDetail extends Component {
           <Subtitle> Reviews </Subtitle>
           <ThirdTitle right='7%'> AVERAGE - * {rating} </ThirdTitle>
 
-          <Paragraph top='7%'>  {this.renderReviews(reviewsarray)} </Paragraph>
+          <Paragraph top='7%'>  {reviews} </Paragraph>
 
             </ReviewBox>
 
