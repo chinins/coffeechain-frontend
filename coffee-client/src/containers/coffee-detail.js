@@ -111,7 +111,7 @@ class CoffeeDetail extends Component {
 
   renderReviews = (array) => {
    return array.map(review => {
-     return <Paragraph key = {review.id} top='2%'> " {review} "" </Paragraph>;
+     return <Paragraph top='2%'> " {review} "" </Paragraph>;
     })
   }
 
