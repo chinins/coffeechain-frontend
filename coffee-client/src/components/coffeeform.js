@@ -30,10 +30,6 @@ class CoffeeForm extends Component {
     }
   }
 
-  componentDidMount() {
-    this.props.getCoffee(this.coffeeId);
-  }
-
   handleInput = event => {
     this.setState({[event.target.name]:event.target.value});
   }
