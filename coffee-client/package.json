@@ -5,8 +5,8 @@
   "dependencies": {
     "emotion": "^9.2.12",
     "emotion-theming": "^9.2.9",
-    "normalizr": "^3.2.4",
     "mapbox-gl": "^0.49.0",
+    "normalizr": "^3.2.4",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
