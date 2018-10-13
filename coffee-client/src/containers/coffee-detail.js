@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as CoffeeActions from '../redux/actions/coffees';
 import { LightButtonSimple } from '../components/buttons'
 import { Link } from 'react-router-dom';
+import uuid from 'uuid';
 
 const Div = styled('div')`
   font-family: avenir next;
@@ -109,11 +110,7 @@ class CoffeeDetail extends Component {
 
   id = 'ecedd2e7-c913-4250-a331-932c219c8000'    // to change later
 
-  renderReviews = (array) => {
-   return array.map(review => {
-     return <Paragraph top='2%'> " {review} " </Paragraph>;
-    })
-  }
+
 
   render() {
 
@@ -144,7 +141,11 @@ class CoffeeDetail extends Component {
 
     let reviewsarray = [reviews, "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasiem ullam corporis suscipit laboriosam, nisi ut aliquid ex consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?", "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasiem ullam corporis suscipit laboriosam, nisi ut aliquid ex consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur ?"];
 
-
+     let renderReviews = () => {
+       return reviewsarray.map(review => {
+         return <Paragraph key={uuid.v4()} top='2%'> " {review} " </Paragraph>;
+      })
+    }
 
     return (
 
@@ -185,7 +186,7 @@ class CoffeeDetail extends Component {
           <Subtitle> Reviews </Subtitle>
           <ThirdTitle right='7%'> AVERAGE - * {rating} </ThirdTitle>
 
-          <Paragraph top='7%'>  {reviews} </Paragraph>
+          <Paragraph top='7%'>  {renderReviews()} </Paragraph>
 
             </ReviewBox>
 
