@@ -29,40 +29,24 @@ class Map extends Component {
     });
     let marker;
 
-    const temp = [
-
-    ]
-
-    // console.log(this.props.result);
-
-
-    // this.props.result.map(id => {
-    //   console.log('got here');
-    //   console.log(this.props.data.id.geo_location);
-    //   new mapboxgl.Marker()
-    //     .setLngLat(
-    //       this.props.data.id.geo_location.coordinates
-    //     )
-    // })
-
-    // marker = new mapboxgl.Marker()
-    //   .setLngLat([36.736466, -1.406542])
-    //   .addTo(this.map);
-    // marker = new mapboxgl.Marker()
-    //   .setLngLat([35.736466, -2.406542])
-    //   .addTo(this.map);
-    // marker = new mapboxgl.Marker()
-    //   .setLngLat([33.734466, -0.806542])
-    //   .addTo(this.map);
-    // marker = new mapboxgl.Marker()
-    //   .setLngLat([31.736466, -4.406552])
-    //   .addTo(this.map);
-    // marker = new mapboxgl.Marker()
-    //   .setLngLat([36.736766, -11.406542])
-    //   .addTo(this.map);
-    // marker = new mapboxgl.Marker()
-    //   .setLngLat([28.434466, -15.506542])
-    //   .addTo(this.map);
+    marker = new mapboxgl.Marker()
+      .setLngLat([36.736466, -1.406542])
+      .addTo(this.map);
+    marker = new mapboxgl.Marker()
+      .setLngLat([35.736466, -2.406542])
+      .addTo(this.map);
+    marker = new mapboxgl.Marker()
+      .setLngLat([33.734466, -0.806542])
+      .addTo(this.map);
+    marker = new mapboxgl.Marker()
+      .setLngLat([31.736466, -4.406552])
+      .addTo(this.map);
+    marker = new mapboxgl.Marker()
+      .setLngLat([36.736766, -11.406542])
+      .addTo(this.map);
+    marker = new mapboxgl.Marker()
+      .setLngLat([28.434466, -15.506542])
+      .addTo(this.map);
   }
 
 

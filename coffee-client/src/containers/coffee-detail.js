@@ -100,14 +100,14 @@ const Buy = styled('div')`
 
 
 class CoffeeDetail extends Component {
- coffeeId = ':coffee_id';   // to change to passed url params later
- // coffeeId = this.props.match.params.coffeeId
+//  coffeeId = ':coffee_id';   // to change to passed url params later
+ coffeeId = this.props.match.params.coffeeId
 
   componentDidMount() {
     this.props.getCoffee(this.coffeeId);
   }
 
-  id = 'ecedd2e7-c913-4250-a331-932c219c8000'    // to change later
+  id = this.coffeeId         // 'ecedd2e7-c913-4250-a331-932c219c8000'    // to change later
 
   renderReviews = (array) => {
    return array.map(review => {
@@ -122,7 +122,7 @@ class CoffeeDetail extends Component {
     // coffeeBox
 
     let altitude = coffees[this.id] && coffees[this.id].altitude;
-    let bean_density = coffees[this.id] && coffees[this.id].bean_density;
+    // let bean_density = coffees[this.id] && coffees[this.id].bean_density;
     let business_name = coffees[this.id] && coffees[this.id].Producer.business_name;
     let botanical_variety = coffees[this.id] && coffees[this.id].botanical_variety;
     let BusinessDescription = coffees[this.id] && coffees[this.id].Producer.description;
@@ -133,14 +133,15 @@ class CoffeeDetail extends Component {
 
     // picture
 
-    let picture = coffees[this.id] && coffees[this.id].pictures[0].url;
+    // let picture = coffees[this.id] && coffees[this.id].pictures[0].url;
+    const url = 'https://images.unsplash.com/photo-1527018263374-5adb6a54f01e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=76ac2e56cf4887aac218a89543847865&auto=format&fit=crop&w=800&q=60';
 
      // reviewsBox
 
     let rating = coffees[this.id] && coffees[this.id].rating;
     let reviews = coffees[this.id] && coffees[this.id].reviews;
 
-    // typeof Reviews = a string, we need it as an array to map over it 
+    // typeof Reviews = a string, we need it as an array to map over it
 
     let reviewsarray = [reviews, "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasiem ullam corporis suscipit laboriosam, nisi ut aliquid ex consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?", "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasiem ullam corporis suscipit laboriosam, nisi ut aliquid ex consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur ?"];
 
@@ -149,46 +150,36 @@ class CoffeeDetail extends Component {
     return (
 
       <Div>
-
-        <ImageFormat>   <img src={picture} alt= "plantation" /></ImageFormat>
-
+        <ImageFormat>   <img src={url} alt= "plantation" /></ImageFormat>
         <Company> {business_name || `loading`} </Company>
-
         <Link to={{ pathname: `/order` }} > <Buy><LightButtonSimple> ORDER </LightButtonSimple></Buy> </Link>
-
         <CoffeeBox>
           <Subtitle> {name || `loading` } </Subtitle>
           <ThirdTitle right='20%'> PRICE - $ 200 </ThirdTitle>
-          <Paragraph top='7%'> 
-            <br /> 
-            <b>  Producer :</b> {BusinessDescription || "loading" } 
+          <Paragraph top='7%'>
+            <br />
+            <b>  Producer :</b> {BusinessDescription || "loading" }
             <br />
             <b>  Variety : </b> {botanical_variety || "loading"}
             <br />
-            <b>  Detail:</b> {CoffeeDetails || "loading"} 
+            <b>  Detail:</b> {CoffeeDetails || "loading"}
             <br />
-            <b>  Altitude:</b> {altitude || "loading"} 
-            <br /> 
-            <b>  Bean Density : </b> {bean_density || "loading"}
-            <br /> 
+            <b>  Altitude:</b> {altitude || "loading"}
+            <br />
+            {/* <b>  Bean Density : </b> {bean_density || "loading"}
+            <br />  */}
             <b>  Roast Appearance : </b> {roast_appearance || "loading"}
             <br />
             <b>  Preparation : </b> {preparation || "loading"}
            </Paragraph>
         </CoffeeBox>
-
         <Location> COLOMBIA, BOGOTA </Location>
-
         <MapDetail></MapDetail>
-
         <ReviewBox>
           <Subtitle> Reviews </Subtitle>
           <ThirdTitle right='7%'> AVERAGE - * {rating} </ThirdTitle>
-
           <Paragraph top='7%'>  {reviews} </Paragraph>
-
             </ReviewBox>
-
       </Div>
     )
   }

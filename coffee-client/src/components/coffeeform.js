@@ -4,6 +4,8 @@ import * as CoffeeActions from '../redux/actions/coffees';
 import { connect } from 'react-redux';
 import { InputButton } from './buttons';
 import { Label, InputField, SelectInput, LabelSelect } from './input-fields';
+import { producersIdArr } from '../constants/connections';
+const uuidv4 = require('uuid/v4');
 
 const Form = styled('form')`
   display: flex;
@@ -14,19 +16,24 @@ const Form = styled('form')`
 
 class CoffeeForm extends Component {
 
+  getRandomId = max => {
+    return Math.floor(Math.random() * max);
+  }
+
+  randomProducerId = this.getRandomId(producersIdArr.length);
+
   constructor(props) {
     super(props);
     this.state = {
       name: '',
       region: '',
       botanical_variety: '',
-      bean_screen: '',
       altitude: '',
       preparation: 'dry',
       roast_appearance: '',
-      bean_density: '',
       price_kg: '',
       details: '',
+      id: ''
     }
   }
 
@@ -34,10 +41,12 @@ class CoffeeForm extends Component {
     this.setState({[event.target.name]:event.target.value});
   }
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
-    this.props.createCoffee(this.state);
-    this.props.history.push('coffee-detail/ecedd2e7-c913-4250-a331-932c219c80b3');
+    await this.setState({ id: uuidv4() });
+    const producerId = producersIdArr[this.randomProducerId];
+    this.props.createCoffee(this.state, producerId);
+    setTimeout(() => this.props.history.push(`coffee-detail/${this.state.id}`), 3000);
   }
 
   render() {
@@ -74,14 +83,6 @@ class CoffeeForm extends Component {
           <InputField name="roast_appearance" type="text" value={this.state.roast_appearance} onChange={this.handleInput} />
         </Label>
         <Label>
-          Bean Screen:
-          <InputField name="bean_screen" type="text" value={this.state.bean_screen} onChange={this.handleInput} />
-        </Label>
-        <Label>
-          Bean density:
-          <InputField name="bean_density" type="number" value={this.state.bean_density} onChange={this.handleInput} />
-        </Label>
-        <Label>
           Price kg:
           <InputField name="price_kg" type="number" value={this.state.price_kg} onChange={this.handleInput} />
         </Label>
@@ -97,7 +98,7 @@ class CoffeeForm extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  createCoffee: (coffee) => dispatch(CoffeeActions.createCoffee(coffee))
+  createCoffee: (coffee, producerId) => dispatch(CoffeeActions.createCoffee(coffee, producerId))
 })
 
 export default connect(null, mapDispatchToProps)(CoffeeForm);

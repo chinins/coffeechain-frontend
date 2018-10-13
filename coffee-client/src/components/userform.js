@@ -36,9 +36,7 @@ class UserForm extends Component {
   handleSubmit = async event => {
     event.preventDefault();
     const id = uuidv4();
-    console.log('id: ', id);
-    await this.setState({ id: id });
-    console.log(this.state);
+    await this.setState({ id });
     if (this.state.business_type === 'customer') this.props.createCustomer(this.state);
     if (this.state.business_type === 'producer') this.props.createProducer(this.state);
     this.props.history.push('/');
