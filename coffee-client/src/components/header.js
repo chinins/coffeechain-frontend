@@ -15,7 +15,7 @@ const ToolBar = styled('div')`
 const AppName = styled('div')`
   font-size: 200%;
   margin: 10px 0 0 10px;
-  color: ${props => props.theme.colors.secondary}
+  color: ${props => props.theme.colors.secondary};
 `;
 
 const Navigation = styled('nav')`
@@ -38,7 +38,6 @@ class Header extends Component {
     return (
       <ToolBar>
         <AppName>Coffee Chain</AppName>
-        {/* <nav> */}
         <Navigation>
           <NavItem><Link to='/coffees'>Coffees</Link></NavItem>
           <NavItem><Link to='/coffeeForm'>Add coffee</Link></NavItem>
@@ -46,10 +45,9 @@ class Header extends Component {
           <NavItem><Link to='/producers'>Producers</Link></NavItem>
           <NavItem><Link to='/userForm'>Profile</Link></NavItem>
         </Navigation>
-        {/* </nav> */}
       </ToolBar>
-    )
-  };
-};
+    );
+  }
+}
 
 export default Header;

@@ -8,37 +8,63 @@ import * as CoffeeActions from '../redux/actions/coffees';
 import * as CoffeeShopActions from '../redux/actions/coffee-shop';
 
 class Dashboard extends Component {
+  state = {
+    dashboardType: this.props.location.pathname
+  }
 
-  componentDidMount () {
-    const dashboardType = this.props.location.pathname;
-    console.log(dashboardType)
-    if (dashboardType === '/coffees' || dashboardType === '/' ) {
+  isCoffees;
+
+  fetchData () {
+    const {dashboardType} = this.state;
+    if (dashboardType === '/coffees' || dashboardType === '/') {
+      this.isCoffees = true;
       this.props.getAllCoffees();
     } else if (dashboardType === '/coffee-shops') {
       this.props.getAllCoffeeShops();
+      this.isCoffees = false;
     }
   }
 
+  componentDidMount() {
+    this.fetchData();
+  }
 
-  render () {
+  shouldComponentUpdate(nextProps) {
+    if (this.state.dashboardType !== nextProps.location.pathname) {
+      this.setState({ dashboardType: nextProps.location.pathname}, this.fetchData);
+      return true;
+    }
+    return true;
+  }
+
+  render() {
     return (
       <div>
-        <FiltersList/>
-          <ItemsList result={this.props.result} coffees={this.props.coffees}></ItemsList>
-          <Map></Map>
+        <FiltersList />
+        <ItemsList
+          result={this.props.result}
+          coffees={this.props.coffees}
+          coffeeShops={this.props.coffeeShops}
+          isCoffees={this.isCoffees}
+        />
+        <Map />
       </div>
     );
-  };
+  }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
+  coffeeShops: state.entities.coffeeShops,
   coffees: state.entities.coffees,
-  result: state.pages.dashboard.result,
+  result: state.pages.dashboard.result
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   getAllCoffees: () => dispatch(CoffeeActions.getAllCoffees()),
   getAllCoffeeShops: () => dispatch(CoffeeShopActions.getAllCoffeeShops())
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Dashboard);
