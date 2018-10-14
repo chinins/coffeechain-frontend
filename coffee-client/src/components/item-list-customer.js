@@ -19,19 +19,18 @@ const Image = styled('img')`
 `;
 
 function ItemsListCustomer(props) {
-
   if (props.coffeeShop) {
-    const { customer_name, country, pictures, description } = props.coffeeShop;
+    const { customer_name, country, Pictures, description } = props.coffeeShop;
     return (
       <Item>
         <Link to={`/coffee-detail/${props.id}`}>
-          <Image src={pictures.url} />
+          {<Image src={Pictures[0].url} />}
           <Name>{customer_name}</Name>
           <div>{country || 'Interesting Country'}</div>
         </Link>
       </Item>
     );
-  } else return <Item/>;
+  } else return <Item />;
 }
 
 export default ItemsListCustomer;
