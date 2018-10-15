@@ -16,5 +16,5 @@ export default (state = defaultState.entities, action) => {
       ...state.coffeeShops,
       ...action.data.entities.coffeeShops
     }
-  }
+  };
 };

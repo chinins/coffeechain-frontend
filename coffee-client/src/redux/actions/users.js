@@ -8,7 +8,10 @@ export const createCoffeeShop = (coffeeShop) => ({
     path: '/customers',
     method: 'POST',
     body: coffeeShop,
-    schema: coffeeShopSchema
+    schema: coffeeShopSchema,
+    header: {
+      'Content-Type': 'application/json'
+    }
   }
 });
 
@@ -18,7 +21,10 @@ export const createProducer = (producer) => ({
     path: '/producers',
     method: 'POST',
     body: producer,
-    schema: producerSchema
+    schema: producerSchema,
+    header: {
+      'Content-Type': 'application/json'
+    }
   }
 });
 
@@ -37,6 +43,9 @@ export const updateUser = (user) => ({
     path: '/me',
     method: 'PUT',
     body: user,
-    schema: userSchema
+    schema: userSchema,
+    header: {
+      'Content-Type': 'application/json'
+    }
   }
 });

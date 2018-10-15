@@ -4,6 +4,7 @@ import * as UserActions from '../redux/actions/users';
 import { connect } from 'react-redux';
 import { InputButton } from './buttons';
 import { Label, InputField, SelectInput, LabelSelect } from './input-fields';
+const uuidv4 = require('uuid/v4');
 
 const Form = styled('form')`
   display: flex;
@@ -12,10 +13,8 @@ const Form = styled('form')`
   align-items: center;
 `;
 
-
 class UserForm extends Component {
-
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       business_type: 'customer',
@@ -23,62 +22,96 @@ class UserForm extends Component {
       country: '',
       email: '',
       description: '',
-      details: ''
-    }
+      details: '',
+      id: Math.round(Math.random() * 10e14)
+    };
   }
 
-  handleInput = event => {
-    this.setState({[event.target.name]:event.target.value});
+  handleInput (event) {
+    this.setState({ [event.target.name]: event.target.value });
   }
 
-  handleSubmit = event => {
+  handleSubmit (event) {
     event.preventDefault();
-    if (this.state.business_type === 'customer') this.props.createCustomer(this.state.email);
-    if (this.state.business_type === 'producer') this.props.createProducer(this.state.email);
+    const id = uuidv4();
+    if (this.state.business_type === 'customer')
+      this.props.createCustomer(this.state);
+    if (this.state.business_type === 'producer')
+      this.props.createProducer(this.state);
     this.props.history.push('/');
   }
 
-  render() {
+  render () {
     return (
       <Form onSubmit={this.handleSubmit}>
         <LabelSelect>
           Business type:
-          <SelectInput name="business_type" value={this.state.business_type} onChange={this.handleInput}>
+          <SelectInput
+            name="business_type"
+            value={this.state.business_type}
+            onChange={this.handleInput}
+          >
             <option value="customer">Coffee Shop</option>
             <option value="producer">Coffee Producer</option>
           </SelectInput>
         </LabelSelect>
         <Label>
           Business name:
-          <InputField name="business_name" type="text" value={this.state.business_name} onChange={this.handleInput} />
+          <InputField
+            name="business_name"
+            type="text"
+            value={this.state.business_name}
+            onChange={this.handleInput}
+          />
         </Label>
         <Label>
           Country:
-          <InputField name="country" type="text" value={this.state.country} onChange={this.handleInput} />
+          <InputField
+            name="country"
+            type="text"
+            value={this.state.country}
+            onChange={this.handleInput}
+          />
         </Label>
         <Label>
           Email:
-          <InputField name="email" type="text" value={this.state.email} onChange={this.handleInput} />
+          <InputField
+            name="email"
+            type="text"
+            value={this.state.email}
+            onChange={this.handleInput}
+          />
         </Label>
         <Label>
           Description:
-          <InputField name="description" type="text" value={this.state.description} onChange={this.handleInput} />
+          <InputField
+            name="description"
+            type="text"
+            value={this.state.description}
+            onChange={this.handleInput}
+          />
         </Label>
-
         <Label>
           Details:
-          <InputField name="details" type="text" value={this.state.details} onChange={this.handleInput} />
+          <InputField
+            name="details"
+            type="text"
+            value={this.state.details}
+            onChange={this.handleInput}
+          />
         </Label>
         <InputButton type="submit" value="Submit" />
       </Form>
-    )
+    );
   }
-
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  createCustomer: (customer) => dispatch(UserActions.createCoffeeShop(customer)),
-  createProducer: (producer) => dispatch(UserActions.createProducer(producer))
-})
+const mapDispatchToProps = dispatch => ({
+  createCustomer: customer => dispatch(UserActions.createCoffeeShop(customer)),
+  createProducer: producer => dispatch(UserActions.createProducer(producer))
+});
 
-export default connect(null, mapDispatchToProps)(UserForm);
+export default connect(
+  null,
+  mapDispatchToProps
+)(UserForm);

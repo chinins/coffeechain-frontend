@@ -15,17 +15,27 @@ const List = styled('div')`
   overflow-y: scroll;
 `;
 
-function ItemsList(props) {
-
+function ItemsList (props) {
   const renderItems = () => {
     return props.result.map(itemId => {
-      if (Object.getOwnPropertyNames(props.coffees)[0] && props.isCoffees) {
+      if (Object.keys(props.coffees).length > 0 && props.isCoffees) {
         return (
-          <ItemsListCoffee key={itemId} id={itemId} coffee={props.coffees[itemId]} />
+          <ItemsListCoffee
+            key={itemId}
+            id={itemId}
+            coffee={props.coffees[itemId]}
+          />
         );
-      } else if (Object.getOwnPropertyNames(props.coffeeShops)[0] && !props.isCoffees) {
+      } else if (
+        Object.keys(props.coffeeShops).length > 0 &&
+        !props.isCoffees
+      ) {
         return (
-          <ItemListCustomer key={itemId} id={itemId} coffeeShop={props.coffeeShops[itemId]}/>
+          <ItemListCustomer
+            key={itemId}
+            id={itemId}
+            coffeeShop={props.coffeeShops[itemId]}
+          />
         );
       } else return;
     });

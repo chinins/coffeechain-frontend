@@ -8,14 +8,15 @@ import * as CoffeeActions from '../redux/actions/coffees';
 import * as CoffeeShopActions from '../redux/actions/coffee-shop';
 
 class Dashboard extends Component {
-  state = {
-    dashboardType: this.props.location.pathname
+  constructor (props) {
+    super(props);
+    this.state = {
+      dashboardType: this.props.location.pathname
+    };
   }
 
-  isCoffees;
-
   fetchData () {
-    const {dashboardType} = this.state;
+    const { dashboardType } = this.state;
     if (dashboardType === '/coffees' || dashboardType === '/') {
       this.isCoffees = true;
       this.props.getAllCoffees();
@@ -25,19 +26,22 @@ class Dashboard extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.fetchData();
   }
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate (nextProps) {
     if (this.state.dashboardType !== nextProps.location.pathname) {
-      this.setState({ dashboardType: nextProps.location.pathname}, this.fetchData);
+      this.setState(
+        { dashboardType: nextProps.location.pathname },
+        this.fetchData
+      );
       return true;
     }
     return true;
   }
 
-  render() {
+  render () {
     return (
       <div>
         <FiltersList />
@@ -47,7 +51,10 @@ class Dashboard extends Component {
           coffeeShops={this.props.coffeeShops}
           isCoffees={this.isCoffees}
         />
-        <Map />
+        <Map
+          data={this.props.isCoffees ? this.coffees : this.props.coffeeShops}
+          result={this.props.result}
+        />
       </div>
     );
   }

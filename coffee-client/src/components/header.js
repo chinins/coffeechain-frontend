@@ -34,16 +34,26 @@ const NavItem = styled('li')`
 `;
 
 class Header extends Component {
-  render() {
+  render () {
     return (
       <ToolBar>
         <AppName>Coffee Chain</AppName>
         <Navigation>
-          <NavItem><Link to='/coffees'>Coffees</Link></NavItem>
-          <NavItem><Link to='/coffeeForm'>Add coffee</Link></NavItem>
-          <NavItem><Link to='/coffee-shops'>Coffee shops</Link></NavItem>
-          <NavItem><Link to='/producers'>Producers</Link></NavItem>
-          <NavItem><Link to='/userForm'>Profile</Link></NavItem>
+          <NavItem>
+            <Link to="/coffees">Coffees</Link>
+          </NavItem>
+          <NavItem>
+            <Link to="/coffeeForm">Add coffee</Link>
+          </NavItem>
+          <NavItem>
+            <Link to="/coffee-shops">Coffee shops</Link>
+          </NavItem>
+          <NavItem>
+            <Link to="/producers">Producers</Link>
+          </NavItem>
+          <NavItem>
+            <Link to="/userForm">Profile</Link>
+          </NavItem>
         </Navigation>
       </ToolBar>
     );
