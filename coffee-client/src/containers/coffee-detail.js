@@ -69,7 +69,7 @@ class CoffeeDetail extends Component {
           <img src={picture} alt="plantation" />
         </ImageFormat>
         <Company> {business_name || 'loading'} </Company>
-        <Link to={{ pathname: '/order' }}>
+        <Link to={{ pathname: `/order/${this.coffeeId}` }}>
           {' '}
           <Buy>
             <LightButtonSimple> ORDER </LightButtonSimple>

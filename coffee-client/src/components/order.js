@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { css } from 'react-emotion';
 import * as CoffeeActions from '../redux/actions/coffees';
+import * as TransactionsActions from '../redux/actions/transactions';
 import { InputButton } from './buttons';
 import { Label, InputField } from './input-fields';
 import { Form, CoffeeBox, Hr, Title, Total, Orderid } from './order-style';
@@ -10,48 +11,48 @@ class Order extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      kg: '',
+      kg: 0,
       total: '',
       notes: ''
     };
-    this.coffeeId = ':coffee_id'; // to change to passed url params later - coffeeId = this.props.match.params.coffeeId
-    this.id = 'ecedd2e7-c913-4250-a331-932c219c8000'; // to change later
+    this.coffeeId = this.props.match.params.coffeeId;
   }
 
   componentDidMount () {
     this.props.getCoffee(this.coffeeId);
   }
 
-  handleInput (event) {
+  handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
   }
 
   // for later:
 
-  // handleSubmit = event => {
-  //   event.preventDefault();
-  //   this.props.createTransaction(this.price);
-  //   this.props.history.push('order/:id_order');
-  // }
+  handleSubmit = event => {
+    event.preventDefault();
+    // this.props.createTransaction(this.price);
+    // this.props.history.push('order/:id_order');
+  }
 
   // create a function for the price
 
   render () {
     const { coffees } = this.props;
-    const check = coffees[this.id];
+    const check = coffees[this.coffeeId];
 
     // coffeeBox
 
-    let altitude = check && check.altitude;
-    let business_name = check && check.Producer.business_name;
-    let botanical_variety = check && check.botanical_variety;
-    let name = check && check.name;
-
+    const altitude = check && check.altitude;
+    const business_name = check && check.producer.business_name;
+    const botanical_variety = check && check.botanical_variety;
+    const name = check && check.name;
+    const price = check && check.price_kg;
+    const total = price * this.state.kg;
     return (
       <div>
         <Title> ORDER </Title>
-        <Orderid> #ghjklmkl56789 </Orderid>
-        <Total> TOTAL: $ 200 </Total>
+        <Orderid> Order #{this.coffeeId} </Orderid>
+        <Total> TOTAL: $ {total} </Total>
         <Hr />
         <br />
         <Form onSubmit={this.handleSubmit}>
@@ -83,10 +84,10 @@ class Order extends Component {
           />
           <CoffeeBox>
             <b> SUMMARY </b> Producer : {business_name}
-            <n /> Variety: {botanical_variety}
-            <n /> Name: {name}
-            <n /> Altitude: {altitude}
-            <n /> Price: $ 200
+            <br /> Variety: {botanical_variety}
+            <br /> Name: {name}
+            <br /> Altitude: {altitude}
+            <br /> Price: $ {price}
           </CoffeeBox>
         </Form>
       </div>
@@ -100,7 +101,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getCoffee: coffeeId => dispatch(CoffeeActions.getCoffee(coffeeId))
+  getCoffee: coffeeId => dispatch(CoffeeActions.getCoffee(coffeeId)),
+  createTransaction: (transaction,coffeeId) => dispatch(TransactionsActions.createTransaction(transaction,coffeeId))
 });
 
 export default connect(
