@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import styled from 'react-emotion';
 import mapboxgl from 'mapbox-gl';
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiY2hpbmlucyIsImEiOiJjam4xaHdleWI0a2U4M3FueDgwM2ptN2VtIn0.r0ypAbepxGXZvEwJBR3amg';
+mapboxgl.accessToken =
+  'pk.eyJ1IjoiY2hpbmlucyIsImEiOiJjam4xaHdleWI0a2U4M3FueDgwM2ptN2VtIn0.r0ypAbepxGXZvEwJBR3amg';
 
 const MapDetailDiv = styled('div')`
   height: 35%;
@@ -13,13 +14,12 @@ const MapDetailDiv = styled('div')`
 `;
 
 class MapDetail extends Component {
-
-  constructor(props) {
+  constructor (props) {
     super(props);
-    this.map = {}
+    this.map = {};
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/satellite-v9',
@@ -32,14 +32,15 @@ class MapDetail extends Component {
       .addTo(this.map);
   }
 
-
-  render() {
+  render () {
     return (
       <MapDetailDiv>
-        <div ref={el => this.mapContainer = el} className="absolute top right left bottom"></div>
-
+        <div
+          ref={el => (this.mapContainer = el)}
+          className="absolute top right left bottom"
+        />
       </MapDetailDiv>
-    )
+    );
   }
 }
 

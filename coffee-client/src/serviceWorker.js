@@ -18,7 +18,7 @@ const isLocalhost = Boolean(
     )
 );
 
-export function register(config) {
+export function register (config) {
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location);
@@ -39,6 +39,7 @@ export function register(config) {
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
         navigator.serviceWorker.ready.then(() => {
+          //eslint-disable-next-line
           console.log(
             'This web app is being served cache-first by a service ' +
               'worker. To learn more, visit https://goo.gl/SC7cgQ'
@@ -52,7 +53,7 @@ export function register(config) {
   }
 }
 
-function registerValidSW(swUrl, config) {
+function registerValidSW (swUrl, config) {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
@@ -65,6 +66,7 @@ function registerValidSW(swUrl, config) {
               // the fresh content will have been added to the cache.
               // It's the perfect time to display a "New content is
               // available; please refresh." message in your web app.
+              //eslint-disable-next-line
               console.log('New content is available; please refresh.');
 
               // Execute callback
@@ -75,6 +77,7 @@ function registerValidSW(swUrl, config) {
               // At this point, everything has been precached.
               // It's the perfect time to display a
               // "Content is cached for offline use." message.
+              //eslint-disable-next-line
               console.log('Content is cached for offline use.');
 
               // Execute callback
@@ -87,11 +90,12 @@ function registerValidSW(swUrl, config) {
       };
     })
     .catch(error => {
+      //eslint-disable-next-line
       console.error('Error during service worker registration:', error);
     });
 }
 
-function checkValidServiceWorker(swUrl, config) {
+function checkValidServiceWorker (swUrl, config) {
   // Check if the service worker can be found. If it can't reload the page.
   fetch(swUrl)
     .then(response => {
@@ -112,13 +116,14 @@ function checkValidServiceWorker(swUrl, config) {
       }
     })
     .catch(() => {
+      //eslint-disable-next-line
       console.log(
         'No internet connection found. App is running in offline mode.'
       );
     });
 }
 
-export function unregister() {
+export function unregister () {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.ready.then(registration => {
       registration.unregister();
