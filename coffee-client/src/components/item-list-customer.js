@@ -18,16 +18,17 @@ const Image = styled('img')`
   border-radius: ${props => props.theme.borderRadius};
 `;
 
-function ItemsListCustomer(props) {
-  const url = 'https://images.unsplash.com/photo-1527018263374-5adb6a54f01e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=76ac2e56cf4887aac218a89543847865&auto=format&fit=crop&w=800&q=60';
+function ItemsListCustomer (props) {
+  const url =
+    'https://images.unsplash.com/photo-1527018263374-5adb6a54f01e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=76ac2e56cf4887aac218a89543847865&auto=format&fit=crop&w=800&q=60';
 
   if (props.coffeeShop) {
     const { customer_name, country, pictures, description } = props.coffeeShop;
     return (
       <Item>
-          {<Image src={pictures[0] ? pictures[0].url : url} />}
-          <Name>{customer_name}</Name>
-          <div>{country || 'Interesting Country'}</div>
+        {<Image src={pictures[0] ? pictures[0].url : url} />}
+        <Name>{customer_name}</Name>
+        <div>{country || 'Interesting Country'}</div>
       </Item>
     );
   } else return <Item />;

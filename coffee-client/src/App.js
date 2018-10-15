@@ -15,41 +15,46 @@ import CoffeeForm from './components/coffeeform';
 import InputForm from './components/input-form';
 
 class App extends Component {
-
- 
-  render()  {
+  render () {
     return (
       <ThemeProvider theme={theme}>
         <Router>
           <div className="App">
-             <Header></Header>
-             <Switch>
-               <Route exact path='/' component={Dashboard} />
-               <Route exact path='/coffees' component={Dashboard} />
-               <Route exact path='/coffee-shops' component={Dashboard} />
-              <Route exact path='/coffee-detail/:coffeeId' component={CoffeeDetail} />
-              <Route exact path='/order/' component={Order} />
-               <Route exact path='/coffeeForm' component={InputForm} />
-               <Route exact path='/userForm' component={InputForm} />
-              <Route exact path='/checkout' component={Checkout} />
-             </Switch>
-         </div>
+            <Header />
+            <Switch>
+              <Route exact path="/" component={Dashboard} />
+              <Route exact path="/coffees" component={Dashboard} />
+              <Route exact path="/coffee-shops" component={Dashboard} />
+              <Route
+                exact
+                path="/coffee-detail/:coffeeId"
+                component={CoffeeDetail}
+              />
+              <Route exact path="/order/" component={Order} />
+              <Route exact path="/coffeeForm" component={InputForm} />
+              <Route exact path="/userForm" component={InputForm} />
+              <Route exact path="/checkout" component={Checkout} />
+            </Switch>
+          </div>
         </Router>
       </ThemeProvider>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   coffees: state.coffees,
   producer: state.producer,
-  coffeeShop: state.coffeeShop,
+  coffeeShop: state.coffeeShop
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   getAllCoffees: () => dispatch(CoffeeActions.getAllCoffees()),
-  getCoffee: (coffeeId) => dispatch(CoffeeActions.getCoffee(coffeeId)),
+  getCoffee: coffeeId => dispatch(CoffeeActions.getCoffee(coffeeId)),
   createCoffee: () => dispatch(CoffeeActions.createCoffee())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

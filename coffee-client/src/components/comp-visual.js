@@ -9,4 +9,4 @@ export default function CompVisual (props) {
       <LightButton>light btn</LightButton>
     </div>
   );
-};
+}

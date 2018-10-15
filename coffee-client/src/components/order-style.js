@@ -1,4 +1,4 @@
-import styled, { css } from 'react-emotion';
+import styled from 'react-emotion';
 
 const Form = styled('form')`
   display: flex;
@@ -53,5 +53,4 @@ const CoffeeBox = styled('div')`
   text-align: right;
 `;
 
-
-export { Form, CoffeeBox, Hr, Title, Total, Orderid}
+export { Form, CoffeeBox, Hr, Title, Total, Orderid };

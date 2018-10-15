@@ -8,7 +8,7 @@ export default store => next => action => {
   if (!api) return next(action);
 
   const fetchOptions = {
-    method: api.method || 'GET',
+    method: api.method || 'GET'
   };
   if (api.body) {
     fetchOptions.body = JSON.stringify(api.body);
@@ -21,12 +21,11 @@ export default store => next => action => {
     .then(data => {
       //SUCCESS
       const successAction = {
-        type: action.type + '_SUCCESS',
-      }
+        type: action.type + '_SUCCESS'
+      };
       if (api.schema) {
         successAction.data = normalize(data, api.schema);
       }
-      console.log(successAction);
       store.dispatch(successAction);
     })
     .catch(data => {
@@ -34,11 +33,11 @@ export default store => next => action => {
       store.dispatch({
         type: action.type + '_FAILURE',
         data
-      })
-    })
+      });
+    });
 
   // REQUEST
   next({
     type: action.type + '_REQUEST'
-  })
+  });
 };

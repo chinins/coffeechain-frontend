@@ -14,10 +14,9 @@ const MapDiv = styled('div')`
 `;
 
 class Map extends Component {
-
   constructor (props) {
     super(props);
-    this.map = {}
+    this.map = {};
   }
 
   componentDidMount () {
@@ -49,13 +48,15 @@ class Map extends Component {
       .addTo(this.map);
   }
 
-
-  render() {
+  render () {
     return (
       <MapDiv>
-        <div ref={el => this.mapContainer = el} className="absolute top right left bottom"></div>
+        <div
+          ref={el => (this.mapContainer = el)}
+          className="absolute top right left bottom"
+        />
       </MapDiv>
-    )
+    );
   }
 }
 

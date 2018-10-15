@@ -5,26 +5,23 @@ import * as CoffeeActions from '../redux/actions/coffees';
 import { InputButton } from './buttons';
 import { Label, InputField, SelectInput, LabelSelect } from './input-fields';
 
-
-
 class Checkout extends Component {
-
-  coffeeId = ':coffee_id';   // to change to passed url params later
   // coffeeId = this.props.match.params.coffeeId
+  constructor (props) {
+    super(props);
+    this.coffeeId = ':coffee_id'; // to change to passed url params later
+    this.id = 'ecedd2e7-c913-4250-a331-932c219c8000'; // to change later
+  }
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.getCoffee(this.coffeeId);
   }
 
-  // create a function for the price 
+  // create a function for the price
 
-  id = 'ecedd2e7-c913-4250-a331-932c219c8000'    // to change later
-
-  render() {
-
+  render () {
     return (
       <div>
-       
         {/* <form action="/createTransaction" method="POST">
           <script
             src="https://checkout.stripe.com/checkout.js" className ="stripe-button"
@@ -38,11 +35,10 @@ class Checkout extends Component {
             data-zip-code="true">
           </script>
         </form> */}
-
       </div>
-    )
+    );
   }
-};
+}
 
 const mapStateToProps = state => ({
   coffees: state.entities.coffees,
@@ -51,6 +47,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getCoffee: coffeeId => dispatch(CoffeeActions.getCoffee(coffeeId))
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Checkout);
