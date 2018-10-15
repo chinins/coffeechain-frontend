@@ -98,14 +98,13 @@ const Buy = styled('div')`
 `;
 
 class CoffeeDetail extends Component {
-  //  coffeeId = ':coffee_id';   // to change to passed url params later
   coffeeId = this.props.match.params.coffeeId;
 
   componentDidMount() {
     this.props.getCoffee(this.coffeeId);
   }
 
-  id = this.coffeeId; // 'ecedd2e7-c913-4250-a331-932c219c8000'    // to change later
+  id = this.coffeeId;
 
   renderReviews = array => {
     return array.map(review => {
@@ -119,17 +118,16 @@ class CoffeeDetail extends Component {
     // coffeeBox
 
     let altitude = coffees[this.id] && coffees[this.id].altitude;
-    // let bean_density = coffees[this.id] && coffees[this.id].bean_density;
     let business_name =
       coffees[this.id] &&
-      coffees[this.id].Producer &&
-      coffees[this.id].Producer.business_name;
+      coffees[this.id].producer &&
+      coffees[this.id].producer.business_name;
     let botanical_variety =
       coffees[this.id] && coffees[this.id].botanical_variety;
     let BusinessDescription =
       coffees[this.id] &&
-      coffees[this.id].Producer &&
-      coffees[this.id].Producer.description;
+      coffees[this.id].producer &&
+      coffees[this.id].producer.description;
     let CoffeeDetails = coffees[this.id] && coffees[this.id].details;
     let name = coffees[this.id] && coffees[this.id].name;
     let roast_appearance =

@@ -19,15 +19,15 @@ const Image = styled('img')`
 `;
 
 function ItemsListCustomer(props) {
+  const url = 'https://images.unsplash.com/photo-1527018263374-5adb6a54f01e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=76ac2e56cf4887aac218a89543847865&auto=format&fit=crop&w=800&q=60';
+
   if (props.coffeeShop) {
-    const { customer_name, country, Pictures, description } = props.coffeeShop;
+    const { customer_name, country, pictures, description } = props.coffeeShop;
     return (
       <Item>
-        <Link to={`/coffee-detail/${props.id}`}>
-          {<Image src={Pictures[0].url} />}
+          {<Image src={pictures[0] ? pictures[0].url : url} />}
           <Name>{customer_name}</Name>
           <div>{country || 'Interesting Country'}</div>
-        </Link>
       </Item>
     );
   } else return <Item />;

@@ -25,7 +25,7 @@ class UserForm extends Component {
       email: '',
       description: '',
       details: '',
-      id: ''
+      id: Math.round(Math.random() * 10e14),
     }
   }
 
@@ -33,10 +33,9 @@ class UserForm extends Component {
     this.setState({[event.target.name]:event.target.value});
   }
 
-  handleSubmit = async event => {
+  handleSubmit = event => {
     event.preventDefault();
     const id = uuidv4();
-    await this.setState({ id });
     if (this.state.business_type === 'customer') this.props.createCustomer(this.state);
     if (this.state.business_type === 'producer') this.props.createProducer(this.state);
     this.props.history.push('/');

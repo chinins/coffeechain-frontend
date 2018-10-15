@@ -15,10 +15,11 @@ const Form = styled('form')`
 `;
 
 class CoffeeForm extends Component {
+
+  // temporary workaround authentication
   getRandomId = max => {
     return Math.floor(Math.random() * max);
   };
-
   randomProducerId = this.getRandomId(producersIdArr.length);
 
   constructor(props) {
@@ -32,7 +33,7 @@ class CoffeeForm extends Component {
       roast_appearance: '',
       price_kg: '',
       details: '',
-      id: ''
+      id: Math.round(Math.random() * 10e14),
     };
   }
 
@@ -40,9 +41,8 @@ class CoffeeForm extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit = async event => {
+  handleSubmit = event => {
     event.preventDefault();
-    await this.setState({ id: uuidv4() });
     const producerId = producersIdArr[this.randomProducerId];
     this.props.createCoffee(this.state, producerId);
     setTimeout(
