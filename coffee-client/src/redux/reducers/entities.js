@@ -15,6 +15,10 @@ export default (state = defaultState.entities, action) => {
     coffeeShops: {
       ...state.coffeeShops,
       ...action.data.entities.coffeeShops
+    },
+    transactions: {
+      ...state.transactions,
+      ...action.data.entites.transactions
     }
   };
 };
