@@ -47,7 +47,7 @@ class Dashboard extends Component {
           coffeeShops={this.props.coffeeShops}
           isCoffees={this.isCoffees}
         />
-        <Map />
+        <Map data={this.props.isCoffees ? this.coffees : this.props.coffeeShops} result={this.props.result}/>
       </div>
     );
   }

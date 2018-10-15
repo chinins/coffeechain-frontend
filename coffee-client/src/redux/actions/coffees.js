@@ -10,13 +10,17 @@ export const getCoffee = (coffeeId) => ({
   }
 });
 
-export const createCoffee = (coffee) => ({
+export const createCoffee = (coffee, producerId) => ({
   type: namespace.CREATE_COFFEE,
   api: {
     path: '/coffees',
     method: 'POST',
     body: coffee,
-    schema: coffeeSchema
+    schema: coffeeSchema,
+    header: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${producerId}`
+    }
   }
 });
 

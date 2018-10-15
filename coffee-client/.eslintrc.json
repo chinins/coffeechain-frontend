@@ -8,10 +8,15 @@
   },
   "extends": "eslint:recommended",
   "parserOptions": {
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaVersion": 9,
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "plugins": [
-    "json"
+    "json",
+    "react"
   ],
   "rules": {
     "indent": [
@@ -28,6 +33,8 @@
     "space-before-blocks": "error",
     "space-before-function-paren": "error",
     "no-undef": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error"
   }
 }

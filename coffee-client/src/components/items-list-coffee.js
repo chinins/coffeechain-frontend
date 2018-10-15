@@ -19,18 +19,20 @@ const Image = styled('img')`
 `;
 
 function ItemsListCoffee(props) {
+  const url = 'https://images.unsplash.com/photo-1527018263374-5adb6a54f01e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=76ac2e56cf4887aac218a89543847865&auto=format&fit=crop&w=800&q=60';
 
   if (props.coffee) {
-    const { Producer, picture, name, botanical_variety } = props.coffee;
+    const { producer, picture, name, botanical_variety } = props.coffee;
     return (
       <Item>
         <Link to={`/coffee-detail/${props.id}`}>
-          <Image src={picture.url} />
+          {/* <Image src={picture.url} /> */}
+          <Image src={url} />
           <Name>{name}</Name>
           <div>{botanical_variety || 'Arabica'}</div>
           <div>
-            {Producer.business_name || 'Some producer'},{' '}
-            {Producer.country || 'Interesting Country'}
+            {producer.business_name || 'Some producer'},{' '}
+            {producer.country || 'Interesting Country'}
           </div>
         </Link>
       </Item>
