@@ -2,36 +2,36 @@ import React, { Component } from 'react';
 import MapDetail from '../components/map-detail';
 import { connect } from 'react-redux';
 import * as CoffeeActions from '../redux/actions/coffees';
-import { LightButtonSimple } from '../components/buttons'
+import { LightButtonSimple } from '../components/buttons';
 import { Link } from 'react-router-dom';
 import { Div, Location, Buy, ImageFormat, ReviewBox, CoffeeBox, Paragraph, Subtitle, ThirdTitle, Company } from './coffee-detail-style'
 
 class CoffeeDetail extends Component {
-
- coffeeId = ':coffee_id';   // to change to passed url params later - so coffeeId = this.props.match.params.coffeeId
-  id = 'ecedd2e7-c913-4250-a331-932c219c8000'   
+  coffeeId = this.props.match.params.coffeeId;
 
   componentDidMount() {
     this.props.getCoffee(this.coffeeId);
   }
 
-  render() {
+  id = this.coffeeId;
 
+  render() {
     const { coffees } = this.props;
     const check = coffees[this.id]; 
 
-    let altitude = check && check.altitude;
-    let bean_density = check && check.bean_density;
-    let business_name = check && check.Producer.business_name;
-    let botanical_variety = check && check.botanical_variety;
-    let BusinessDescription = check && check.Producer.description;
-    let CoffeeDetails = check && check.details;
-    let name = check && check.name;
-    let roast_appearance = check && check.roast_appearance;
-    let preparation = check && check.preparation;
-    let picture = check && check.pictures[0].url;
-    let rating = check && check.rating;
-    let reviews = check && check.reviews;
+    const altitude = check && check.altitude;
+    const business_name = check && check.Producer.business_name;
+    const botanical_variety = check && check.botanical_variety;
+    const BusinessDescription = check && check.Producer.description;
+    const CoffeeDetails = check && check.details;
+    const name = check && check.name;
+    const roast_appearance = check && check.roast_appearance;
+    const preparation = check && check.preparation;
+    const picture =
+      'https://images.unsplash.com/photo-1527018263374-5adb6a54f01e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=76ac2e56cf4887aac218a89543847865&auto=format&fit=crop&w=800&q=60';
+    const rating = check && check.rating;
+    const reviews = check && check.reviews;
+
     let reviewsarray = [reviews, "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasiem ullam corporis suscipit laboriosam, nisi ut aliquid ex consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?", "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasiem ullam corporis suscipit laboriosam, nisi ut aliquid ex consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur ?"];
 
      let renderReviews = () => {
@@ -53,7 +53,6 @@ class CoffeeDetail extends Component {
             <br/> <b>  Variety : </b> {botanical_variety || "loading"}
             <br/> <b>  Detail:</b> {CoffeeDetails || "loading"} 
             <br/> <b>  Altitude:</b> {altitude || "loading"} 
-            <br/> <b>  Bean Density : </b> {bean_density || "loading"}
             <br/> <b>  Roast Appearance : </b> {roast_appearance || "loading"}
             <br/> <b>  Preparation : </b> {preparation || "loading"}
            </Paragraph>
@@ -66,7 +65,7 @@ class CoffeeDetail extends Component {
           <Paragraph top='7%'>  {renderReviews()} </Paragraph>
             </ReviewBox>
       </Div>
-    )
+    );
   }
 }
 
@@ -77,6 +76,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getCoffee: coffeeId => dispatch(CoffeeActions.getCoffee(coffeeId))
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(CoffeeDetail);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CoffeeDetail);

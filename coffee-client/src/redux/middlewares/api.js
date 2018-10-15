@@ -14,7 +14,7 @@ export default store => next => action => {
     fetchOptions.body = JSON.stringify(api.body);
   }
   if (api.header) {
-    fetchOptions.header = api.header;
+    fetchOptions.headers = api.header;
   }
   fetch(BASE_URL + api.path, fetchOptions)
     .then(res => res.json())
