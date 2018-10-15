@@ -1,63 +1,10 @@
 import React, { Component } from 'react';
-import styled, { css } from 'react-emotion';
 import { connect } from 'react-redux';
+import {css} from 'react-emotion';
 import * as CoffeeActions from '../redux/actions/coffees';
 import { InputButton } from './buttons';
-import { Label, InputField, SelectInput, LabelSelect } from './input-fields';
-
-const Form = styled('form')`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: left;
-`;
-
-const Title = styled('div')`
-  margin-top: 5%;
-  margin-left: 10%;
-  font-weight: 400;
-  font-size: 1.9em;
-`;
-
-const Orderid = styled('div')`
-  margin-top: -1.5%;
-  margin-left: 17%;
-  font-weight: 400;
-  font-size: 1em;
-`;
-
-const Total = styled('div')`
-  margin-top: -1.8%;
-  margin-left: 51%;
-  font-weight: 400;
-  font-size: 1.5em;
-`;
-
-const Hr = styled ('hr') `
-  display: block;
-  border: 0;
-  width: 50%;
-  margin-top: 2%;
-  margin-left: 10%;
-  margin-tbottom: 2%;
-  border-top: 2px solid black;
-`;
-
-const CoffeeBox = styled('div')`
-  display: flex;
-  flex-direction: column;
-  overflow-x: scroll;
-  height: 17%;
-  width: 25%;
-  position: absolute;
-  letter-spacing: -0.5px;
-  top: 26.8%;
-  right: 40%;
-  background-color: transparent;
-  color: black;
-  text-align: right;
-`;
-
+import { Label, InputField } from './input-fields';
+import { Form, CoffeeBox, Hr, Title, Total, Orderid } from './order-style';
 
 class Order extends Component {
 
@@ -70,8 +17,7 @@ class Order extends Component {
     }
   }
 
-  coffeeId = ':coffee_id';   // to change to passed url params later
-  // coffeeId = this.props.match.params.coffeeId
+  coffeeId = ':coffee_id';   // to change to passed url params later - coffeeId = this.props.match.params.coffeeId
 
   componentDidMount() {
     this.props.getCoffee(this.coffeeId);
@@ -80,6 +26,8 @@ class Order extends Component {
   handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
   }
+
+  // for later: 
 
   // handleSubmit = event => {
   //   event.preventDefault();
@@ -94,17 +42,14 @@ class Order extends Component {
   render() {
 
     const { coffees } = this.props;
+    const check = coffees[this.id];
 
     // coffeeBox
 
-    let altitude = coffees[this.id] && coffees[this.id].altitude;
-    let bean_density = coffees[this.id] && coffees[this.id].bean_density;
-    let business_name = coffees[this.id] && coffees[this.id].Producer.business_name;
-    let botanical_variety = coffees[this.id] && coffees[this.id].botanical_variety;
-    let name = coffees[this.id] && coffees[this.id].name;
-    let roast_appearance = coffees[this.id] && coffees[this.id].roast_appearance;
-    let preparation = coffees[this.id] && coffees[this.id].preparation;
-    let rating = coffees[this.id] && coffees[this.id].rating;
+    let altitude = check && check.altitude;
+    let business_name = check && check.Producer.business_name;
+    let botanical_variety = check && check.botanical_variety;
+    let name = check && check.name;
 
     return (
     <div> 
@@ -127,20 +72,13 @@ class Order extends Component {
           margin-top: 2%;
         `} />
           <CoffeeBox> 
-            <b> SUMMARY </b> 
-            Producer : {business_name} 
-            <n/>
-            Variety: {botanical_variety} 
-            <n />
-            Name: {name}
-            <n />
-            Altitude: {altitude}            
-            <n />
-            Price: $ 200
-            
+            <b> SUMMARY </b> Producer : {business_name} 
+            <n/> Variety: {botanical_variety} 
+            <n /> Name: {name}
+            <n /> Altitude: {altitude}            
+            <n /> Price: $ 200
             </CoffeeBox>
       </Form>
-
       </div>
     )
   }
