@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import styled, { css } from 'react-emotion';
 import { connect } from 'react-redux';
-import * as CoffeeActions from '../redux/actions/coffees';
-import { InputButton } from './buttons';
-import { Label, InputField, SelectInput, LabelSelect } from './input-fields';
+import * as CoffeeActions from '../../redux/actions/coffees';
+import { StripeProvider } from 'react-stripe-elements';
+import Payment from './payment'
 
 
 
@@ -24,6 +23,12 @@ class Checkout extends Component {
 
     return (
       <div>
+      
+        "Hello"
+
+            <StripeProvider apiKey="pk_test_eaHxpZdwd2DYpjuAz4KpbGim">
+          <Payment />
+        </StripeProvider>
        
         {/* <form action="/createTransaction" method="POST">
           <script
@@ -38,8 +43,8 @@ class Checkout extends Component {
             data-zip-code="true">
           </script>
         </form> */}
-
       </div>
+      
     )
   }
 };
