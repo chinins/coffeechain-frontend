@@ -20,9 +20,9 @@ class CoffeeDetail extends Component {
     const check = coffees[this.id]; 
 
     const altitude = check && check.altitude;
-    const business_name = check && check.Producer.business_name;
+    const business_name = check && check.producer.business_name;
     const botanical_variety = check && check.botanical_variety;
-    const BusinessDescription = check && check.Producer.description;
+    const BusinessDescription = check && check.producer.description;
     const CoffeeDetails = check && check.details;
     const name = check && check.name;
     const roast_appearance = check && check.roast_appearance;
