@@ -12,7 +12,6 @@ class Order extends Component {
     super(props);
     this.state = {
       kg: 0,
-      total: '',
       notes: ''
     };
     this.coffeeId = this.props.match.params.coffeeId;
@@ -30,7 +29,14 @@ class Order extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    // this.props.createTransaction(this.price);
+    const transaction = {};
+    transaction.uuid = Math.floor(Math.random()*10e14);
+    transaction.uuid_coffee = this.coffeeId;
+    transaction.buyer = 'adriapalleja';
+    transaction.quantity = this.state.kg;
+    transaction.price = this.props[this.coffeeId].price_kg;
+    transaction.total = transaction.price * transaction.quantity;
+    this.props.createTransaction(transaction);
     // this.props.history.push('order/:id_order');
   }
 
@@ -97,7 +103,8 @@ class Order extends Component {
 
 const mapStateToProps = state => ({
   coffees: state.entities.coffees,
-  result: state.pages.coffeeDetail.result
+  result: state.pages.coffeeDetail.result,
+  transactions: state.entites.transactions,
 });
 
 const mapDispatchToProps = dispatch => ({
