@@ -18,7 +18,7 @@ export default (state = defaultState.entities, action) => {
     },
     transactions: {
       ...state.transactions,
-      ...action.data.entites.transactions
+      ...action.data.entities.transactions
     }
   };
 };

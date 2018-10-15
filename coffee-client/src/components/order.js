@@ -109,7 +109,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getCoffee: coffeeId => dispatch(CoffeeActions.getCoffee(coffeeId)),
-  createTransaction: (transaction,coffeeId) => dispatch(TransactionsActions.createTransaction(transaction,coffeeId))
+  createTransaction: (transaction, coffeeId) => dispatch(TransactionsActions.createTransaction(transaction, coffeeId))
 });
 
 export default connect(

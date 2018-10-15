@@ -21,12 +21,6 @@ export const createTransaction = (transaction, coffeeId) => ({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${coffeeId}`
     }
-  },
-  eos: {
-    action: 'upsertuser',
-    actor: 'adriapalleja',
-    schema: transactionSchema,
-    data: transaction
   }
 });
 

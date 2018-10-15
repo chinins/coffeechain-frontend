@@ -9,3 +9,7 @@ export const producersIdArr = [
   595223592125201,
   595223592125202
 ];
+
+export const EOSIO_HTTP_ENDPOINT = 'http://localhost:7777';
+
+export const EOSIO_CONTRACT_ACCOUNT = 'beancoin';
