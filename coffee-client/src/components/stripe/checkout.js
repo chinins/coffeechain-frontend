@@ -20,31 +20,10 @@ class Checkout extends Component {
   id = 'ecedd2e7-c913-4250-a331-932c219c8000'    // to change later
 
   render() {
-
     return (
       <div>
-      
-        "Hello"
-
-            <StripeProvider apiKey="pk_test_eaHxpZdwd2DYpjuAz4KpbGim">
           <Payment />
-        </StripeProvider>
-       
-        {/* <form action="/createTransaction" method="POST">
-          <script
-            src="https://checkout.stripe.com/checkout.js" className ="stripe-button"
-            data-key="pk_test_eaHxpZdwd2DYpjuAz4KpbGim"
-            data-amount="999"
-            data-name="coffechain"
-            data-description="Example charge"
-            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-            data-locale="auto"
-            data-currency="eur"
-            data-zip-code="true">
-          </script>
-        </form> */}
       </div>
-      
     )
   }
 };

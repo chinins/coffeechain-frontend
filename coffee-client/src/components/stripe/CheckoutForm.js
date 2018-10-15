@@ -1,53 +1,105 @@
 // CheckoutForm.js
 import React from 'react';
-import { injectStripe } from 'react-stripe-elements';
+import {
+  CardElement,
+  CardNumberElement,
+  CardExpiryElement,
+  CardCVCElement,
+  PostalCodeElement,
+  PaymentRequestButtonElement,
+  IbanElement,
+  IdealBankElement,
+  StripeProvider,
+  Elements,
+  injectStripe, } from 'react-stripe-elements';
 
-import AddressSection from './AddressSection';
-import CardSection from './CardSection';
+  import './stripe-style.css';
 
-var stripe = Stripe('pk_test_eaHxpZdwd2DYpjuAz4KpbGim');
-var elements = stripe.elements();
+const handleBlur = () => {
+  console.log('[blur]');
+};
+const handleChange = (change) => {
+  console.log('[change]', change);
+};
+const handleClick = () => {
+  console.log('[click]');
+};
+const handleFocus = () => {
+  console.log('[focus]');
+};
+const handleReady = () => {
+  console.log('[ready]');
+};
+
+const createOptions = (fontSize, padding) => {
+  return {
+    style: {
+      base: {
+        fontSize,
+        color: '#424770',
+        letterSpacing: '0.025em',
+        fontFamily: 'Source Code Pro, monospace',
+        '::placeholder': {
+          color: '#aab7c4',
+        },
+        padding,
+      },
+      invalid: {
+        color: '#9e2146',
+      },
+    },
+  };
+};
 
 class CheckoutForm extends React.Component {
-  handleSubmit = (ev) => {
-    // We don't want to let default form submission happen here, which would refresh the page.
-    ev.preventDefault();
+  constructor(props) {
+    super(props);
+    this.submit = this.submit.bind(this);
+  }
 
-    // Within the context of `Elements`, this call to createToken knows which Element to
-    // tokenize, since there's only one in this group.
-    this.props.stripe.createToken({ name: 'Jenny Rosen' }).then(({ token }) => {
-      console.log('Received Stripe token:', token);
+  async submit(ev) {
+    let { token } = await this.props.stripe.createToken({ name: "Name" });
+    let response = await fetch("/charge", {
+      method: "POST",
+      headers: { "Content-Type": "text/plain" },
+      body: token.id
     });
 
-    // However, this line of code will do the same thing:
-    //
-    // this.props.stripe.createToken({type: 'card', name: 'Jenny Rosen'});
-
-    // You can also use createSource to create Sources. See our Sources
-    // documentation for more: https://stripe.com/docs/stripe-js/reference#stripe-create-source
-    //
-    // this.props.stripe.createSource({type: 'card', owner: {
-    //   name: 'Jenny Rosen'
-    // }});
+    if (response.ok) console.log("Purchase Complete!")
+  }
+  handleSubmit = (ev) => {
+    ev.preventDefault();
+    if (this.props.stripe) {
+      this.props.stripe
+        .createToken()
+        .then((payload) => console.log('[token]', payload));
+    } else {
+      console.log("Stripe.js hasn't loaded yet.");
+    }
   };
+
+
 
   render() {
     return (
-      <form action="/charge" method="post" id="payment-form">
-        <div class="form-row">
-          <label for="card-element">
-            Credit or debit card
-    </label>
-          <div id="card-element">
-    </div>
-
-    <div id="card-errors" role="alert"></div>
-        </div>
-
-        <button>Submit Payment</button>
+      <div className= "background-col"> 
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Card details
+          <CardElement
+            onBlur={handleBlur}
+            onChange={handleChange}
+            onFocus={handleFocus}
+            onReady={handleReady}
+            {...createOptions(this.props.fontSize)}
+          />
+        </label>
+        <button>Pay</button>
       </form>
+   </div>
     );
   }
 }
+
 
 export default injectStripe(CheckoutForm);

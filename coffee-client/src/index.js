@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import logger from 'redux-logger';
 
 import { createStore, applyMiddleware, compose } from 'redux';
+import { StripeProvider } from 'react-stripe-elements';
 import { Provider } from 'react-redux';
 import reducers from './redux/reducers';
 import api from './redux/middlewares/api';
@@ -26,7 +27,9 @@ const store = createStore(reducers, composeEnhancers(
 
 ReactDOM.render(
     <Provider store={store}>
+    <StripeProvider apiKey="pk_test_eaHxpZdwd2DYpjuAz4KpbGim">
       <App />
+    </StripeProvider>
     </Provider>
   , document.getElementById('root'));
 
