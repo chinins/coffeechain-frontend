@@ -35,11 +35,11 @@ class CoffeeForm extends Component {
     return Math.floor(Math.random() * max);
   }
 
-  handleInput (event) {
+  handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  handleSubmit (event) {
+  handleSubmit = event => {
     event.preventDefault();
     const producerId = producersIdArr[this.randomProducerId];
     this.props.createCoffee(this.state, producerId);
