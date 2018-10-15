@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { InputButton } from './buttons';
 import { Label, InputField, SelectInput, LabelSelect } from './input-fields';
 import { producersIdArr } from '../constants/connections';
-const uuidv4 = require('uuid/v4');
 
 const Form = styled('form')`
   display: flex;
