@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as CoffeeActions from '../redux/actions/coffees';
 import { LightButtonSimple } from '../components/buttons';
 import { Link } from 'react-router-dom';
+import uuid from 'uuid';
 
 const Div = styled('div')`
   font-family: avenir next;
@@ -106,12 +107,6 @@ class CoffeeDetail extends Component {
 
   id = this.coffeeId;
 
-  renderReviews = array => {
-    return array.map(review => {
-      return <Paragraph top="2%"> " {review} " </Paragraph>;
-    });
-  };
-
   render() {
     const { coffees } = this.props;
 
@@ -145,13 +140,15 @@ class CoffeeDetail extends Component {
     let rating = coffees[this.id] && coffees[this.id].rating;
     let reviews = coffees[this.id] && coffees[this.id].reviews;
 
-    // typeof Reviews = a string, we need it as an array to map over it
+    // typeof Reviews = a string, we need it as an array to map over it 
 
-    let reviewsarray = [
-      reviews,
-      'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasiem ullam corporis suscipit laboriosam, nisi ut aliquid ex consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
-      'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasiem ullam corporis suscipit laboriosam, nisi ut aliquid ex consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur ?'
-    ];
+    let reviewsarray = [reviews, "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasiem ullam corporis suscipit laboriosam, nisi ut aliquid ex consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?", "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasiem ullam corporis suscipit laboriosam, nisi ut aliquid ex consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur ?"];
+
+     let renderReviews = () => {
+       return reviewsarray.map(review => {
+         return <Paragraph key={uuid.v4()} top='2%'> " {review} " </Paragraph>;
+      })
+    }
 
     return (
       <Div>
@@ -190,9 +187,11 @@ class CoffeeDetail extends Component {
         <MapDetail />
         <ReviewBox>
           <Subtitle> Reviews </Subtitle>
-          <ThirdTitle right="7%"> AVERAGE - * {rating} </ThirdTitle>
-          <Paragraph top="7%"> {reviews} </Paragraph>
-        </ReviewBox>
+          <ThirdTitle right='7%'> AVERAGE - * {rating} </ThirdTitle>
+
+          <Paragraph top='7%'>  {renderReviews()} </Paragraph>
+
+            </ReviewBox>
       </Div>
     );
   }
