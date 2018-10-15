@@ -11,8 +11,9 @@ import Checkout from './components/checkout';
 
 import { connect } from 'react-redux';
 import * as CoffeeActions from './redux/actions/coffees';
-import CoffeeForm from './components/coffeeform';
+import LoadingBar from 'react-redux-loading-bar';
 import InputForm from './components/input-form';
+import { secondary } from './shared/colors';
 
 class App extends Component {
   render () {
@@ -20,6 +21,7 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <Router>
           <div className="App">
+            <LoadingBar style={{ zIndex: 100, backgroundColor: `${secondary}`, height: '10px' }} />
             <Header />
             <Switch>
               <Route exact path="/" component={Dashboard} />
