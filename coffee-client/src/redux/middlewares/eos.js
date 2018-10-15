@@ -17,14 +17,14 @@ const EOS = eosjs(config);
 export default store => next => action => {
   if (!action.eos) return next(action);
 
-  const { eosAction, actor, data } = action.eos;
+  const { eosAction, data } = action.eos;
 
   EOS.transaction(
     {
       actions: [
         {
           account: EOSIO_CONTRACT_ACCOUNT,
-          name: action,
+          name: eosAction,
           authorization: [
             {
               actor: process.env.EOSIO_ACCOUNT_NAME,
