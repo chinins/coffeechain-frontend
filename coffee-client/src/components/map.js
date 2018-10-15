@@ -26,24 +26,23 @@ class Map extends Component {
       center: [66.736466, -1.406542],
       zoom: 2.5
     });
-    let marker;
 
-    marker = new mapboxgl.Marker()
+    new mapboxgl.Marker()
       .setLngLat([36.736466, -1.406542])
       .addTo(this.map);
-    marker = new mapboxgl.Marker()
+    new mapboxgl.Marker()
       .setLngLat([35.736466, -2.406542])
       .addTo(this.map);
-    marker = new mapboxgl.Marker()
+    new mapboxgl.Marker()
       .setLngLat([33.734466, -0.806542])
       .addTo(this.map);
-    marker = new mapboxgl.Marker()
+    new mapboxgl.Marker()
       .setLngLat([31.736466, -4.406552])
       .addTo(this.map);
-    marker = new mapboxgl.Marker()
+    new mapboxgl.Marker()
       .setLngLat([36.736766, -11.406542])
       .addTo(this.map);
-    marker = new mapboxgl.Marker()
+    new mapboxgl.Marker()
       .setLngLat([28.434466, -15.506542])
       .addTo(this.map);
   }

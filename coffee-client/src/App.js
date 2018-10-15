@@ -4,7 +4,7 @@ import { theme } from './shared/theme';
 import './shared/styles';
 import Header from './components/header';
 import Dashboard from './containers/dashboard';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import CoffeeDetail from './containers/coffee-detail';
 import Order from './components/order';
 import Checkout from './components/checkout';

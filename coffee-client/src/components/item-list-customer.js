@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'react-emotion';
-import { Link } from 'react-router-dom';
 
 const Item = styled('div')`
   display: flex;
