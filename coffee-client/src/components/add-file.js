@@ -34,7 +34,9 @@ class AddFile extends Component {
         ipfsId = response[0].hash;
         console.log(ipfsId);
         this.setState({ added_file_hash: ipfsId });
-      }).catch(err => {
+      })
+      .then(() => this.props.onFileAdd(this.state.added_file_hash))
+      .catch(err => {
         console.log(err);
       });
   }

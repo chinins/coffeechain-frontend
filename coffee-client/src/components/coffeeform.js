@@ -26,6 +26,7 @@ class CoffeeForm extends Component {
       roast_appearance: '',
       price_kg: '',
       details: '',
+      picture_hash: '',
       id: Math.round(Math.random() * 10e14)
     };
     this.randomProducerId = this.getRandomId(producersIdArr.length);
@@ -49,10 +50,14 @@ class CoffeeForm extends Component {
     );
   }
 
+  addHash (hash) {
+    this.setState({ picture_hash: hash });
+  }
+
   render () {
     return (
       <div>
-        <AddFile></AddFile>
+        <AddFile onFileAdd={() => this.addHash}></AddFile>
         <Form onSubmit={this.handleSubmit}>
           <Label>
             Name:
