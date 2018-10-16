@@ -49,7 +49,7 @@ class Order extends Component {
 
     // coffeeBox
     const altitude = check && check.altitude;
-    const business_name = check && check.producer.business_name;
+    const business_name = check && check.producer && check.producer.business_name;
     const botanical_variety = check && check.botanical_variety;
     const name = check && check.name;
     const price = check && check.price_kg;
