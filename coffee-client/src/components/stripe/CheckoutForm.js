@@ -71,21 +71,25 @@ class CheckoutForm extends React.Component {
 
   render() {
     return (
-      <div className= "background-col"> 
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Card details
-          <CardElement
-            onBlur={handleBlur}
-            onChange={handleChange}
-            onFocus={handleFocus}
-            onReady={handleReady}
-            {...createOptions(this.props.fontSize)}
-          />
-        </label>
-        <button>Pay</button>
-      </form>
-   </div>
+      <div> 
+        <div className="checkout">    CHECKOUT </div>
+        <span className = "Hr" > </span>
+        <div className= "background-col"> 
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Card details
+            <CardElement
+              onBlur={handleBlur}
+              onChange={handleChange}
+              onFocus={handleFocus}
+              onReady={handleReady}
+              {...createOptions(this.props.fontSize)}
+            />
+          </label>
+          <button>Pay</button>
+        </form>
+      </div>
+    </div>
     );
   }
 }

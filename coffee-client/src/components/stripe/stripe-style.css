@@ -8,11 +8,27 @@
       font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     }
 
+    .checkout {
+      position: absolute; 
+      margin-top: -5%;
+      margin-left: 10%;
+      color: grey;
+      font-size: 1.5em;
+    }
+
+    .Hr {
+      position: absolute; 
+      margin-top: -2%;
+      width: 50%;
+      margin-left: 10%;
+      border-top: 2px solid grey;
+    }
+
     .background-col {
       margin-left: 10%;
       padding-left: 50px;
       padding-top: 50px;
-      margin-top: 5%;
+      margin-top: 9%;
       background-color: #f6f9fc;
       width: 50%;
     }
