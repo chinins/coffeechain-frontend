@@ -34,8 +34,8 @@ class Order extends Component {
     const id = Math.floor(Math.random() * 10e14);
     this.props.eosSaleInitiate(
       id,
-      parseInt(this.coffeeId),
-      parseInt(this.state.kg)
+      this.coffeeId,
+      this.state.kg
     );
     // this.props.createTransaction(transaction);
     // this.props.history.push('order/:id_order');
@@ -48,13 +48,12 @@ class Order extends Component {
     const check = coffees[this.coffeeId];
 
     // coffeeBox
-
     const altitude = check && check.altitude;
     const business_name = check && check.producer.business_name;
     const botanical_variety = check && check.botanical_variety;
     const name = check && check.name;
     const price = check && check.price_kg;
-    const total = price * this.state.kg;
+    const total = (parseInt(price) * this.state.kg) || 0;
     return (
       <div>
         <Title> ORDER </Title>

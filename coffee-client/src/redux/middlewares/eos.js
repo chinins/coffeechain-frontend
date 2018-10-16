@@ -19,7 +19,10 @@ const EOS = eosjs(config);
 export default store => next => action => {
   if (!action.eos) return next(action);
   const { eosAction, data } = action.eos;
-  //eslint-disable-next-line
+  Object.keys(data).forEach(key => {
+    const int = parseInt(data[key]);
+    if (!isNaN(int)) data[key] = int;
+  });
   EOS.transaction(
     {
       actions: [
