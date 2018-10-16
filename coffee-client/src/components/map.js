@@ -17,34 +17,32 @@ class Map extends Component {
   constructor (props) {
     super(props);
     this.map = {};
+    this.state = { propsLoaded: false };
   }
 
   componentDidMount () {
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/satellite-v9',
-      center: [66.736466, -1.406542],
+      center: [16.336466, 47.406542],
       zoom: 2.5
     });
+  }
 
-    new mapboxgl.Marker()
-      .setLngLat([36.736466, -1.406542])
-      .addTo(this.map);
-    new mapboxgl.Marker()
-      .setLngLat([35.736466, -2.406542])
-      .addTo(this.map);
-    new mapboxgl.Marker()
-      .setLngLat([33.734466, -0.806542])
-      .addTo(this.map);
-    new mapboxgl.Marker()
-      .setLngLat([31.736466, -4.406552])
-      .addTo(this.map);
-    new mapboxgl.Marker()
-      .setLngLat([36.736766, -11.406542])
-      .addTo(this.map);
-    new mapboxgl.Marker()
-      .setLngLat([28.434466, -15.506542])
-      .addTo(this.map);
+  componentDidUpdate () {
+    for (let i = 0; i < this.props.result.length; i++) {
+      if (
+        this.props.result.length > 0 &&
+        this.props.data[this.props.result[i]]
+      ) {
+        new mapboxgl.Marker()
+          .setLngLat([
+            this.props.data[this.props.result[i]].geo_location.coordinates[1],
+            this.props.data[this.props.result[i]].geo_location.coordinates[0]
+          ])
+          .addTo(this.map);
+      }
+    }
   }
 
   render () {

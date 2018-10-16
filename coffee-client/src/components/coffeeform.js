@@ -5,10 +5,16 @@ import { connect } from 'react-redux';
 import { InputButton } from './buttons';
 import { Label, InputField, SelectInput, LabelSelect, Form } from './input-fields';
 import { producersIdArr } from '../constants/connections';
+import Geocode from 'react-geocode';
 import AddFile from './add-file';
 
+const uuidv4 = require('uuid/v4');
+const key = require('../config');
+Geocode.setApiKey(key.key);
+Geocode.enableDebug();
+
 class CoffeeForm extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       name: '',
@@ -19,13 +25,15 @@ class CoffeeForm extends Component {
       roast_appearance: '',
       price_kg: '',
       details: '',
+      plantation_location: '',
+      geo_location: '',
       picture_hash: '',
       id: Math.round(Math.random() * 10e14)
     };
     this.randomProducerId = this.getRandomId(producersIdArr.length);
   }
   // temporary workaround authentication
-  getRandomId (max) {
+  getRandomId(max) {
     return Math.floor(Math.random() * max);
   }
 
@@ -35,19 +43,47 @@ class CoffeeForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    Geocode.fromAddress(this.state.plantation_location).then(
+      response => {
+        const { lat, lng } = response.results[0].geometry.location;
+        console.log(lat, lng);
+      },
+      error => {
+        console.error(error);
+      }
+    );
     const producerId = producersIdArr[this.randomProducerId];
     this.props.createCoffee(this.state, producerId);
     setTimeout(
       () => this.props.history.push(`coffee-detail/${this.state.id}`),
-      300
+      1000
     );
   };
+
+  handleLocation = event => {
+    this.setState({ [event.target.name]: event.target.value });
+    setTimeout(() => {
+      Geocode.fromAddress(this.state.plantation_location).then(
+        response => {
+          const { lat, lng } = response.results[0].geometry.location;
+          this.setState({
+            geo_location: {
+              type: 'Point',
+              coordinates: [lat, lng]
+            }
+          });
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }, 1500);
 
   addHash = hash => {
     this.setState({ picture_hash: hash });
   };
 
-  render () {
+  render() {
     return (
       <div>
         <AddFile onFileAdd={this.addHash}></AddFile>
@@ -68,6 +104,15 @@ class CoffeeForm extends Component {
               type="text"
               value={this.state.region}
               onChange={this.handleInput}
+            />
+          </Label>
+          <Label>
+            Plantation Location:
+            <InputField
+              name="plantation_location"
+              type="text"
+              value={this.state.plantation_location}
+              onChange={this.handleLocation}
             />
           </Label>
           <Label>
