@@ -2,15 +2,6 @@
 import React from 'react';
 import {
   CardElement,
-  CardNumberElement,
-  CardExpiryElement,
-  CardCVCElement,
-  PostalCodeElement,
-  PaymentRequestButtonElement,
-  IbanElement,
-  IdealBankElement,
-  StripeProvider,
-  Elements,
   injectStripe, } from 'react-stripe-elements';
 
   import './stripe-style.css';
@@ -77,8 +68,6 @@ class CheckoutForm extends React.Component {
       console.log("Stripe.js hasn't loaded yet.");
     }
   };
-
-
 
   render() {
     return (

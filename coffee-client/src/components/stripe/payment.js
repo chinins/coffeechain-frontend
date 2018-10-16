@@ -22,12 +22,9 @@ class Payment extends Component {
 
     return (
       <div>
-
-        <h1> HELLO </h1>
         <Elements>
           <CheckoutForm> </CheckoutForm>
           </Elements>
-
       </div>
     )
   }
