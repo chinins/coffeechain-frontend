@@ -62,16 +62,14 @@ class Order extends Component {
       <Hr/>
       <br/>
     <Form onSubmit={this.handleSubmit}>
-      <Label>
-          kg:
+          <Label className={css` margin-left: 10%; margin-top: 0.5%;`}>
         <InputField name="kg" type="number" value={this.state.kg} onChange={this.handleInput} />
       </Label>
-      <Label>
-        notes:
+          <Label className={css` margin-left: 10%; margin-top: -2%;`} >
         <InputField name="notes" type="text" value={this.state.notes} onChange={this.handleInput} />
       </Label>
       <Link to={{ pathname: `/checkout` }} > 
-          <LightButtonSimple type="submit" value="Order" className={css` margin-left: 15%; margin-top: 3%;`}> GO </LightButtonSimple> 
+          <LightButtonSimple type="submit" value="Order" className={css` margin-left: 11%; margin-top: 0%;`}> GO </LightButtonSimple> 
       </Link>
       <CoffeeBox> 
         <b> SUMMARY </b> Producer : {business_name} 

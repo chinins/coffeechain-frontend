@@ -16,9 +16,13 @@ const Title = styled('div')`
 
 const Orderid = styled('div')`
   margin-top: -1.5%;
-  margin-left: 17%;
+  margin-left: 19%;
   font-weight: 400;
   font-size: 1em;
+`;
+
+const LabelMargins = styled('div')`
+  margin-left: 19%;
 `;
 
 const Total = styled('div')`
@@ -31,7 +35,7 @@ const Total = styled('div')`
 const Hr = styled('hr')`
   display: block;
   border: 0;
-  width: 50%;
+  width: 53%;
   margin-top: 2%;
   margin-left: 10%;
   margin-tbottom: 2%;
