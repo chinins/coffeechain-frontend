@@ -30,6 +30,7 @@ class history extends React.Component {
         <Total> TOTAL: $ 200 </Total>
         <Hr />
         <br />
+        <div> 
         <Order > #ghjklmkl56789 <br /> Kg: 15 <br /> Paid: $200 </Order>
           <CoffeeBox>
             <b> SUMMARY </b> Producer : {business_name}
@@ -38,7 +39,7 @@ class history extends React.Component {
             <b /> Altitude: {altitude}
             <b /> Price: $ 200
         </CoffeeBox>
-    
+        </div>
       </div>
     )
   }
