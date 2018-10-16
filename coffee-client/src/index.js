@@ -7,12 +7,19 @@ import * as serviceWorker from './serviceWorker';
 import logger from 'redux-logger';
 
 import { createStore, applyMiddleware, compose } from 'redux';
+import { loadingBarMiddleware } from 'react-redux-loading-bar';
 import { Provider } from 'react-redux';
 import reducers from './redux/reducers';
 import api from './redux/middlewares/api';
 import eos from './redux/middlewares/eos';
 
-const middlewares = [api, eos];
+const middlewares = [
+  api,
+  eos,
+  loadingBarMiddleware({
+    promiseTypeSuffixes: ['REQUEST', 'SUCCESS', 'FAILURE']
+  })
+];
 
 if (process.env.NODE_ENV === 'development') {
   middlewares.push(logger);
