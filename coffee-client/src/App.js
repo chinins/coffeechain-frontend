@@ -10,7 +10,7 @@ import Order from './components/order';
 import Checkout from './components/checkout';
 
 import { connect } from 'react-redux';
-import * as CoffeeActions from './redux/actions/coffees';
+import * as ScatterActions from './redux/actions/scatter';
 import LoadingBar from 'react-redux-loading-bar';
 import InputForm from './components/input-form';
 import { secondary } from './shared/colors';
@@ -41,15 +41,11 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  coffees: state.coffees,
-  producer: state.producer,
-  coffeeShop: state.coffeeShop
+  // coffees: state.coffees
 });
 
 const mapDispatchToProps = dispatch => ({
-  getAllCoffees: () => dispatch(CoffeeActions.getAllCoffees()),
-  getCoffee: coffeeId => dispatch(CoffeeActions.getCoffee(coffeeId)),
-  createCoffee: () => dispatch(CoffeeActions.createCoffee())
+  // getAllCoffees: () => dispatch(CoffeeActions.getAllCoffees())
 });
 
 export default connect(

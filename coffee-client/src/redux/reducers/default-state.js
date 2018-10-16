@@ -1,4 +1,9 @@
 const defaultState = {
+  authentication: {
+    authenticated: false,
+    eosClient: {},
+    scatter: {}
+  },
   entities: {
     coffees: {},
     producers: {},
