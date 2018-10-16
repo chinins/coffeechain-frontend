@@ -33,6 +33,19 @@ class App extends Component {
     document.addEventListener('scatterLoaded', () => {
       const scatter = window.scatter;
       window.scatter = null;
+      scatter
+        .getIdentity({
+          accounts: [EOSIO_CONFIG.network]
+        })
+        .then(identity => {
+          this.props.storeIdentity(identity);
+          this.props.scatterLogin(true);
+        })
+        .catch(err => {
+          this.props.scatterLogin(false);
+          //eslint-disable-next-line
+          console.error(err);
+        });
       const eosClient = scatter.eos(
         EOSIO_CONFIG.network,
         EOS,
@@ -47,33 +60,10 @@ class App extends Component {
     });
   }
 
-  handleLogin = event => {
-    event.preventDefault();
-    if (this.state.scatterLoaded) {
-      //
-    }
-  };
-
   render () {
     if (this.props.authenticated) return this.renderApp();
-    else
-      return (
-        <ThemeProvider theme={theme}>
-          <div className="App">
-            <LoadingBar
-              style={{
-                zIndex: 100,
-                backgroundColor: `${secondary}`,
-                height: '10px'
-              }}
-            />
-            <p>Hello</p>
-            <Form onSubmit={this.handleLogin}>
-              <InputButton type="submit" value="Submit" />
-            </Form>
-          </div>
-        </ThemeProvider>
-      );
+    else return <p>You need to allow Scatter!</p>;
+    // TODO: some styling, it's a bit sad here
   }
 
   renderApp () {
@@ -117,8 +107,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   storeEOSClient: eosClient =>
     dispatch(ScatterActions.storeEOSClient(eosClient)),
+  storeIdentity: identity => dispatch(ScatterActions.storeIdentity(identity)),
   storeScatter: scatter => dispatch(ScatterActions.storeScatter(scatter)),
-  scatterLogin: () => dispatch(ScatterActions.scatterLogin())
+  scatterLogin: authenticated =>
+    dispatch(ScatterActions.scatterLogin(authenticated))
 });
 
 export default connect(

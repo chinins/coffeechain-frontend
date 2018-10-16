@@ -10,22 +10,20 @@ export default (state = defaultState.authentication, action) => {
       ...state,
       eosClient: action.data
     };
+  case namespace.SCATTER_STORE_IDENTITY:
+    return {
+      ...state,
+      identity: action.data
+    };
   case namespace.SCATTER_STORE_SCATTER:
     return {
       ...state,
       scatter: action.data
     };
-  case namespace.SCATTER_LOGIN_REQUEST:
+  case namespace.SCATTER_LOGIN:
     return {
-      ...state
-    };
-  case namespace.SCATTER_LOGIN_SUCCESS:
-    return {
-      ...state
-    };
-  case namespace.SCATTER_LOGIN_FAILURE:
-    return {
-      ...state
+      ...state,
+      authenticated: action.data
     };
   default:
     return {

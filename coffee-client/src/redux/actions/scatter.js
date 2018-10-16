@@ -5,12 +5,17 @@ export const storeEOSClient = (data) => ({
   data
 });
 
+export const storeIdentity = (data) => ({
+  type: namespace.SCATTER_STORE_IDENTITY,
+  data
+});
+
 export const storeScatter = (data) => ({
   type: namespace.SCATTER_STORE_SCATTER,
   data
 });
 
-export const scatterLogin = (role, hash) => ({
+export const scatterLogin = (data) => ({
   type: namespace.SCATTER_LOGIN,
-  // ...
+  data
 });
