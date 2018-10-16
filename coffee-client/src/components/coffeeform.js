@@ -14,7 +14,7 @@ Geocode.setApiKey(key.key);
 Geocode.enableDebug();
 
 class CoffeeForm extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       name: '',
@@ -33,7 +33,7 @@ class CoffeeForm extends Component {
     this.randomProducerId = this.getRandomId(producersIdArr.length);
   }
   // temporary workaround authentication
-  getRandomId(max) {
+  getRandomId (max) {
     return Math.floor(Math.random() * max);
   }
 
@@ -46,7 +46,6 @@ class CoffeeForm extends Component {
     Geocode.fromAddress(this.state.plantation_location).then(
       response => {
         const { lat, lng } = response.results[0].geometry.location;
-        console.log(lat, lng);
       },
       error => {
         console.error(error);
@@ -78,12 +77,13 @@ class CoffeeForm extends Component {
         }
       );
     }, 1500);
+  }
 
   addHash = hash => {
     this.setState({ picture_hash: hash });
   };
 
-  render() {
+  render () {
     return (
       <div>
         <AddFile onFileAdd={this.addHash}></AddFile>
@@ -182,6 +182,7 @@ class CoffeeForm extends Component {
     );
   }
 }
+
 
 const mapDispatchToProps = dispatch => ({
   createCoffee: (coffee, producerId) =>
