@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import styled, { css } from 'react-emotion';
+import { css } from 'react-emotion';
 import * as CoffeeActions from '../redux/actions/coffees';
 import { connect } from 'react-redux';
 import { InputButton } from './buttons';
 import { Label, InputField, SelectInput, LabelSelect, Form } from './input-fields';
 import { producersIdArr } from '../constants/connections';
 import AddFile from './add-file';
-
-
 
 class CoffeeForm extends Component {
   constructor (props) {
