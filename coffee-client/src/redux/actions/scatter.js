@@ -1,15 +1,16 @@
 import { namespace } from '../../constants/namespace';
 
-const EOSIO_ACCOUNT_NAME='leonh';
+export const storeEOSClient = (data) => ({
+  type: namespace.SCATTER_STORE_EOS_CLIENT,
+  data
+});
+
+export const storeScatter = (data) => ({
+  type: namespace.SCATTER_STORE_SCATTER,
+  data
+});
 
 export const scatterLogin = (role, hash) => ({
-  type: namespace.EOS_USER_UPSERT,
-  eos: {
-    eosAction: 'upsertuser',
-    data: {
-      user: EOSIO_ACCOUNT_NAME, // user account
-      role, // 'consumer' or 'producer'
-      hash  // hash of the user data
-    }
-  }
+  type: namespace.SCATTER_LOGIN,
+  // ...
 });

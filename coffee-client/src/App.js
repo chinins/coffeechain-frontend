@@ -15,19 +15,89 @@ import LoadingBar from 'react-redux-loading-bar';
 import InputForm from './components/input-form';
 import { secondary } from './shared/colors';
 
+import { InputButton } from './components/buttons';
+import { Form } from './components/order-style';
+
+import { EOSIO_CONFIG } from './constants/connections';
+import EOS from 'eosjs';
+
 class App extends Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      scatterLoaded: false
+    };
+  }
+
+  componentDidMount () {
+    document.addEventListener('scatterLoaded', () => {
+      const scatter = window.scatter;
+      window.scatter = null;
+      const eosClient = scatter.eos(
+        EOSIO_CONFIG.network,
+        EOS,
+        EOSIO_CONFIG.eosOptions,
+        EOSIO_CONFIG.network.protocol
+      );
+      this.props.storeEOSClient(eosClient);
+      this.props.storeScatter(scatter);
+      this.setState({
+        scatterLoaded: true
+      });
+    });
+  }
+
+  handleLogin = event => {
+    event.preventDefault();
+    if (this.state.scatterLoaded) {
+      //
+    }
+  };
+
   render () {
+    if (this.props.authenticated) return this.renderApp();
+    else
+      return (
+        <ThemeProvider theme={theme}>
+          <div className="App">
+            <LoadingBar
+              style={{
+                zIndex: 100,
+                backgroundColor: `${secondary}`,
+                height: '10px'
+              }}
+            />
+            <p>Hello</p>
+            <Form onSubmit={this.handleLogin}>
+              <InputButton type="submit" value="Submit" />
+            </Form>
+          </div>
+        </ThemeProvider>
+      );
+  }
+
+  renderApp () {
     return (
       <ThemeProvider theme={theme}>
         <Router>
           <div className="App">
-            <LoadingBar style={{ zIndex: 100, backgroundColor: `${secondary}`, height: '10px' }} />
+            <LoadingBar
+              style={{
+                zIndex: 100,
+                backgroundColor: `${secondary}`,
+                height: '10px'
+              }}
+            />
             <Header />
             <Switch>
               <Route exact path="/" component={Dashboard} />
               <Route exact path="/coffees" component={Dashboard} />
               <Route exact path="/coffee-shops" component={Dashboard} />
-              <Route exact path="/coffee-detail/:coffeeId" component={CoffeeDetail} />
+              <Route
+                exact
+                path="/coffee-detail/:coffeeId"
+                component={CoffeeDetail}
+              />
               <Route exact path="/order/:coffeeId" component={Order} />
               <Route exact path="/coffeeForm" component={InputForm} />
               <Route exact path="/userForm" component={InputForm} />
@@ -41,11 +111,14 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  // coffees: state.coffees
+  authenticated: state.authentication.authenticated
 });
 
 const mapDispatchToProps = dispatch => ({
-  // getAllCoffees: () => dispatch(CoffeeActions.getAllCoffees())
+  storeEOSClient: eosClient =>
+    dispatch(ScatterActions.storeEOSClient(eosClient)),
+  storeScatter: scatter => dispatch(ScatterActions.storeScatter(scatter)),
+  scatterLogin: () => dispatch(ScatterActions.scatterLogin())
 });
 
 export default connect(
