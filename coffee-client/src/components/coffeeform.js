@@ -8,8 +8,7 @@ import { producersIdArr } from '../constants/connections';
 import Geocode from 'react-geocode';
 import AddFile from './add-file';
 
-const uuidv4 = require('uuid/v4');
-const key = require('../config');
+const key = require('../example.config.js');
 Geocode.setApiKey(key.key);
 Geocode.enableDebug();
 

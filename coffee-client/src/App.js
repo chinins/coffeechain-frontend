@@ -7,7 +7,8 @@ import Dashboard from './containers/dashboard';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import CoffeeDetail from './containers/coffee-detail';
 import Order from './components/order';
-import Checkout from './components/checkout';
+import Checkout from './components/stripe/checkout';
+import Payment from './components/stripe/payment';
 
 import { connect } from 'react-redux';
 import * as CoffeeActions from './redux/actions/coffees';
@@ -31,7 +32,8 @@ class App extends Component {
               <Route exact path="/order/:coffeeId" component={Order} />
               <Route exact path="/coffeeForm" component={InputForm} />
               <Route exact path="/userForm" component={InputForm} />
-              <Route exact path="/checkout" component={Checkout} />
+              <Route exact path='/checkout/:id' component={Checkout} />
+              <Route exact path='/payment' component={Payment} />
             </Switch>
           </div>
         </Router>
