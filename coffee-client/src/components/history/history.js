@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as CoffeeActions from '../../redux/actions/coffees';
-import { CoffeeBox, Hr, Title, Total, Order } from './history-style';
+import { HrSmall, Div, CoffeeBox, Hr, Title, Total, Order } from './history-style';
 
 
 class history extends React.Component {
@@ -25,13 +25,12 @@ class history extends React.Component {
     let name = check && check.name;
 
     return (
-      <div>
+     <div> 
         <Title> HISTORY </Title>
         <Total> TOTAL: $ 200 </Total>
         <Hr />
-        <br />
+        <Div> 
         <div> 
-        <Order > #ghjklmkl56789 <br /> Kg: 15 <br /> Paid: $200 </Order>
           <CoffeeBox>
             <b> SUMMARY </b> Producer : {business_name}
             <b /> Variety: {botanical_variety}
@@ -39,7 +38,32 @@ class history extends React.Component {
             <b /> Altitude: {altitude}
             <b /> Price: $ 200
         </CoffeeBox>
+          <Order ><i> #ghjklmkl56789 <br /> Kg: 15 <br /> Paid: $200 </i></Order>
+          <HrSmall />
         </div>
+        <div>
+          <CoffeeBox>
+            <b> SUMMARY </b> Producer : {business_name}
+            <b /> Variety: {botanical_variety}
+            <b /> Name: {name}
+            <b /> Altitude: {altitude}
+            <b /> Price: $ 200
+        </CoffeeBox>
+          <Order ><i> #ghjklmkl56789 <br /> Kg: 15 <br /> Paid: $200 </i></Order>
+          <HrSmall/>
+        </div>
+        <div>
+          <CoffeeBox>
+            <b> SUMMARY </b> Producer : {business_name}
+            <b /> Variety: {botanical_variety}
+            <b /> Name: {name}
+            <b /> Altitude: {altitude}
+            <b /> Price: $ 200
+        </CoffeeBox>
+          <Order ><i> #ghjklmkl56789 <br /> Kg: 15 <br /> Paid: $200 </i></Order>
+          <HrSmall />
+        </div>
+        </Div>
       </div>
     )
   }

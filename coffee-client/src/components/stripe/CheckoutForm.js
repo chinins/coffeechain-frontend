@@ -1,10 +1,9 @@
-// CheckoutForm.js
 import React from 'react';
 import {
   CardElement,
   injectStripe, } from 'react-stripe-elements';
 
-  import './stripe-style.css';
+import './stripe-style.css';
 
 const handleBlur = () => {
   console.log('[blur]');
@@ -12,9 +11,7 @@ const handleBlur = () => {
 const handleChange = (change) => {
   console.log('[change]', change);
 };
-const handleClick = () => {
-  console.log('[click]');
-};
+
 const handleFocus = () => {
   console.log('[focus]');
 };
@@ -43,12 +40,8 @@ const createOptions = (fontSize, padding) => {
 };
 
 class CheckoutForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.submit = this.submit.bind(this);
-  }
 
-  async submit(ev) {
+  submit = async (ev) => {
     let { token } = await this.props.stripe.createToken({ name: "Name" });
     let response = await fetch("/charge", {
       method: "POST",
@@ -58,16 +51,7 @@ class CheckoutForm extends React.Component {
 
     if (response.ok) console.log("Purchase Complete!")
   }
-  handleSubmit = (ev) => {
-    ev.preventDefault();
-    if (this.props.stripe) {
-      this.props.stripe
-        .createToken()
-        .then((payload) => console.log('[token]', payload));
-    } else {
-      console.log("Stripe.js hasn't loaded yet.");
-    }
-  };
+
 
   render() {
     return (
@@ -75,7 +59,7 @@ class CheckoutForm extends React.Component {
         <div className="checkout">    CHECKOUT </div>
         <span className = "Hr" > </span>
         <div className= "background-col"> 
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.submit}>
           <label>
             Card details
             <CardElement
