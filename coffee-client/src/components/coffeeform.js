@@ -3,16 +3,11 @@ import styled, { css } from 'react-emotion';
 import * as CoffeeActions from '../redux/actions/coffees';
 import { connect } from 'react-redux';
 import { InputButton } from './buttons';
-import { Label, InputField, SelectInput, LabelSelect } from './input-fields';
+import { Label, InputField, SelectInput, LabelSelect, Form } from './input-fields';
 import { producersIdArr } from '../constants/connections';
 import AddFile from './add-file';
 
-const Form = styled('form')`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-`;
+
 
 class CoffeeForm extends Component {
   constructor (props) {
@@ -36,11 +31,11 @@ class CoffeeForm extends Component {
     return Math.floor(Math.random() * max);
   }
 
-  handleInput (event) {
+  handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
-  }
+  };
 
-  handleSubmit (event) {
+  handleSubmit = event => {
     event.preventDefault();
     const producerId = producersIdArr[this.randomProducerId];
     this.props.createCoffee(this.state, producerId);
@@ -48,16 +43,16 @@ class CoffeeForm extends Component {
       () => this.props.history.push(`coffee-detail/${this.state.id}`),
       300
     );
-  }
+  };
 
-  addHash (hash) {
+  addHash = hash => {
     this.setState({ picture_hash: hash });
-  }
+  };
 
   render () {
     return (
       <div>
-        <AddFile onFileAdd={() => this.addHash}></AddFile>
+        <AddFile onFileAdd={this.addHash}></AddFile>
         <Form onSubmit={this.handleSubmit}>
           <Label>
             Name:

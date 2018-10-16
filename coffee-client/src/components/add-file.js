@@ -1,6 +1,29 @@
-import styled from 'react-emotion';
+import styled, { css } from 'react-emotion';
 import React, { Component } from 'react';
+import { secondary } from '../shared/colors';
 const ipfsAPI = require('ipfs-api');
+
+
+const AddFileLabel = styled('label')`
+  border-radius: ${props => props.theme.borderRadius};
+  border: ${props => `solid 1px ${props.theme.colors.secondary}`};
+  display: inline-block;
+  cursor: pointer;
+  padding: 0 8px;
+  margin-left: 15px;
+`;
+
+const AddFileDiv = styled('div')`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const RowDiv = styled('div') `
+  display: flex;
+  margin-left: 73px;
+  margin-top: 10px;
+`;
 
 class AddFile extends Component {
   constructor () {
@@ -30,14 +53,11 @@ class AddFile extends Component {
     const buffer = Buffer.from(reader.result);
     this.ipfsApi.add(buffer, {progress: prog => console.log(`received: ${prog}`) })
       .then(response => {
-        console.log(response);
         ipfsId = response[0].hash;
-        console.log(ipfsId);
         this.setState({ added_file_hash: ipfsId });
-      })
-      .then(() => this.props.onFileAdd(this.state.added_file_hash))
-      .catch(err => {
-        console.log(err);
+        this.props.onFileAdd(ipfsId);
+      }).catch(err => {
+        throw new Error(err);
       });
   }
 
@@ -47,15 +67,33 @@ class AddFile extends Component {
 
   render () {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input type='file' onChange={this.captureFile}/>
-        </form>
-        <a target='_blank'
-          href={'https://ipfs.io/ipfs/' + this.state.added_file_hash}>
-          {this.state.added_file_hash}
-        </a>
-      </div>
+      <AddFileDiv>
+        <RowDiv>
+          <div>Pictures:</div>
+          <AddFileLabel onSubmit={this.handleSubmit}>
+            <input type='file' onChange={this.captureFile} className={css`
+              display: none;
+            `}/>
+            Upload picture
+          </AddFileLabel>
+        </RowDiv>
+        <RowDiv>
+          <span className={css`
+            font-weight: bold;
+          `}>{this.state.added_file_hash ? 'IPFS hash: ' : ''}</span>
+          <a target='_blank'
+            href={'https://ipfs.io/ipfs/' + this.state.added_file_hash} className={css`
+            margin-left: 15px;
+            :hover {
+              border-bottom: solid 2px ${secondary};
+              color: ${secondary};
+            }
+            `}>
+            {this.state.added_file_hash ? 'Link to your picture' : ''}
+          </a>
+        </RowDiv>
+
+      </AddFileDiv>
     );
   }
 }
