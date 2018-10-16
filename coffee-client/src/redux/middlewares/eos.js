@@ -1,8 +1,12 @@
-import { EOSIO_HTTP_ENDPOINT, EOSIO_CONTRACT_ACCOUNT } from '../../constants/connections';
+import {
+  EOSIO_HTTP_ENDPOINT,
+  EOSIO_CONTRACT_ACCOUNT
+} from '../../constants/connections';
 const eosjs = require('eosjs');
 
-const EOSIO_ACCOUNT_NAME='leonh';
-const EOSIO_ACCOUNT_PRIVATE_KEY='5K7mtrinTFrVTduSxizUc5hjXJEtTjVTsqSHeBHes1Viep86FP5';
+const EOSIO_ACCOUNT_NAME = 'leonh';
+const EOSIO_ACCOUNT_PRIVATE_KEY =
+  '5K7mtrinTFrVTduSxizUc5hjXJEtTjVTsqSHeBHes1Viep86FP5';
 
 const config = {
   chainId: null,
@@ -43,22 +47,24 @@ export default store => next => action => {
       blocksBehind: 3,
       expireSeconds: 30
     }
-  ).then(answer => {
-    // little trick to get the processed data frpm the transaction
-    // TODO: parse JSON
-    const data = answer.processed.action_traces[0].console;
-    store.dispatch({
-      type: `${action.type}_SUCCESS`,
-      data
+  )
+    .then(answer => {
+      // little trick to get the processed data frpm the transaction
+      // TODO: parse JSON
+      const data = JSON.parse(answer.processed.action_traces[0].console);
+      store.dispatch({
+        type: `${action.type}_SUCCESS`,
+        data
+      });
+    })
+    .catch(data => {
+      //eslint-disable-next-line
+      console.error(data);
+      store.dispatch({
+        type: `${action.type}_FAILURE`,
+        data
+      });
     });
-  }).catch(data => {
-    //eslint-disable-next-line
-    console.error(data);
-    store.dispatch({
-      type: `${action.type}_FAILURE`,
-      data
-    });
-  });
 
   next({
     ...action,
