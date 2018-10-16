@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { css } from 'react-emotion';
 import * as CoffeeActions from '../redux/actions/coffees';
 import * as TransactionsActions from '../redux/actions/transactions';
+import * as EOSActions from '../redux/actions/eos';
 import { InputButton } from './buttons';
 import { Label, InputField } from './input-fields';
 import { Form, CoffeeBox, Hr, Title, Total, Orderid } from './order-style';
@@ -23,22 +24,22 @@ class Order extends Component {
 
   handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
-  }
+  };
 
   // for later:
 
   handleSubmit = event => {
     event.preventDefault();
     const transaction = {};
-    transaction.uuid = Math.floor(Math.random()*10e14);
-    transaction.uuid_coffee = this.coffeeId;
-    transaction.buyer = 'adriapalleja';
-    transaction.quantity = this.state.kg;
-    transaction.price = this.props[this.coffeeId].price_kg;
-    transaction.total = transaction.price * transaction.quantity;
-    this.props.createTransaction(transaction);
+    const id = Math.floor(Math.random() * 10e14);
+    this.props.eosSaleInitiate(
+      id,
+      parseInt(this.coffeeId),
+      parseInt(this.state.kg)
+    );
+    // this.props.createTransaction(transaction);
     // this.props.history.push('order/:id_order');
-  }
+  };
 
   // create a function for the price
 
@@ -104,12 +105,15 @@ class Order extends Component {
 const mapStateToProps = state => ({
   coffees: state.entities.coffees,
   result: state.pages.coffeeDetail.result,
-  transactions: state.entites.transactions,
+  transactions: state.entities.transactions
 });
 
 const mapDispatchToProps = dispatch => ({
   getCoffee: coffeeId => dispatch(CoffeeActions.getCoffee(coffeeId)),
-  createTransaction: (transaction, coffeeId) => dispatch(TransactionsActions.createTransaction(transaction, coffeeId))
+  createTransaction: (transaction, coffeeId) =>
+    dispatch(TransactionsActions.createTransaction(transaction, coffeeId)),
+  eosSaleInitiate: (id, coffeeId, quantity) =>
+    dispatch(EOSActions.eosSaleInitiate(id, coffeeId, quantity))
 });
 
 export default connect(

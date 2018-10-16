@@ -1,10 +1,12 @@
-import { normalize } from 'normalizr';
 import { EOSIO_HTTP_ENDPOINT, EOSIO_CONTRACT_ACCOUNT } from '../../constants/connections';
 const eosjs = require('eosjs');
 
+const EOSIO_ACCOUNT_NAME='leonh';
+const EOSIO_ACCOUNT_PRIVATE_KEY='5K7mtrinTFrVTduSxizUc5hjXJEtTjVTsqSHeBHes1Viep86FP5';
+
 const config = {
   chainId: null,
-  keyProvider: [process.env.EOSIO_ACCOUNT_PRIVATE_KEY],
+  keyProvider: [EOSIO_ACCOUNT_PRIVATE_KEY],
   httpEndpoint: EOSIO_HTTP_ENDPOINT,
   expireInSeconds: 60,
   broadcast: true,
@@ -16,9 +18,8 @@ const EOS = eosjs(config);
 
 export default store => next => action => {
   if (!action.eos) return next(action);
-
   const { eosAction, data } = action.eos;
-
+  //eslint-disable-next-line
   EOS.transaction(
     {
       actions: [
@@ -27,7 +28,7 @@ export default store => next => action => {
           name: eosAction,
           authorization: [
             {
-              actor: process.env.EOSIO_ACCOUNT_NAME,
+              actor: EOSIO_ACCOUNT_NAME,
               permission: 'active'
             }
           ],
@@ -39,12 +40,21 @@ export default store => next => action => {
       blocksBehind: 3,
       expireSeconds: 30
     }
-  ).then(result => {
+  ).then(answer => {
+    // little trick to get the processed data frpm the transaction
+    // TODO: parse JSON
+    const data = answer.processed.action_traces[0].console;
+    store.dispatch({
+      type: `${action.type}_SUCCESS`,
+      data
+    });
+  }).catch(data => {
     //eslint-disable-next-line
-    console.log(result);
-  }).catch(err => {
-    //eslint-disable-next-line
-    console.error(err);
+    console.error(data);
+    store.dispatch({
+      type: `${action.type}_FAILURE`,
+      data
+    });
   });
 
   next({
