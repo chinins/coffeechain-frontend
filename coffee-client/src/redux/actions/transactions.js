@@ -10,7 +10,7 @@ export const getTransaction = (transactionId) => ({
   }
 });
 
-export const createTransaction = (transaction, coffeeId) => ({
+export const createTransaction = (transaction, onSuccess) => ({
   type: namespace.CREATE_TRANSACTION,
   api: {
     path: '/transactions',
@@ -19,8 +19,8 @@ export const createTransaction = (transaction, coffeeId) => ({
     schema: transactionSchema,
     header: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${coffeeId}`
-    }
+    },
+    onSuccess
   }
 });
 

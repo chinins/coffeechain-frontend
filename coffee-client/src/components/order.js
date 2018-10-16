@@ -26,27 +26,31 @@ class Order extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  // for later:
-
   handleSubmit = event => {
     event.preventDefault();
     const transaction = {};
     const id = Math.floor(Math.random() * 10e14);
-    this.props.eosSaleInitiate(
-      id,
-      this.coffeeId,
-      this.state.kg
-    );
-    // this.props.createTransaction(transaction);
-    // this.props.history.push('order/:id_order');
+    transaction.id = id;
+    transaction.coffeeId = this.coffeeId;
+    transaction.quantity = this.state.kg;
+    transaction.price = this.props.coffees[this.coffeeId].price_kg;
+    transaction.status_code = 1;
+    transaction.total = this.state.kg * transaction.price;
+
+    this.props.createTransaction(transaction, result => {
+      this.props.eosSaleInitiate(id, this.coffeeId, this.state.kg, res => {
+        this.props.history.push(`/checkout/${this.coffeeId}`);
+      });
+    });  
   };
+
+  
 
   // create a function for the price
 
   render () {
     const { coffees } = this.props;
     const check = coffees[this.coffeeId];
-
     // coffeeBox
     const altitude = check && check.altitude;
     const business_name = check && check.producer && check.producer.business_name;
@@ -109,10 +113,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getCoffee: coffeeId => dispatch(CoffeeActions.getCoffee(coffeeId)),
-  createTransaction: (transaction, coffeeId) =>
-    dispatch(TransactionsActions.createTransaction(transaction, coffeeId)),
-  eosSaleInitiate: (id, coffeeId, quantity) =>
-    dispatch(EOSActions.eosSaleInitiate(id, coffeeId, quantity))
+  createTransaction: (transaction, onSuccess) =>
+    dispatch(TransactionsActions.createTransaction(transaction, onSuccess)),
+  eosSaleInitiate: (id, coffeeId, quantity, onSuccess) =>
+    dispatch(EOSActions.eosSaleInitiate(id, coffeeId, quantity, onSuccess))
 });
 
 export default connect(

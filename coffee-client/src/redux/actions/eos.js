@@ -38,7 +38,7 @@ export const eosCoffeeGet = (uuid) => ({
   }
 });
 
-export const eosSaleInitiate = (uuid, uuid_coffee, quantity) => ({
+export const eosSaleInitiate = (uuid, uuid_coffee, quantity, onSuccess) => ({
   type: namespace.EOS_SALE_INITIATE,
   eos: {
     eosAction: 'initiatesale',
@@ -46,8 +46,9 @@ export const eosSaleInitiate = (uuid, uuid_coffee, quantity) => ({
       uuid, // unique id type int
       uuid_coffee,  // id of the coffee
       buyer: EOSIO_ACCOUNT_NAME, // user account
-      quantity // int
-    }
+      quantity, // int
+    },
+    onSuccess // callback success function
   }
 });
 

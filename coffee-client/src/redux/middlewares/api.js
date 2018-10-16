@@ -27,6 +27,9 @@ export default store => next => action => {
         successAction.data = normalize(data, api.schema);
       }
       store.dispatch(successAction);
+      if (action.api.onSuccess && typeof action.api.onSuccess === 'function') {
+        action.api.onSuccess(data);
+      }
     })
     .catch(data => {
       // FAILURE

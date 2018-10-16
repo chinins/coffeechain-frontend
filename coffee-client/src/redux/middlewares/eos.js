@@ -56,6 +56,9 @@ export default store => next => action => {
         type: `${action.type}_SUCCESS`,
         data
       });
+      if (action.eos.onSuccess && typeof action.eos.onSuccess === 'function') {
+        action.eos.onSuccess(data);
+      }
     })
     .catch(data => {
       //eslint-disable-next-line
