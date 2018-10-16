@@ -69,7 +69,7 @@ class Order extends Component {
         <InputField name="notes" type="text" value={this.state.notes} onChange={this.handleInput} />
       </Label>
       <Link to={{ pathname: `/checkout` }} > 
-          <LightButtonSimple type="submit" value="Order" className={css` margin-left: 11%; margin-top: 0%;`}> GO </LightButtonSimple> 
+          <LightButtonSimple type="submit" value="Order" className={css` margin-left: 11%`}> GO </LightButtonSimple> 
       </Link>
       <CoffeeBox> 
         <b> SUMMARY </b> Producer : {business_name} 
