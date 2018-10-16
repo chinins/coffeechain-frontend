@@ -3,6 +3,7 @@ const defaultState = {
     coffees: {},
     producers: {},
     coffeeShops: {},
+    transactions: {}
   },
   pages: {
     loading: false,

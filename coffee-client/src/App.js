@@ -27,12 +27,8 @@ class App extends Component {
               <Route exact path="/" component={Dashboard} />
               <Route exact path="/coffees" component={Dashboard} />
               <Route exact path="/coffee-shops" component={Dashboard} />
-              <Route
-                exact
-                path="/coffee-detail/:coffeeId"
-                component={CoffeeDetail}
-              />
-              <Route exact path="/order/" component={Order} />
+              <Route exact path="/coffee-detail/:coffeeId" component={CoffeeDetail} />
+              <Route exact path="/order/:coffeeId" component={Order} />
               <Route exact path="/coffeeForm" component={InputForm} />
               <Route exact path="/userForm" component={InputForm} />
               <Route exact path="/checkout" component={Checkout} />

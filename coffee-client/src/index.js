@@ -11,17 +11,19 @@ import { loadingBarMiddleware } from 'react-redux-loading-bar';
 import { Provider } from 'react-redux';
 import reducers from './redux/reducers';
 import api from './redux/middlewares/api';
+import eos from './redux/middlewares/eos';
 
 const middlewares = [
   api,
+  eos,
   loadingBarMiddleware({
     promiseTypeSuffixes: ['REQUEST', 'SUCCESS', 'FAILURE']
   })
 ];
 
-if (process.env.NODE_ENV === 'development') {
-  middlewares.push(logger);
-}
+// if (process.env.NODE_ENV === 'development') {
+//   middlewares.push(logger);
+// }
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(

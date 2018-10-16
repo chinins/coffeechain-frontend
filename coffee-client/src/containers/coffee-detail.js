@@ -33,9 +33,9 @@ class CoffeeDetail extends Component {
     const check = coffees[this.id];
 
     const altitude = check && check.altitude;
-    const business_name = check && check.producer.business_name;
+    const business_name = check && check.producer && check.producer.business_name;
     const botanical_variety = check && check.botanical_variety;
-    const BusinessDescription = check && check.producer.description;
+    const BusinessDescription = check && check.producer && check.producer.description;
     const CoffeeDetails = check && check.details;
     const name = check && check.name;
     const roast_appearance = check && check.roast_appearance;
@@ -69,7 +69,7 @@ class CoffeeDetail extends Component {
           <img src={picture} alt="plantation" />
         </ImageFormat>
         <Company> {business_name || 'loading'} </Company>
-        <Link to={{ pathname: '/order' }}>
+        <Link to={{ pathname: `/order/${this.coffeeId}` }}>
           {' '}
           <Buy>
             <LightButtonSimple> ORDER </LightButtonSimple>
