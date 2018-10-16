@@ -57,7 +57,7 @@ export default (state = defaultState.pages, action) => {
       loading: false,
       transactions: {
         ...state.transactions,
-        result: action.data.transactions
+        result: action.data.result
       }
     };
 

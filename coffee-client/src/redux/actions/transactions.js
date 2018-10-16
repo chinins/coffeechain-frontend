@@ -24,11 +24,15 @@ export const createTransaction = (transaction, coffeeId) => ({
   }
 });
 
-export const getAllTransactions = () => ({
+export const getAllTransactions = (customerId) => ({
   type: namespace.GET_ALL_TRANSACTIONS,
   api: {
     path: '/transactions',
     method: 'GET',
-    schema: transactionArraySchema
+    schema: transactionArraySchema,
+    header: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${customerId}`
+    }
   }
 });
