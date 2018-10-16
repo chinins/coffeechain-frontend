@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import CoffeeDetail from './containers/coffee-detail';
 import Order from './components/order';
 import Checkout from './components/checkout';
-import Transactions from './containers/transactions';
+import MyOrders from './containers/my-orders';
 
 import { connect } from 'react-redux';
 import * as CoffeeActions from './redux/actions/coffees';
@@ -33,7 +33,7 @@ class App extends Component {
               <Route exact path="/coffeeForm" component={InputForm} />
               <Route exact path="/userForm" component={InputForm} />
               <Route exact path="/checkout" component={Checkout} />
-              <Route exact path="/orders" component={Transactions} />
+              <Route exact path="/orders" component={MyOrders} />
             </Switch>
           </div>
         </Router>

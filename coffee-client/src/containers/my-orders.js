@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'react-emotion';
 
-class Transactions extends Component {
+class MyOrders extends Component {
   render () {
     return (
       <div>Orders Component</div>
@@ -9,4 +9,6 @@ class Transactions extends Component {
   }
 }
 
-export default Transactions;
+
+
+export default MyOrders;

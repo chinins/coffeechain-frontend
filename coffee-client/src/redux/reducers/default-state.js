@@ -10,6 +10,9 @@ const defaultState = {
     dashboard: {
       result: [],
     },
+    transactions: {
+      result: []
+    },
     coffeeDetail: {
       result: undefined
     },
