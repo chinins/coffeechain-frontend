@@ -9,7 +9,7 @@ const Title = styled('div')`
   color: grey;
 `;
 
-const Orderid = styled('div')`
+const Order = styled('div')`
   margin-left: 10%;
   font-weight: 400;
   font-size: 1em;
@@ -48,4 +48,4 @@ const CoffeeBox = styled('div')`
 `;
 
 
-export { CoffeeBox, Hr, Title, Total, Orderid }
+export { CoffeeBox, Hr, Title, Total, Order }

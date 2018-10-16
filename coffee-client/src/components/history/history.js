@@ -1,24 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as CoffeeActions from '../../redux/actions/coffees';
-import { CoffeeBox, Hr, Title, Total, Orderid } from './history-style';
+import { CoffeeBox, Hr, Title, Total, Order } from './history-style';
+
+
 class history extends React.Component {
 
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      kg: '',
-      total: '',
-      notes: ''
-    }
-  }
-
+    // coffees bought on stripe 
 
   componentDidMount() {
     this.props.getCoffee(this.coffeeId);
   }
-
 
   render() {
 
@@ -38,7 +30,7 @@ class history extends React.Component {
         <Total> TOTAL: $ 200 </Total>
         <Hr />
         <br />
-        <Orderid > #ghjklmkl56789 <br /> Kg: 15 <br /> Paid: $200 </Orderid>
+        <Order > #ghjklmkl56789 <br /> Kg: 15 <br /> Paid: $200 </Order>
           <CoffeeBox>
             <b> SUMMARY </b> Producer : {business_name}
             <b /> Variety: {botanical_variety}
