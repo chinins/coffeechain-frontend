@@ -30,13 +30,12 @@ class Map extends Component {
   }
 
   componentDidUpdate () {
-    let marker;
     for (let i = 0; i < this.props.result.length; i++) {
       if (
         this.props.result.length > 0 &&
         this.props.data[this.props.result[i]]
       ) {
-        marker = new mapboxgl.Marker()
+        new mapboxgl.Marker()
           .setLngLat([
             this.props.data[this.props.result[i]].geo_location.coordinates[1],
             this.props.data[this.props.result[i]].geo_location.coordinates[0]

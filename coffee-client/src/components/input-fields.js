@@ -21,4 +21,11 @@ const InputField = styled('input')`
   border: ${props => `solid 1px ${props.theme.colors.secondary}`};
 `;
 
-export { Label, InputField, SelectInput, Option, LabelSelect };
+const Form = styled('form')`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export { Label, InputField, SelectInput, Option, LabelSelect, Form };
