@@ -39,7 +39,7 @@ class Order extends Component {
 
     this.props.createTransaction(transaction, result => {
       this.props.eosSaleInitiate(id, this.coffeeId, this.state.kg, res => {
-        this.props.history.push('/checkout');
+        this.props.history.push(`/checkout/${this.coffeeId}`);
       });
     });  
   };
