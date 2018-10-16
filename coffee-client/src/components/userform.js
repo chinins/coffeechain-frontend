@@ -4,6 +4,8 @@ import * as UserActions from '../redux/actions/users';
 import { connect } from 'react-redux';
 import { InputButton } from './buttons';
 import { Label, InputField, SelectInput, LabelSelect } from './input-fields';
+import Geocode from 'react-geocode';
+
 const uuidv4 = require('uuid/v4');
 
 const Form = styled('form')`
@@ -14,7 +16,7 @@ const Form = styled('form')`
 `;
 
 class UserForm extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       business_type: 'customer',
@@ -23,15 +25,37 @@ class UserForm extends Component {
       email: '',
       description: '',
       details: '',
+      business_location: '',
+      geo_location: '',
       id: Math.round(Math.random() * 10e14)
     };
   }
 
-  handleInput (event) {
+  handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
-  }
+  };
 
-  handleSubmit (event) {
+  handleLocation = event => {
+    this.setState({ [event.target.name]: event.target.value });
+    setTimeout(() => {
+      Geocode.fromAddress(this.state.business_location).then(
+        response => {
+          const { lat, lng } = response.results[0].geometry.location;
+          this.setState({
+            geo_location: {
+              type: 'Point',
+              coordinates: [lat, lng]
+            }
+          });
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }, 1500);
+  };
+
+  handleSubmit = event => {
     event.preventDefault();
     const id = uuidv4();
     if (this.state.business_type === 'customer')
@@ -39,9 +63,9 @@ class UserForm extends Component {
     if (this.state.business_type === 'producer')
       this.props.createProducer(this.state);
     this.props.history.push('/');
-  }
+  };
 
-  render () {
+  render() {
     return (
       <Form onSubmit={this.handleSubmit}>
         <LabelSelect>
@@ -71,6 +95,15 @@ class UserForm extends Component {
             type="text"
             value={this.state.country}
             onChange={this.handleInput}
+          />
+        </Label>
+        <Label>
+          Plantation Location:
+          <InputField
+            name="business_location"
+            type="text"
+            value={this.state.business_location}
+            onChange={this.handleLocation}
           />
         </Label>
         <Label>

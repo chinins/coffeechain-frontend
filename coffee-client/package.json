@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "dotenv": "^6.1.0",
     "emotion": "^9.2.12",
     "emotion-theming": "^9.2.9",
     "eosjs": "^16.0.9",
@@ -14,6 +15,8 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-emotion": "^9.2.12",
+    "react-geocode": "^0.1.2",
+    "react-places-autocomplete": "^7.2.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.0.4",

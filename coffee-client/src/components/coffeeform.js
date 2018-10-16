@@ -5,7 +5,12 @@ import { connect } from 'react-redux';
 import { InputButton } from './buttons';
 import { Label, InputField, SelectInput, LabelSelect } from './input-fields';
 import { producersIdArr } from '../constants/connections';
+import Geocode from 'react-geocode';
+
 const uuidv4 = require('uuid/v4');
+const key = require('../config');
+Geocode.setApiKey(key.key);
+Geocode.enableDebug();
 
 const Form = styled('form')`
   display: flex;
@@ -15,7 +20,7 @@ const Form = styled('form')`
 `;
 
 class CoffeeForm extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       name: '',
@@ -26,30 +31,61 @@ class CoffeeForm extends Component {
       roast_appearance: '',
       price_kg: '',
       details: '',
+      plantation_location: '',
+      geo_location: '',
       id: Math.round(Math.random() * 10e14)
     };
     this.randomProducerId = this.getRandomId(producersIdArr.length);
   }
   // temporary workaround authentication
-  getRandomId (max) {
+  getRandomId(max) {
     return Math.floor(Math.random() * max);
   }
 
-  handleInput (event) {
+  handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
-  }
+  };
 
-  handleSubmit (event) {
+  handleSubmit = event => {
     event.preventDefault();
+    Geocode.fromAddress(this.state.plantation_location).then(
+      response => {
+        const { lat, lng } = response.results[0].geometry.location;
+        console.log(lat, lng);
+      },
+      error => {
+        console.error(error);
+      }
+    );
     const producerId = producersIdArr[this.randomProducerId];
     this.props.createCoffee(this.state, producerId);
     setTimeout(
       () => this.props.history.push(`coffee-detail/${this.state.id}`),
-      300
+      1000
     );
-  }
+  };
 
-  render () {
+  handleLocation = event => {
+    this.setState({ [event.target.name]: event.target.value });
+    setTimeout(() => {
+      Geocode.fromAddress(this.state.plantation_location).then(
+        response => {
+          const { lat, lng } = response.results[0].geometry.location;
+          this.setState({
+            geo_location: {
+              type: 'Point',
+              coordinates: [lat, lng]
+            }
+          });
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }, 1500);
+  };
+
+  render() {
     return (
       <Form onSubmit={this.handleSubmit}>
         <Label>
@@ -68,6 +104,15 @@ class CoffeeForm extends Component {
             type="text"
             value={this.state.region}
             onChange={this.handleInput}
+          />
+        </Label>
+        <Label>
+          Plantation Location:
+          <InputField
+            name="plantation_location"
+            type="text"
+            value={this.state.plantation_location}
+            onChange={this.handleLocation}
           />
         </Label>
         <Label>
