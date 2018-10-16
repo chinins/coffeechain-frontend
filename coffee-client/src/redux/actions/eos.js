@@ -28,6 +28,16 @@ export const eosCoffeeUpsert = (uuid, hash, price, quantity) => ({
   }
 });
 
+export const eosCoffeeGet = (uuid) => ({
+  type: namespace.EOS_COFFEE_GET,
+  eos: {
+    eosAction: 'getcoffee',
+    data: {
+      uuid // unique id type int
+    }
+  }
+});
+
 export const eosSaleInitiate = (uuid, uuid_coffee, quantity) => ({
   type: namespace.EOS_SALE_INITIATE,
   eos: {
@@ -37,6 +47,16 @@ export const eosSaleInitiate = (uuid, uuid_coffee, quantity) => ({
       uuid_coffee,  // id of the coffee
       buyer: EOSIO_ACCOUNT_NAME, // user account
       quantity // int
+    }
+  }
+});
+
+export const eosSaleGet = (uuid) => ({
+  type: namespace.EOS_SALE_GET,
+  eos: {
+    eosAction: 'getsale',
+    data: {
+      uuid // unique id type int
     }
   }
 });

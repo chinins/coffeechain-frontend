@@ -50,7 +50,7 @@ export default store => next => action => {
   )
     .then(answer => {
       // little trick to get the processed data frpm the transaction
-      // TODO: parse JSON
+      // TODO: get the contract to send a confirmation to the sender of the action
       const data = JSON.parse(answer.processed.action_traces[0].console);
       store.dispatch({
         type: `${action.type}_SUCCESS`,
