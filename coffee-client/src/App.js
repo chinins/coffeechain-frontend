@@ -4,14 +4,13 @@ import { theme } from './shared/theme';
 import './shared/styles';
 import Header from './components/header';
 import Dashboard from './containers/dashboard';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import CoffeeDetail from './containers/coffee-detail';
 import Order from './components/order';
 import Checkout from './components/checkout';
 
 import { connect } from 'react-redux';
 import * as CoffeeActions from './redux/actions/coffees';
-import CoffeeForm from './components/coffeeform';
 import InputForm from './components/input-form';
 
 class App extends Component {
@@ -25,12 +24,8 @@ class App extends Component {
               <Route exact path="/" component={Dashboard} />
               <Route exact path="/coffees" component={Dashboard} />
               <Route exact path="/coffee-shops" component={Dashboard} />
-              <Route
-                exact
-                path="/coffee-detail/:coffeeId"
-                component={CoffeeDetail}
-              />
-              <Route exact path="/order/" component={Order} />
+              <Route exact path="/coffee-detail/:coffeeId" component={CoffeeDetail} />
+              <Route exact path="/order/:coffeeId" component={Order} />
               <Route exact path="/coffeeForm" component={InputForm} />
               <Route exact path="/userForm" component={InputForm} />
               <Route exact path="/checkout" component={Checkout} />

@@ -10,8 +10,9 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './redux/reducers';
 import api from './redux/middlewares/api';
+import eos from './redux/middlewares/eos';
 
-const middlewares = [api];
+const middlewares = [api, eos];
 
 if (process.env.NODE_ENV === 'development') {
   middlewares.push(logger);

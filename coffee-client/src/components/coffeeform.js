@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { InputButton } from './buttons';
 import { Label, InputField, SelectInput, LabelSelect } from './input-fields';
 import { producersIdArr } from '../constants/connections';
-const uuidv4 = require('uuid/v4');
 
 const Form = styled('form')`
   display: flex;
@@ -35,11 +34,11 @@ class CoffeeForm extends Component {
     return Math.floor(Math.random() * max);
   }
 
-  handleInput (event) {
+  handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  handleSubmit (event) {
+  handleSubmit = event => {
     event.preventDefault();
     const producerId = producersIdArr[this.randomProducerId];
     this.props.createCoffee(this.state, producerId);

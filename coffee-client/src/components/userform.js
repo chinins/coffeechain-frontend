@@ -4,7 +4,6 @@ import * as UserActions from '../redux/actions/users';
 import { connect } from 'react-redux';
 import { InputButton } from './buttons';
 import { Label, InputField, SelectInput, LabelSelect } from './input-fields';
-const uuidv4 = require('uuid/v4');
 
 const Form = styled('form')`
   display: flex;
@@ -27,13 +26,12 @@ class UserForm extends Component {
     };
   }
 
-  handleInput (event) {
+  handleInput = event => {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  handleSubmit (event) {
+  handleSubmit = event => {
     event.preventDefault();
-    const id = uuidv4();
     if (this.state.business_type === 'customer')
       this.props.createCustomer(this.state);
     if (this.state.business_type === 'producer')
