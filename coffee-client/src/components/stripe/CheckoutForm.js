@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  CardElement,
-  injectStripe, } from 'react-stripe-elements';
+import { CardElement, injectStripe } from 'react-stripe-elements';
 
 import './stripe-style.css';
 
@@ -42,32 +40,33 @@ const createOptions = (fontSize, padding) => {
 
 class CheckoutForm extends React.Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.id = this.props.id;
   }
 
-  componentDidMount () {
+  componentDidMount() {
     console.log(this.id);
   }
 
   submit = async (ev) => {
+    ev.preventDefault();
     let { token } = await this.props.stripe.createToken({ name: 'Name' });
-    let response = await fetch('/charge', {
+    console.log("HERE", token);
+    let response = await fetch('http://192.168.1.188:4000/charge', {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain' },
-      body: token.id
+      body: token
     });
 
     if (response.ok) console.log('Purchase Complete!');
   }
-
   render () {
     return (
-      <div> 
+      <div>
         <div className="checkout">    CHECKOUT </div>
-        <span className = "Hr" > </span>
-        <div className= "background-col"> 
+        <span className="Hr" > </span>
+        <div className="background-col">
           <form onSubmit={this.submit}>
             <label>
               Card details
