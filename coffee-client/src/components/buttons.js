@@ -10,6 +10,9 @@ const DefaultButton = styled('button')`
   margin: 7px;
   padding: 5px;
   text-align: center;
+  :active {
+    outline: none
+  }
 `;
 
 const InputButton = styled('input')`

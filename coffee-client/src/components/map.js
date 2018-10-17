@@ -54,6 +54,7 @@ class Map extends Component {
         padding: 60
       });
     }
+    this.map.scrollZoom.disable();
   }
 
   render () {

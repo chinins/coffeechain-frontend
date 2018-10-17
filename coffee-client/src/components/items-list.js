@@ -13,6 +13,9 @@ const List = styled('div')`
   margin-left: 1em;
   overflow: hidden;
   overflow-y: scroll;
+  ::-webkit-scrollbar{
+    display: none
+  }
 `;
 
 function ItemsList (props) {

@@ -110,7 +110,9 @@ class CoffeeDetail extends Component {
       const picture_hash = coffee.picture_hash || '/QmQM4gsCn2Zy6ipw9bGSmPvTCzRY6e8EjXt5TmyHi8L5yu';
 
       return (
-        <div>
+        <div className={css`
+          margin-top: 70px;
+        `}>
           <CoffeeInfoBox>
             <CoffeeData>
               <ListImage src={IPFS_URL + picture_hash}/>

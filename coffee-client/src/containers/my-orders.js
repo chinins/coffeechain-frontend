@@ -18,7 +18,7 @@ const pictureHashes = [
 const OrdersDashboard = styled('div')`
   max-width: 1100px;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
