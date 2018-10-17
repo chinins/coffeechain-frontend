@@ -44,9 +44,6 @@ class OrdersListItem extends Component {
   }
 
   render () {
-    console.log(this.CommaFormatted(this.props.order.price));
-    console.log('this.props.order.price: ', this.props.order.price);
-
     const statusCode = this.props.order.status_code;
     let status;
     if (statusCode === 1) {
