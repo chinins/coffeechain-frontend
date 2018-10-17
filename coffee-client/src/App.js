@@ -33,8 +33,8 @@ class App extends Component {
               <Route exact path="/order/:coffeeId" component={Order} />
               <Route exact path="/coffeeForm" component={InputForm} />
               <Route exact path="/userForm" component={InputForm} />
-              <Route exact path='/checkout/:id' component={Checkout} />
-              <Route exact path='/payment' component={Payment} />
+              <Route exact path="/checkout/:id" component={Checkout} />
+              <Route exact path="/payment" component={Payment} />
               <Route exact path="/orders" component={MyOrders} />
             </Switch>
           </div>

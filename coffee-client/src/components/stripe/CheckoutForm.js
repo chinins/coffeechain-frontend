@@ -1,22 +1,64 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { CardElement, injectStripe } from 'react-stripe-elements';
-
+import * as TransactionActions from './../../redux/actions/transactions';
 import './stripe-style.css';
 
-const handleBlur = () => {
-  console.log('[blur]');
-};
-const handleChange = change => {
-  console.log('[change]', change);
-};
+class CheckoutForm extends Component {
+  constructor (props) {
+    super(props);
+    this.transactionId = this.props.id;
+  }
 
-const handleFocus = () => {
-  console.log('[focus]');
-};
-const handleReady = () => {
-  console.log('[ready]');
-};
+  componentDidMount () {
+    this.props.getTransaction(this.transactionId);
+  }
+
+  submit = async ev => {
+    ev.preventDefault();
+    let token = await this.props.stripe.createToken();
+    token.token.transactionId = this.transactionId;
+    token.token.amount = this.props.transactions[this.transactionId].total;
+    let response = await fetch('http://192.168.1.188:4000/charge', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(token.token)
+    });
+    
+    if (response.ok) this.props.history.push('/orders');
+  };
+
+  render () {
+    let amount = '';
+    if (this.props.transactions && this.props.transactions[this.transactionId]) amount = this.props.transactions[this.transactionId].total;
+    const text = 'Amount to pay: ' + amount + ' $  ';
+
+    return (
+      <div>
+        <div className="checkout"> CHECKOUT </div>
+        <span className="Hr"> </span>
+        <div className="background-col">
+          <form onSubmit={this.submit}>            
+            <label>
+              Card details
+              <CardElement {...createOptions(this.props.fontSize)} />
+            </label>
+            <label>{text}</label>
+            <button>Pay</button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  transactions: state.entities.transactions
+});
+
+const mapDispatchToProps = dispatch => ({
+  getTransaction: transactionId => dispatch(TransactionActions.getTransaction(transactionId)),
+});
 
 const createOptions = (fontSize, padding) => {
   return {
@@ -38,55 +80,4 @@ const createOptions = (fontSize, padding) => {
   };
 };
 
-class CheckoutForm extends React.Component {
-  constructor (props) {
-    super(props);
-    this.id = this.props.id;
-  }
-
-  componentDidMount () {
-    console.log(this.id);
-  }
-
-  submit = async ev => {
-    ev.preventDefault();
-    let token = await this.props.stripe.createToken();
-    let response = await fetch('http://localhost:4000/charge', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(token.token)
-    });
-
-    if (response.ok) alert('Purchase Complete!');
-  };
-
-  render () {
-    return (
-      <div>
-        <div className="checkout"> CHECKOUT </div>
-        <span className="Hr"> </span>
-        <div className="background-col">
-          <form onSubmit={this.submit}>
-            <label>
-              Card details
-              <CardElement
-                onBlur={handleBlur}
-                onChange={handleChange}
-                onFocus={handleFocus}
-                onReady={handleReady}
-                {...createOptions(this.props.fontSize)}
-              />
-            </label>
-            <button>Pay</button>
-          </form>
-        </div>
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = state => ({
-  transactions: state.entities.transactions
-});
-
-export default injectStripe(connect(mapStateToProps)(CheckoutForm));
+export default injectStripe(connect(mapStateToProps, mapDispatchToProps) (CheckoutForm));
