@@ -9,7 +9,7 @@ import AddFile from './add-file';
 const uuidv4 = require('uuid/v4');
 
 class UserForm extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       business_type: 'customer',

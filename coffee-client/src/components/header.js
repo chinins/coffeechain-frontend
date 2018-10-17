@@ -16,6 +16,7 @@ const AppName = styled('div')`
   font-size: 200%;
   margin: 10px 0 0 10px;
   color: ${props => props.theme.colors.secondary};
+  font-weight: bold;
 `;
 
 const Navigation = styled('nav')`

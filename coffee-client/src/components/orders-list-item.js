@@ -2,27 +2,12 @@ import React, { Component } from 'react';
 import styled from 'react-emotion';
 import { ListImage } from './images';
 import moment from 'moment';
-
-const OrderBox = styled('div')`
-  display: flex;
-  justify-content: space-between;
-  border-radius: ${props => props.theme.borderRadius};
-  box-shadow: ${props => props.theme.boxShadow};
-  border: ${props => `solid 1px ${props.theme.colors.accessory}`};
-  margin: 30px 10px;
-  height: 15em;
-`;
+import { InfoBox, Item } from '../shared/elements';
 
 const DataBox = styled('div')`
   margin: 20px;
   width: 500px;
 `;
-
-const Item = styled('div')`
-  display: flex;
-  margin: 5px 0;
-`;
-
 
 const ItemLabel = styled('div')`
   margin-right: 10px;
@@ -54,7 +39,7 @@ class OrdersListItem extends Component {
       status = 'Order received, payment transferred';
     }
     return (
-      <OrderBox>
+      <InfoBox>
         <DataBox>
           <Item>
             <OrderStatus>{status}</OrderStatus>
@@ -81,7 +66,7 @@ class OrdersListItem extends Component {
           </Item>
         </DataBox>
         <ListImage src={this.props.url}></ListImage>
-      </OrderBox>
+      </InfoBox>
     );
   }
 }
