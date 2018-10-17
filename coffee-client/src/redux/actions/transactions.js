@@ -4,7 +4,7 @@ import { transactionSchema, transactionArraySchema } from './schemas';
 export const getTransaction = (transactionId) => ({
   type: namespace.GET_TRANSACTION,
   api: {
-    path: '/transactions/' + transactionId,
+    path: '/transactions/transaction/' + transactionId,
     method: 'GET',
     schema: transactionSchema
   }

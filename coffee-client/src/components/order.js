@@ -34,7 +34,7 @@ class Order extends Component {
     transaction.coffeeId = this.coffeeId;
     transaction.quantity = this.state.kg;
     transaction.price = this.props.coffees[this.coffeeId].price_kg;
-    transaction.status_code = 1;
+    transaction.status_code = 0;
     transaction.total = this.state.kg * transaction.price;
 
     this.props.createTransaction(transaction, result => {
