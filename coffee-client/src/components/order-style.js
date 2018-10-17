@@ -42,7 +42,7 @@ const CoffeeBox = styled('div')`
   display: flex;
   flex-direction: column;
   overflow-x: scroll;
-  height: 17%;
+  height: 20%;
   width: 25%;
   position: absolute;
   letter-spacing: -0.5px;
@@ -51,6 +51,7 @@ const CoffeeBox = styled('div')`
   background-color: transparent;
   color: black;
   text-align: right;
+  margin: 20px 20px 0 0;
 `;
 
 export { Form, CoffeeBox, Hr, Title, Total, Orderid };
