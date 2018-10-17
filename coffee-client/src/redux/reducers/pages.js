@@ -21,7 +21,7 @@ export default (state = defaultState.pages, action) => {
       loading: true
     };
 
-    // page dashboard coffees
+  // page dashboard coffees
   case namespace.GET_ALL_COFFEES + '_SUCCESS':
     return {
       ...state,
@@ -32,12 +32,14 @@ export default (state = defaultState.pages, action) => {
       }
     };
   case namespace.GET_ALL_COFFEES + '_REQUEST':
+  case namespace.GET_ALL_COFFEESHOPS + '_REQUEST':
+  case namespace.GET_ALL_TRANSACTIONS + '_REQUEST':
     return {
       ...state,
       loading: true
     };
 
-    // page dashboard coffee-shops
+  // page dashboard coffee-shops
   case namespace.GET_ALL_COFFEESHOPS + '_SUCCESS':
     return {
       ...state,
@@ -47,10 +49,16 @@ export default (state = defaultState.pages, action) => {
         result: action.data.result
       }
     };
-  case namespace.GET_ALL_COFFEESHOPS + '_REQUEST':
+
+    // page My Orders
+  case namespace.GET_ALL_TRANSACTIONS + '_SUCCESS':
     return {
       ...state,
-      loading: true
+      loading: false,
+      transactions: {
+        ...state.transactions,
+        result: action.data.result
+      }
     };
 
     // page addCoffee

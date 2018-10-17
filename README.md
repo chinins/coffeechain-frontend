@@ -1,7 +1,7 @@
 # coffee-blockchain-frontend
 connecting specialty coffee producers directly to artisan coffee shops
 
-To run the projects:
+To run the project:
 
 1. Clone repo to your local drive
 2. `cd coffee-client`
