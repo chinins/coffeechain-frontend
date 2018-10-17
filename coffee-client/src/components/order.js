@@ -16,6 +16,7 @@ class Order extends Component {
       notes: ''
     };
     this.coffeeId = this.props.match.params.coffeeId;
+    this.customers = [191408611206290, 191408611206291, 191408611206292];
   }
 
   componentDidMount () {
@@ -34,17 +35,16 @@ class Order extends Component {
     transaction.coffeeId = this.coffeeId;
     transaction.quantity = this.state.kg;
     transaction.price = this.props.coffees[this.coffeeId].price_kg;
-    transaction.status_code = 1;
+    // transaction.customerId = this.customers[Math.floor(Math.random() * 3)];
+    transaction.status_code = 0;
     transaction.total = this.state.kg * transaction.price;
 
     this.props.createTransaction(transaction, result => {
       this.props.eosSaleInitiate(id, this.coffeeId, this.state.kg, res => {
         this.props.history.push(`/checkout/${id}`);
       });
-    });  
+    });
   };
-
-  
 
   // create a function for the price
 
@@ -53,11 +53,12 @@ class Order extends Component {
     const check = coffees[this.coffeeId];
     // coffeeBox
     const altitude = check && check.altitude;
-    const business_name = check && check.producer && check.producer.business_name;
+    const business_name =
+      check && check.producer && check.producer.business_name;
     const botanical_variety = check && check.botanical_variety;
     const name = check && check.name;
     const price = check && check.price_kg;
-    const total = (parseInt(price) * this.state.kg) || 0;
+    const total = parseInt(price) * this.state.kg || 0;
     return (
       <div>
         <Title> ORDER </Title>

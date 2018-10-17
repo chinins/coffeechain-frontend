@@ -1,7 +1,7 @@
 import { namespace } from '../../constants/namespace';
 import { transactionSchema, transactionArraySchema } from './schemas';
 
-export const getTransaction = (transactionId) => ({
+export const getTransaction = transactionId => ({
   type: namespace.GET_TRANSACTION,
   api: {
     path: '/transactions/' + transactionId,
@@ -18,13 +18,13 @@ export const createTransaction = (transaction, onSuccess) => ({
     body: transaction,
     schema: transactionSchema,
     header: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     },
     onSuccess
   }
 });
 
-export const getAllTransactions = (customerId) => ({
+export const getAllTransactions = customerId => ({
   type: namespace.GET_ALL_TRANSACTIONS,
   api: {
     path: '/transactions',
@@ -32,7 +32,7 @@ export const getAllTransactions = (customerId) => ({
     schema: transactionArraySchema,
     header: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${customerId}`
+      Authorization: `Bearer ${customerId}`
     }
   }
 });
