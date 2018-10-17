@@ -8,6 +8,7 @@ import logger from 'redux-logger';
 
 import { createStore, applyMiddleware, compose } from 'redux';
 import { loadingBarMiddleware } from 'react-redux-loading-bar';
+import { StripeProvider } from 'react-stripe-elements';
 import { Provider } from 'react-redux';
 import reducers from './redux/reducers';
 import api from './redux/middlewares/api';
@@ -32,11 +33,13 @@ const store = createStore(
 );
 
 ReactDOM.render(
+
   <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-);
+    <StripeProvider apiKey="pk_test_eaHxpZdwd2DYpjuAz4KpbGim">
+      <App />
+    </StripeProvider>
+  </Provider>
+  , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

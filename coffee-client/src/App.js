@@ -6,8 +6,10 @@ import Header from './components/header';
 import Dashboard from './containers/dashboard';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import CoffeeDetail from './containers/coffee-detail';
-import Order from './components/order';
-import Checkout from './components/checkout';
+import Order from './components/order/order';
+import Checkout from './components/stripe/checkout';
+import Payment from './components/stripe/payment';
+import history from './components/history/history';
 
 import { connect } from 'react-redux';
 import * as CoffeeActions from './redux/actions/coffees';
@@ -22,16 +24,18 @@ class App extends Component {
         <Router>
           <div className="App">
             <LoadingBar style={{ zIndex: 100, backgroundColor: `${secondary}`, height: '10px' }} />
-            <Header />
+            <Header></Header>
             <Switch>
-              <Route exact path="/" component={Dashboard} />
-              <Route exact path="/coffees" component={Dashboard} />
-              <Route exact path="/coffee-shops" component={Dashboard} />
-              <Route exact path="/coffee-detail/:coffeeId" component={CoffeeDetail} />
-              <Route exact path="/order/:coffeeId" component={Order} />
-              <Route exact path="/coffeeForm" component={InputForm} />
-              <Route exact path="/userForm" component={InputForm} />
-              <Route exact path="/checkout" component={Checkout} />
+              <Route exact path='/' component={Dashboard} />
+              <Route exact path='/coffees' component={Dashboard} />
+              <Route exact path='/coffee-shops' component={Dashboard} />
+              <Route exact path='/coffee-detail/:coffeeId' component={CoffeeDetail} />
+              <Route exact path='/order:coffeeId/' component={Order} />
+              <Route exact path='/coffeeForm' component={InputForm} />
+              <Route exact path='/userForm' component={InputForm} />
+              <Route exact path='/checkout' component={Checkout} />
+              <Route exact path='/payment' component={Payment} />
+              <Route exact path='/history' component={history} />
             </Switch>
           </div>
         </Router>
