@@ -9,6 +9,7 @@ import CoffeeDetail from './containers/coffee-detail';
 import Order from './components/order';
 import Checkout from './components/stripe/checkout';
 import Payment from './components/stripe/payment';
+import MyOrders from './containers/my-orders';
 
 import { connect } from 'react-redux';
 import * as CoffeeActions from './redux/actions/coffees';
@@ -34,6 +35,7 @@ class App extends Component {
               <Route exact path="/userForm" component={InputForm} />
               <Route exact path='/checkout/:id' component={Checkout} />
               <Route exact path='/payment' component={Payment} />
+              <Route exact path="/orders" component={MyOrders} />
             </Switch>
           </div>
         </Router>

@@ -52,6 +52,9 @@ class Header extends Component {
             <Link to="/producers">Producers</Link>
           </NavItem>
           <NavItem>
+            <Link to="/orders">My Orders</Link>
+          </NavItem>
+          <NavItem>
             <Link to="/userForm">Profile</Link>
           </NavItem>
         </Navigation>
