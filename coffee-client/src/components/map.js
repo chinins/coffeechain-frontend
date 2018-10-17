@@ -30,18 +30,29 @@ class Map extends Component {
   }
 
   componentDidUpdate () {
+    let bounds = new mapboxgl.LngLatBounds();
+    let flag = false;
     for (let i = 0; i < this.props.result.length; i++) {
       if (
         this.props.result.length > 0 &&
-        this.props.data[this.props.result[i]]
+        this.props.data[this.props.result[i]] &&
+        this.props.data[this.props.result[i]].geo_location
       ) {
-        new mapboxgl.Marker()
-          .setLngLat([
-            this.props.data[this.props.result[i]].geo_location.coordinates[1],
-            this.props.data[this.props.result[i]].geo_location.coordinates[0]
-          ])
-          .addTo(this.map);
+        const coords = [
+          this.props.data[this.props.result[i]].geo_location.coordinates[1] %
+            90,
+          this.props.data[this.props.result[i]].geo_location.coordinates[0] % 90
+        ];
+        bounds = bounds.extend(coords);
+        flag = true;
+        const color = this.props.isCoffees ? '#886F68' : '#3D2C2E';
+        new mapboxgl.Marker({ color }).setLngLat(coords).addTo(this.map);
       }
+    }
+    if (flag) {
+      this.map.fitBounds(bounds, {
+        padding: 60
+      });
     }
   }
 
