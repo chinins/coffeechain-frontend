@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import MapDetail from '../components/map-detail';
 import MapDetail from '../components/map-detail';
 import { connect } from 'react-redux';
 import styled, { css } from 'react-emotion';
@@ -10,7 +9,6 @@ import { InfoBox } from '../shared/elements';
 import { DefaultButton } from '../components/buttons';
 import { secondary } from '../shared/colors';
 import Review from '../components/review';
-
 import { Link } from 'react-router-dom';
 
 const CoffeeInfoBox = styled('div')`
@@ -30,6 +28,7 @@ const Details = styled('div')`
   display: flex;
   flex-direction: column;
   margin: 3em;
+  min-width: 10em;
 `;
 
 const PriceBox = styled(Details)`
@@ -79,8 +78,6 @@ class CoffeeDetail extends Component {
   }
 
   render () {
-    const picture_url =
-      'https://images.unsplash.com/photo-1527018263374-5adb6a54f01e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=76ac2e56cf4887aac218a89543847865&auto=format&fit=crop&w=800&q=60';
 
     const reviewsarray = [
       {
@@ -118,7 +115,7 @@ class CoffeeDetail extends Component {
             <CoffeeData>
               <ListImage src={IPFS_URL + picture_hash}/>
               <Details>
-                <Title>{coffee.name.toUpperCase()}</Title>
+                <Title>{coffee.name}</Title>
                 <Item>
                   <Label>Region: </Label>
                   <div>{coffee.region}</div>
@@ -135,17 +132,20 @@ class CoffeeDetail extends Component {
                   <Label>Availability: </Label>
                   <div>{coffee.available} kg</div>
                 </Item>
-                <Item>
+                {/* <Item>
                   <Label>Details: </Label>
                   <div>{coffee.details}</div>
-                </Item>
+                </Item> */}
               </Details>
               <PriceBox>
                 <Label className={css`
                   font-size: 120%;
                 `}>Price</Label>
                 <Price>{coffee.price_kg} $/kg</Price>
-                <DefaultButton className={css`font-weight: bold;`}>Order</DefaultButton>
+                <Link to={{ pathname: `/order/${this.id}` }}>
+                  {' '}
+                  <DefaultButton className={css`font-weight: bold;`}>Order</DefaultButton>
+                </Link>
               </PriceBox>
             </CoffeeData>
           </CoffeeInfoBox>

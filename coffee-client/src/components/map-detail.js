@@ -27,7 +27,8 @@ class MapDetail extends Component {
       zoom: 2.5
     });
 
-    new mapboxgl.Marker()
+    const color = '#886F68';
+    new mapboxgl.Marker({ color })
       .setLngLat([36.736466, -1.406542])
       .addTo(this.map);
   }

@@ -5,7 +5,7 @@ export const mapAccessToken =
 export const BASE_URL = 'http://localhost:4000';
 // export const BASE_URL = 'http://192.168.1.188:4000';
 
-export const IPFS_URL = 'https://ipfs.io/ipfs';
+export const IPFS_URL = 'https://ipfs.io/ipfs/';
 
 export const producersIdArr = [
   595223592125200,

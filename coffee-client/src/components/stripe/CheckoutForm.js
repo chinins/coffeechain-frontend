@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import * as TransactionActions from './../../redux/actions/transactions';
+import { DefaultButton } from '../buttons';
+import { BASE_URL } from '../../constants/connections';
 import './stripe-style.css';
 
 class CheckoutForm extends Component {
@@ -19,12 +21,12 @@ class CheckoutForm extends Component {
     let token = await this.props.stripe.createToken();
     token.token.transactionId = this.transactionId;
     token.token.amount = this.props.transactions[this.transactionId].total;
-    let response = await fetch('http://192.168.1.188:4000/charge', {
+    let response = await fetch(`${BASE_URL}/charge`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(token.token)
     });
-    
+
     if (response.ok) this.props.history.push('/orders');
   };
 
@@ -38,13 +40,13 @@ class CheckoutForm extends Component {
         <div className="checkout"> CHECKOUT </div>
         <span className="Hr"> </span>
         <div className="background-col">
-          <form onSubmit={this.submit}>            
+          <form onSubmit={this.submit}>
             <label>
               Card details
               <CardElement {...createOptions(this.props.fontSize)} />
             </label>
             <label>{text}</label>
-            <button>Pay</button>
+            <DefaultButton>Pay</DefaultButton>
           </form>
         </div>
       </div>
