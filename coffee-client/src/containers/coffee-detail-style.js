@@ -42,7 +42,7 @@ const Subtitle = styled('div')`
   left: 5%;
 `;
 
-const Paragraph = styled('p')`
+const Paragraph = styled('div')`
   font-weight: 400;
   font-size: 1em;
   line-height: 1.2;
