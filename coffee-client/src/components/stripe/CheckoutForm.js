@@ -1,15 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  CardElement,
-  injectStripe, } from 'react-stripe-elements';
+import { CardElement, injectStripe } from 'react-stripe-elements';
 
 import './stripe-style.css';
 
 const handleBlur = () => {
   console.log('[blur]');
 };
-const handleChange = (change) => {
+const handleChange = change => {
   console.log('[change]', change);
 };
 
@@ -29,19 +27,18 @@ const createOptions = (fontSize, padding) => {
         letterSpacing: '0.025em',
         fontFamily: 'Source Code Pro, monospace',
         '::placeholder': {
-          color: '#aab7c4',
+          color: '#aab7c4'
         },
-        padding,
+        padding
       },
       invalid: {
-        color: '#9e2146',
-      },
-    },
+        color: '#9e2146'
+      }
+    }
   };
 };
 
 class CheckoutForm extends React.Component {
-
   constructor (props) {
     super(props);
     this.id = this.props.id;
@@ -51,23 +48,25 @@ class CheckoutForm extends React.Component {
     console.log(this.id);
   }
 
-  submit = async (ev) => {
-    let { token } = await this.props.stripe.createToken({ name: 'Name' });
-    let response = await fetch('/charge', {
+  submit = async ev => {
+    ev.preventDefault();
+    let token = await this.props.stripe.createToken();
+    console.log('token: ', token.token);
+    let response = await fetch('http://localhost:4000/charge', {
       method: 'POST',
-      headers: { 'Content-Type': 'text/plain' },
-      body: token.id
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(token.token)
     });
 
-    if (response.ok) console.log('Purchase Complete!');
-  }
+    if (response.ok) alert('Purchase Complete!');
+  };
 
   render () {
     return (
-      <div> 
-        <div className="checkout">    CHECKOUT </div>
-        <span className = "Hr" > </span>
-        <div className= "background-col"> 
+      <div>
+        <div className="checkout"> CHECKOUT </div>
+        <span className="Hr"> </span>
+        <div className="background-col">
           <form onSubmit={this.submit}>
             <label>
               Card details
