@@ -51,7 +51,6 @@ class CheckoutForm extends React.Component {
   submit = async ev => {
     ev.preventDefault();
     let token = await this.props.stripe.createToken();
-    console.log('token: ', token.token);
     let response = await fetch('http://localhost:4000/charge', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
