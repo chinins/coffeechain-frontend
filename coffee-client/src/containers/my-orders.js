@@ -31,6 +31,7 @@ const Title = styled('div')`
 
 const OrdersList = styled('div')`
   display: flex;
+  flex-direction: column;
 `;
 
 
