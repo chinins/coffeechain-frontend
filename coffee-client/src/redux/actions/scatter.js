@@ -19,3 +19,13 @@ export const scatterLogin = (data) => ({
   type: namespace.SCATTER_LOGIN,
   data
 });
+
+export const scatterLogout = (data) => ({
+  type: namespace.SCATTER_LOGOUT,
+  data
+});
+
+export const scatterUnavailable = (data) => ({
+  type: namespace.SCATTER_UNAVAILABLE,
+  data
+});
