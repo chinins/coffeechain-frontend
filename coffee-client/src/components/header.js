@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'react-emotion';
 import { secondary, accessory } from '../shared/colors';
-
 import { Link } from 'react-router-dom';
 
 const ToolBar = styled('div')`
