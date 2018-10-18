@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'react-emotion';
 import { secondary, accessory } from '../shared/colors';
 import { Link } from 'react-router-dom';
+import { LogoIcon } from './icons';
 
 const ToolBar = styled('div')`
   display: flex;
@@ -38,11 +39,19 @@ const NavItem = styled('li')`
   }
 `;
 
+const LogoTitle = styled('div')`
+  display: flex;
+  align-items: center;
+`;
+
 class Header extends Component {
   render () {
     return (
       <ToolBar>
-        <AppName>Coffee Chain</AppName>
+        <LogoTitle>
+          <LogoIcon/>
+          <AppName>Coffee Chain</AppName>
+        </LogoTitle>
         <Navigation>
           <NavItem>
             <Link to="/coffees">Coffees</Link>
