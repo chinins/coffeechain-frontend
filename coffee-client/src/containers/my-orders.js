@@ -5,14 +5,14 @@ import OrdersListItem from '../components/orders-list-item';
 import { connect } from 'react-redux';
 import * as TransactionActions from '../redux/actions/transactions';
 import * as CoffeeActions from '../redux/actions/coffees';
-
-const customerId = 191408611206290; // hardcoded for demo
+import { customerId } from '../constants/connections';
 
 // hardcoded pictures for demo
 const pictureHashes = [
   'https://ipfs.io/ipfs/QmfAmetYBjeDsAqCwqLs9s9khuwL2mTWgggtGKDQBLiVBH',
   'https://ipfs.io/ipfs/Qme6KbRC4seDpGMocQNyZgcrm3LiEQvw7P4oHiXCxuXjty',
-  'https://ipfs.io/ipfs/QmNz5iqGbg9vD5v6p4N9Y6m443dE91uv77QsZhiaZx9H6Z'
+  'https://ipfs.io/ipfs/QmNz5iqGbg9vD5v6p4N9Y6m443dE91uv77QsZhiaZx9H6Z',
+  'https://ipfs.io/ipfs/QmPqwEiddT1x5fqyACDbajDjav85J6BsLEGKDLtWp6yFRL'
 ];
 
 const OrdersDashboard = styled('div')`

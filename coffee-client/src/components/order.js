@@ -7,6 +7,7 @@ import * as EOSActions from '../redux/actions/eos';
 import { InputButton } from './buttons';
 import { Label, InputField } from './input-fields';
 import { Form, CoffeeBox, Hr, Title, Total, Orderid } from './order-style';
+import { customerId } from '../constants/connections';
 
 class Order extends Component {
   constructor (props) {
@@ -37,7 +38,7 @@ class Order extends Component {
     transaction.status_code = 0;
     transaction.total = this.state.kg * transaction.price;
 
-    this.props.createTransaction(transaction, result => {
+    this.props.createTransaction(transaction, customerId, result => {
       this.props.eosSaleInitiate(id, this.coffeeId, this.state.kg, res => {
         this.props.history.push(`/checkout/${id}`);
       });
@@ -115,8 +116,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getCoffee: coffeeId => dispatch(CoffeeActions.getCoffee(coffeeId)),
-  createTransaction: (transaction, onSuccess) =>
-    dispatch(TransactionsActions.createTransaction(transaction, onSuccess)),
+  createTransaction: (transaction, customerId, onSuccess) =>
+    dispatch(TransactionsActions.createTransaction(transaction, customerId, onSuccess)),
   eosSaleInitiate: (id, coffeeId, quantity, onSuccess) =>
     dispatch(EOSActions.eosSaleInitiate(id, coffeeId, quantity, onSuccess))
 });
