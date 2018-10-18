@@ -9,6 +9,7 @@ const StyledSVG = styled('svg')({
 
 const StyledSVGSmall = styled(StyledSVG)`
   height: 1.5em;
+  margin-top: -5px;
 `;
 
 const SVGContainer = styled('span')`
