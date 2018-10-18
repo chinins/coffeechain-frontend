@@ -14,12 +14,12 @@ import { Link } from 'react-router-dom';
 const CoffeeInfoBox = styled('div')`
   display: flex;
   flex-direction: column;
-  max-width: 880px;
+  max-width: 1020px;
   margin: auto
 `;
 
 const CoffeeData = styled(InfoBox) `
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 3em;
 `;
@@ -27,15 +27,15 @@ const CoffeeData = styled(InfoBox) `
 const Details = styled('div')`
   display: flex;
   flex-direction: column;
-  margin: 3em;
-  min-width: 10em;
+  margin: 2em 0 2em 1.5em ;
 `;
 
 const PriceBox = styled(Details)`
   align-items: center;
-  padding-left: 4em;
   justify-content: space-evenly;
   height: 70%;
+  width: 20%;
+  margin-right: 1em;
 `;
 
 const ReviewsContainer = styled('div')`
@@ -127,17 +127,17 @@ class CoffeeDetail extends Component {
                   <div>{coffee.altitude}</div>
                 </Item>
                 <Item>
-                  <Label>Type:: </Label>
+                  <Label>Type: </Label>
                   <div>{coffee.botanical_variety}</div>
                 </Item>
                 <Item>
                   <Label>Availability: </Label>
                   <div>{coffee.available} kg</div>
                 </Item>
-                {/* <Item>
+                <Item>
                   <Label>Details: </Label>
                   <div>{coffee.details}</div>
-                </Item> */}
+                </Item>
               </Details>
               <PriceBox>
                 <Label className={css`

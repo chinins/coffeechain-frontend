@@ -12,6 +12,7 @@ const ToolBar = styled('div')`
   position: fixed;
   top: 0px;
   width: 100%;
+  background: white;
 `;
 
 const AppName = styled('div')`
