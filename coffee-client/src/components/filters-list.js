@@ -14,6 +14,7 @@ const List = styled('div')`
   margin-bottom: 2em;
   border-bottom: solid 2px ${accessory};
   padding-left: 50px;
+  background: white;
 `;
 
 const list = [
