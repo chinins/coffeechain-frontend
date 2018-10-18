@@ -7,7 +7,8 @@ import { ProfileImage } from './images';
 const DisplayForm = styled('div')`
   display: flex;
   justify-content: space-around;
-  margin-top: 3em;
+  margin-top: 130px;
+
 `;
 
 const profileImg =

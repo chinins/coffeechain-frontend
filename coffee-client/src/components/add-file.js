@@ -80,11 +80,12 @@ class AddFile extends Component {
         <RowDiv>
           <span className={css`
             font-weight: bold;
-          `}>{this.state.added_file_hash ? 'IPFS hash: ' : ''}</span>
+          `}>{this.state.added_file_hash ? 'IPFS link: ' : ''}</span>
           <a target='_blank'
             href={'https://ipfs.io/ipfs/' + this.state.added_file_hash} className={css`
             margin-left: 15px;
             :hover {
+              height: 1.5em;
               border-bottom: solid 2px ${secondary};
               color: ${secondary};
             }

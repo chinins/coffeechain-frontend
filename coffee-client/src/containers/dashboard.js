@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import Map from '../components/map';
 import ItemsList from '../components/items-list';
 import FiltersList from '../components/filters-list';
-
+import styled from 'react-emotion';
 import { connect } from 'react-redux';
 import * as CoffeeActions from '../redux/actions/coffees';
 import * as CoffeeShopActions from '../redux/actions/coffee-shop';
+
+const DashboardDiv = styled('div')`
+  margin-top: 150px;
+`;
 
 class Dashboard extends Component {
   constructor (props) {
@@ -43,7 +47,7 @@ class Dashboard extends Component {
 
   render () {
     return (
-      <div>
+      <DashboardDiv>
         <FiltersList />
         <ItemsList
           result={this.props.result}
@@ -56,7 +60,7 @@ class Dashboard extends Component {
           result={this.props.result}
           isCoffees={this.isCoffees}
         />
-      </div>
+      </DashboardDiv>
     );
   }
 }

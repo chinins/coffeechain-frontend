@@ -41,10 +41,10 @@ class Order extends Component {
       this.props.eosSaleInitiate(id, this.coffeeId, this.state.kg, res => {
         this.props.history.push(`/checkout/${id}`);
       });
-    });  
+    });
   };
 
-  
+
 
   // create a function for the price
 
@@ -59,7 +59,9 @@ class Order extends Component {
     const price = check && check.price_kg;
     const total = (parseInt(price) * this.state.kg) || 0;
     return (
-      <div>
+      <div className={css`
+        margin-top: 160px;
+      `}>
         <Title> ORDER </Title>
         <Orderid> Order #{this.coffeeId} </Orderid>
         <Total> TOTAL: $ {total} </Total>

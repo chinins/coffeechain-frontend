@@ -31,6 +31,9 @@ class MapDetail extends Component {
     new mapboxgl.Marker({ color })
       .setLngLat([36.736466, -1.406542])
       .addTo(this.map);
+
+    this.map.scrollZoom.disable();
+
   }
 
   render () {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'react-emotion';
 import { secondary, accessory } from '../shared/colors';
-
 import { Link } from 'react-router-dom';
 
 const ToolBar = styled('div')`
@@ -10,6 +9,9 @@ const ToolBar = styled('div')`
   height: 70px;
   border-bottom: solid 2px ${accessory};
   align-items: center;
+  position: fixed;
+  top: 0px;
+  width: 100%;
 `;
 
 const AppName = styled('div')`
@@ -28,6 +30,7 @@ const Navigation = styled('nav')`
 
 const NavItem = styled('li')`
   list-style-type: none;
+  height: 1.8em;
   :hover {
     border-bottom: solid 2px ${secondary};
     color: ${secondary};
