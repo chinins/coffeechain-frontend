@@ -6,8 +6,6 @@ import Geocode from 'react-geocode';
 import { Label, InputField, SelectInput, LabelSelect, Form } from './input-fields';
 import AddFile from './add-file';
 
-const uuidv4 = require('uuid/v4');
-
 class UserForm extends Component {
   constructor (props) {
     super(props);
@@ -43,7 +41,7 @@ class UserForm extends Component {
           });
         },
         error => {
-          console.error(error);
+          throw new Error(error);
         }
       );
     }, 1500);

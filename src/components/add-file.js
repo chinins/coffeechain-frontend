@@ -51,6 +51,7 @@ class AddFile extends Component {
   saveToIpfs (reader) {
     let ipfsId;
     const buffer = Buffer.from(reader.result);
+    //eslint-disable-next-line
     this.ipfsApi.add(buffer, {progress: prog => console.log(`received: ${prog}`) })
       .then(response => {
         ipfsId = response[0].hash;
@@ -81,7 +82,7 @@ class AddFile extends Component {
           <span className={css`
             font-weight: bold;
           `}>{this.state.added_file_hash ? 'IPFS link: ' : ''}</span>
-          <a target='_blank'
+          <a
             href={'https://ipfs.io/ipfs/' + this.state.added_file_hash} className={css`
             margin-left: 15px;
             :hover {
