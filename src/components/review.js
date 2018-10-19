@@ -17,7 +17,6 @@ const Stars = styled('div')`
 
 const Author = styled('div')`
   font-weight: bold;
-  // color: ${secondary};
 `;
 
 const ReviewText = styled('div')`

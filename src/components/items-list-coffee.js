@@ -15,8 +15,6 @@ const Name = styled('div')`
 `;
 
 function ItemsListCoffee (props) {
-  const url =
-    'https://images.unsplash.com/photo-1527018263374-5adb6a54f01e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=76ac2e56cf4887aac218a89543847865&auto=format&fit=crop&w=800&q=60';
 
   if (props.coffee) {
     const { producer, name, botanical_variety, picture_hash } = props.coffee;

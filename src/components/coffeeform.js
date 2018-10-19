@@ -8,7 +8,7 @@ import { producersIdArr } from '../constants/connections';
 import Geocode from 'react-geocode';
 import AddFile from './add-file';
 
-const key = require('../example.config.js');
+const key = require('../config');
 Geocode.setApiKey(key.key);
 Geocode.enableDebug();
 
@@ -44,10 +44,9 @@ class CoffeeForm extends Component {
     event.preventDefault();
     Geocode.fromAddress(this.state.plantation_location).then(
       response => {
-        const { lat, lng } = response.results[0].geometry.location;
       },
       error => {
-        console.error(error);
+        throw new Error(error);
       }
     );
     const producerId = producersIdArr[this.randomProducerId];
@@ -72,7 +71,7 @@ class CoffeeForm extends Component {
           });
         },
         error => {
-          console.error(error);
+          throw new Error(error);
         }
       );
     }, 1500);
