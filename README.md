@@ -25,8 +25,11 @@ To learn blockchain, to code, to have fun.
 - [EOS](https://eos.io/) - blockchain infrastructure for decentralised apps
 ##Screenshots & features
 **Landing page**
+The landing page is the assortment of available coffees
+<img src="./src/assets/screenshots/landing.png"/>
+**Coffee-detail page**
+<img src="./src/assets/screenshots/coffee-detail.png"/>
 
-<img src="./src/assets/screenshots/landing-page.png"/>
 
 ## Getting Started
 ### Prerequisites
