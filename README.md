@@ -24,12 +24,36 @@ To learn blockchain, to code, to have fun.
 - [Stripe](https://stripe.com/es) - online payment system
 - [EOS](https://eos.io/) - blockchain infrastructure for decentralised apps
 ##Screenshots & features
+
 **Landing page**
-The landing page is the assortment of available coffees
+All available coffees
+
 <img src="./src/assets/screenshots/landing.png"/>
+
 **Coffee-detail page**
+Details of a particular coffee offer
+
 <img src="./src/assets/screenshots/coffee-detail.png"/>
 
+**Order**
+
+<img src="./src/assets/screenshots/order.png"/>
+
+**Payment**
+
+<img src="./src/assets/screenshots/payment.png"/>
+
+**My orders**
+
+<img src="./src/assets/screenshots/my-orders.png"/>
+
+**Add coffee offer**
+
+<img src="./src/assets/screenshots/add-coffee.png"/>
+
+**Add/update profile**
+
+<img src="./src/assets/screenshots/profile.png"/>
 
 ## Getting Started
 ### Prerequisites
