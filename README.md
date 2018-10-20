@@ -81,6 +81,7 @@ $ ipfs daemon
 $ ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin "[\"*\"]"
 $ ipfs config --json API.HTTPHeaders.Access-Control-Allow-Credentials "[\"true\"]"
 ```
+
 4. **Run it**
 ```
 $ npm start
