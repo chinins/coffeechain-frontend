@@ -25,33 +25,33 @@ To learn blockchain, to code, to have fun.
 - [EOS](https://eos.io/) - blockchain infrastructure for decentralised apps
 ##Screenshots & features
 
-**Landing page**
+### Landing page
 All available coffees
 
 <img src="./src/assets/screenshots/landing.png"/>
 
-**Coffee-detail page**
+### Coffee-detail page
 Details of a particular coffee offer
 
 <img src="./src/assets/screenshots/coffee-detail.png"/>
 
-**Order**
+### Order
 
 <img src="./src/assets/screenshots/order.png"/>
 
-**Payment**
+### Payment
 
 <img src="./src/assets/screenshots/payment.png"/>
 
-**My orders**
+### My orders
 
 <img src="./src/assets/screenshots/my-orders.png"/>
 
-**Add coffee offer**
+### Add coffee offer
 
 <img src="./src/assets/screenshots/add-coffee.png"/>
 
-**Add/update profile**
+### Add/update profile
 
 <img src="./src/assets/screenshots/profile.png"/>
 
@@ -81,7 +81,6 @@ $ ipfs daemon
 $ ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin "[\"*\"]"
 $ ipfs config --json API.HTTPHeaders.Access-Control-Allow-Credentials "[\"true\"]"
 ```
-
 4. **Run it**
 ```
 $ npm start
