@@ -23,6 +23,10 @@ To learn blockchain, to code, to have fun.
 - [Demux](https://github.com/EOSIO/demux-js) - state and side effect handling for blockchain applications
 - [Stripe](https://stripe.com/es) - online payment system
 - [EOS](https://eos.io/) - blockchain infrastructure for decentralised apps
+##Screenshots & features
+**Landing page**
+
+<img src="./src/assets/screenshots/landing-page.png"/>
 
 ## Getting Started
 ### Prerequisites
