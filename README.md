@@ -26,7 +26,7 @@ To learn blockchain, to code, to have fun.
 ##Screenshots & features
 **Landing page**
 
-<img src="./src/assets/screenshots/landing-page.png"/>
+<img src="./src/assets/screenshots/landing.png"/>
 
 ## Getting Started
 ### Prerequisites
