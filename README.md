@@ -1,5 +1,7 @@
-# coffee-blockchain-frontend
-connecting specialty coffee producers directly to artisan coffee shops
+# Coffee Chain - connecting specialty coffee producers and coffee shops in a decentralized app
+
+![title](https://ipfs.io/ipfs/QmcwYyWtuS95mcXSkXeWXV5ToBqA5pP3xG15yVsGcUEGh8)
+
 
 To run the project:
 
