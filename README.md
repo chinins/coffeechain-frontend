@@ -37,11 +37,11 @@ Details of a particular coffee offer
 
 ### Order
 
-<img src="./src/assets/screenshots/order.png"/>
+<img src="./src/assets/screenshots/ordering.png"/>
 
 ### Payment
 
-<img src="./src/assets/screenshots/payment.png"/>
+<img src="./src/assets/screenshots/paying.png"/>
 
 ### My orders
 
@@ -97,4 +97,3 @@ Contributions Welcome!
 This is an on-going project and external input and ideas will be gladly recieved!
 ## License
 This project is licensed under the MIT License, take it, have fun.
-
