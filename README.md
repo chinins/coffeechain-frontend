@@ -14,7 +14,8 @@ All available coffees
 ### Coffee-detail page
 Details of a particular coffee offer
 
-<img src="./src/assets/screenshots/coffee-detail.png"/>
+<img style="float: left;" src="./src/assets/screenshots/coffee-detail.png"/>
+<img style="float: right;" src="./src/assets/screenshots/my-orders.png"/>
 
 ### Order
 
@@ -23,18 +24,6 @@ Details of a particular coffee offer
 ### Payment
 
 <img src="./src/assets/screenshots/paying.png"/>
-
-### My orders
-
-<img src="./src/assets/screenshots/my-orders.png"/>
-
-### Add coffee offer
-
-<img src="./src/assets/screenshots/add-coffee.png"/>
-
-### Add/update profile
-
-<img src="./src/assets/screenshots/profile.png"/>
 
 ## Getting Started
 ### Prerequisites
