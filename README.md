@@ -15,6 +15,7 @@ All available coffees
 Details of a particular coffee offer
 
 | <img style="float: left;" src="./src/assets/screenshots/coffee-detail.png"/> | <img style="float: right;" src="./src/assets/screenshots/my-orders.png"/> |
+| | |
 
 ### Order
 
