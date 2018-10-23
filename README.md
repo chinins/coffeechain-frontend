@@ -14,12 +14,8 @@ All available coffees
 ### Coffee-detail page
 Details of a particular coffee offer
 
-<div>
-<span>
 <img style="float: left;" src="./src/assets/screenshots/coffee-detail.png"/>
-</span>
-<span><img style="float: right;" src="./src/assets/screenshots/my-orders.png"/></span>
-</div>
+
 
 ### Order
 
@@ -55,7 +51,13 @@ $ ipfs daemon
 $ ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin "[\"*\"]"
 $ ipfs config --json API.HTTPHeaders.Access-Control-Allow-Credentials "[\"true\"]"
 ```
-4. **Run it**
+4. **Create a config.js file instead of example.config.js file and put google maps API key there**
+```
+$ cd src
+$ cp config.js example.config.js
+```
+Update API key in the config.js file
+5. **Run it**
 ```
 $ npm start
 ```
