@@ -56,7 +56,6 @@ $ ipfs config --json API.HTTPHeaders.Access-Control-Allow-Credentials "[\"true\"
 $ cd src
 $ cp config.js example.config.js
 ```
-Update API key in the config.js file
 5. **Run it**
 ```
 $ npm start
