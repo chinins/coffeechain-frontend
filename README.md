@@ -30,7 +30,7 @@ Details of a particular coffee offer
 - Node
 - Npm
 ### Set up the server and blockchain
-[Coffee Chain backend](https://github.com/chinins/coffee-blockchain-backend)
+[Coffee Chain backend](https://github.com/chinins/coffeechain-backend)
 ### Set up the client
 1. **Clone the repo**
 ```
