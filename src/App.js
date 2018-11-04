@@ -26,9 +26,8 @@ class App extends Component {
             <LoadingBar style={{ zIndex: 100, backgroundColor: `${secondary}`, height: '10px' }} />
             <Header />
             <Switch>
-              <Route exact path="/" component={Dashboard} />
-              <Route exact path="/coffees" component={Dashboard} />
-              <Route exact path="/coffee-shops" component={Dashboard} />
+              <Route exact path="/(coffees)?" render={() => <Dashboard type='coffees'/>} />
+              <Route exact path="/coffee-shops" render={() => <Dashboard type='coffee-shops' />} />
               <Route exact path="/coffee-detail/:coffeeId" component={CoffeeDetail} />
               <Route exact path="/order/:coffeeId" component={Order} />
               <Route exact path="/coffeeForm" component={InputForm} />

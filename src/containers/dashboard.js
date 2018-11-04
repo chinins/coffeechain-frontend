@@ -12,19 +12,13 @@ const DashboardDiv = styled('div')`
 `;
 
 class Dashboard extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      dashboardType: this.props.location.pathname
-    };
-  }
 
   fetchData () {
-    const { dashboardType } = this.state;
-    if (dashboardType === '/coffees' || dashboardType === '/') {
+    const { type } = this.props;
+    if (type === 'coffees') {
       this.isCoffees = true;
       this.props.getAllCoffees();
-    } else if (dashboardType === '/coffee-shops') {
+    } else if (type === 'coffee-shops') {
       this.props.getAllCoffeeShops();
       this.isCoffees = false;
     }
@@ -34,15 +28,10 @@ class Dashboard extends Component {
     this.fetchData();
   }
 
-  shouldComponentUpdate (nextProps) {
-    if (this.state.dashboardType !== nextProps.location.pathname) {
-      this.setState(
-        { dashboardType: nextProps.location.pathname },
-        this.fetchData
-      );
-      return true;
-    }
-    return true;
+
+  componentDidUpdate (prevProps) {
+    if (this.props.type !== prevProps.type) this.fetchData();
+
   }
 
   render () {
